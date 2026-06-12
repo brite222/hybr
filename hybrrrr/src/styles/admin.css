@@ -335,12 +335,22 @@
    MOBILE RESPONSIVE — ADMIN PORTAL
    ════════════════════════════════════════════════════════════ */
 
-/* Mobile top header for admin */
+/* Mobile top header for admin — hidden on desktop */
 .admin-mobile-header {
   display: none;
 }
 
+.admin-mobile-overlay {
+  display: none;
+}
+
 @media (max-width: 768px) {
+  /* ✅ FIX: stack the layout vertically on mobile */
+  .admin-page {
+    display: block;
+    min-height: 100vh;
+  }
+
   .admin-mobile-header {
     display: flex;
     align-items: center;
@@ -351,7 +361,7 @@
     position: sticky;
     top: 0;
     z-index: 998;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
   .admin-mobile-header-logo {
@@ -379,7 +389,7 @@
     opacity: 0.7;
   }
 
-  /* Sidebar becomes drawer */
+  /* ✅ FIX: Sidebar becomes off-canvas drawer */
   .admin-sidebar {
     position: fixed;
     left: -100%;
@@ -388,19 +398,23 @@
     width: 280px;
     transition: left 0.3s ease;
     z-index: 1000;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    padding-top: 24px;
   }
 
   .admin-sidebar.open {
     left: 0;
   }
 
-  /* Overlay */
+  /* ✅ Overlay backdrop when drawer is open */
   .admin-mobile-overlay {
     display: none;
     position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
   }
 
@@ -408,10 +422,13 @@
     display: block;
   }
 
-  /* Main content */
+  /* ✅ FIX: Main content takes full width on mobile */
   .admin-main {
     margin-left: 0 !important;
     padding: 20px !important;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* Header */
@@ -419,6 +436,7 @@
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+    margin-bottom: 20px;
   }
 
   .admin-title {
