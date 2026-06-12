@@ -1,24 +1,28 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import dotenv from "dotenv";
 dotenv.config();
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Default sender — works out of the box using Resend's test domain
+const FROM = process.env.EMAIL_FROM || "ALPHA <onboarding@resend.dev>";
 
 export const sendEmail = async ({ to, subject, html }) => {
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+    const { data, error } = await resend.emails.send({
+      from: FROM,
       to,
       subject,
       html,
     });
-    console.log(`✅ Email sent to ${to}`);
+
+    if (error) {
+      console.error("❌ Resend error:", error);
+      throw new Error(error.message || "Resend send failed");
+    }
+
+    console.log(`✅ Email sent to ${to} (id: ${data?.id})`);
+    return data;
   } catch (err) {
     console.error("❌ Email failed:", err.message);
     throw err;
