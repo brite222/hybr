@@ -35,23 +35,23 @@ export function useContent(weekNumber, lessonId) {
  */
 export function getMediaUrl(path) {
   if (!path) return null;
-  
+
   // Full URL already
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
   }
-  
-  // Backend path
-  const API_BASE = "http://localhost:5000";
-  
+
+  // ✅ Use the env var for backend base URL (works in prod + dev)
+  const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
   if (path.startsWith("/api/")) {
     return `${API_BASE}${path}`;
   }
-  
+
   // Public folder path
   if (path.startsWith("/")) {
     return path;
   }
-  
+
   return path;
 }
