@@ -1,0 +1,63 @@
+/* ── Info Lesson Page Specific Styles ── */
+
+.info-heading {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 100%;
+  color: #000;
+  margin: 0 0 20px 0;
+}
+
+.info-body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0 0 20px 0;
+}
+
+.info-body:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Inline Image with Caption ── */
+.info-image-wrap {
+  margin: 32px 0 24px;
+}
+
+.info-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.info-image-caption {
+  margin-top: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .info-heading {
+    font-size: 24px;
+  }
+
+  .info-body {
+    font-size: 16px;
+  }
+
+  .info-image-caption {
+    font-size: 14px;
+  }
+}

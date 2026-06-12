@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.nav-hamburger {
+  display: none;
+}
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --green: #aadd00;
+  --blue: #4ab3f4;
+  --dark-card: #0a0a0a;
+  --border: rgba(255, 255, 255, 0.15);
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border-radius: 2px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-12px); }
+}
+@keyframes floatTop {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-12px); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease both;
+}
+
+/* ── Base headings & sections ── */
+section {
+  padding: 120px 60px;
+}
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  color: var(--white);
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+.section-label .blue { color: var(--blue); }
+.section-label .green { color: var(--green); }

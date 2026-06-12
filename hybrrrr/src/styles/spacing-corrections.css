@@ -1,0 +1,366 @@
+/* ============================================================
+   HYBR/ALPHA — SPACING SYSTEM CORRECTIONS
+   Spacing scale: 16 | 24 | 32 | 40 | 60 | 120px
+   Layout grid:  max-width 1200px | page padding 60px
+   ============================================================ */
+
+/* ── Root / Container ── */
+:root {
+  --page-padding: 60px;
+  --sp-xs:  16px;
+  --sp-sm:  24px;
+  --sp-md:  32px;
+  --sp-lg:  40px;
+  --sp-xl:  60px;
+  --sp-2xl: 120px;
+}
+
+
+/* ── NAV ── */
+nav {
+  padding: 28px var(--page-padding);   /* keep 28 — intentional brand choice */
+}
+
+
+/* ── HERO ── */
+.hero-content {
+  margin-top: 130px;          /* keep visual balance with blob */
+  margin-left: var(--page-padding);
+}
+
+.hero-content p {
+  margin-bottom: var(--sp-md);   /* was 32px ✓ (already correct, locked in) */
+}
+
+/* Hero → About gap is controlled by #about padding-top below */
+
+
+/* ── ABOUT ── */
+#about {
+  padding: var(--sp-2xl) 0 var(--sp-2xl) var(--page-padding);
+  gap: var(--sp-xl);             /* was 80px → 60px, tighter & consistent */
+}
+
+#about .section-label {
+  margin-bottom: var(--sp-xs) !important;  /* 16px ✓ */
+}
+
+#about h2 {
+  margin-bottom: var(--sp-sm);   /* was 24px ✓ */
+}
+
+#about p {
+  margin-bottom: var(--sp-md);   /* was 30px → 32px */
+}
+
+
+/* ── FEATURES ── */
+#features {
+  padding: var(--sp-2xl) var(--page-padding) !important;
+  max-width: 1440px;             /* wide enough to not clip at 1200 + padding */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#features .section-label {
+  margin-bottom: var(--sp-xs);   /* 16px ✓ */
+}
+
+#features h2 {
+  margin-bottom: var(--sp-xl);   /* was 56px → 60px (nearest scale value) */
+}
+
+.feature-grid,
+.feature-grid-row2 {
+  gap: var(--sp-sm);             /* was 10px → 24px (card grid gap) */
+  margin-bottom: var(--sp-sm);   /* was 10px → 24px */
+}
+
+.feature-grid-row2 {
+  margin-bottom: 0;
+}
+
+.feature-card {
+  padding: var(--sp-md) var(--sp-lg);   /* 32px 40px ✓ */
+  min-height: 196px;                     /* preserved */
+}
+
+.features-cta {
+  margin-top: var(--sp-xl);      /* was 48px → 60px */
+}
+
+
+/* ── TRACKS ── */
+#tracks {
+  padding: var(--sp-2xl) var(--page-padding);   /* was 120px 120px → uniform 60px sides */
+}
+
+#tracks .section-label {
+  margin-bottom: var(--sp-xs);   /* 16px ✓ */
+}
+
+#tracks h2 {
+  margin-bottom: var(--sp-xs);   /* 16px ✓ */
+}
+
+#tracks .sub {
+  margin-bottom: var(--sp-md);   /* was 30px → 32px */
+}
+
+.tracks-grid {
+  gap: var(--sp-sm);             /* was 18px → 24px */
+  margin-bottom: var(--sp-sm);   /* was 18px → 24px */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tracks-bottom {
+  gap: var(--sp-sm);             /* was 18px → 24px */
+  margin-bottom: var(--sp-xl);   /* was 48px → 60px */
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.track-card {
+  padding: var(--sp-md);         /* was 32px ✓ */
+}
+
+.track-card .track-icon,
+.track-icon-img {
+  margin-bottom: var(--sp-sm);   /* was 28px → 24px */
+}
+
+
+/* ── PHASES ── */
+#phases {
+  padding: var(--sp-xl);         /* was 60px ✓ */
+}
+
+.phases-top {
+  padding: var(--sp-xl) var(--sp-xl) var(--sp-md);   /* was 48px 56px 32px → 60px 60px 32px */
+  gap: var(--sp-xl);                                   /* was 60px ✓ */
+}
+
+.phases-label {
+  margin-bottom: var(--sp-xs);   /* was 16px ✓ */
+}
+
+.phases-card h2 {
+  margin-bottom: var(--sp-xs);   /* was 16px ✓ */
+}
+
+.phases-card .desc {
+  /* font/color preserved */
+}
+
+.phases-list {
+  gap: var(--sp-xs);             /* was 14px → 16px */
+}
+
+.phase-item {
+  gap: var(--sp-xs);             /* was 14px → 16px */
+}
+
+.phases-image {
+  height: 240px;                 /* preserved */
+  margin: 0 var(--sp-xl) var(--sp-xl);   /* was 0 56px 48px → 0 60px 60px */
+}
+
+
+/* ── CURRICULUM ── */
+#curriculum {
+  padding: var(--sp-2xl) 0;      /* was 120px 0 ✓ */
+}
+
+#curriculum .inner {
+  padding: 0 var(--page-padding) 0 0;
+  margin-bottom: var(--sp-xl);   /* was 80px → 60px */
+}
+
+.syllabus-hero {
+  margin-top: var(--sp-md);      /* was 32px ✓ */
+  gap: var(--sp-xl);             /* was 60px ✓ */
+}
+
+.syllabus-text .section-label {
+  margin-bottom: var(--sp-xs);   /* was 16px ✓ */
+}
+
+.syllabus-text h2 {
+  margin-bottom: var(--sp-sm);   /* was 24px ✓ */
+}
+
+/* Zigzag blocks */
+.zigzag-wrap {
+  padding: var(--sp-xl) 0 var(--sp-lg);   /* was 80px 0 40px → 60px 0 40px */
+}
+
+.zig-block {
+  margin-bottom: var(--sp-xl);   /* was 80px → 60px */
+}
+
+.zig-1 { margin-left: var(--sp-xl); }
+.zig-2 { margin-right: var(--sp-xl); }
+.zig-3 { margin-left: var(--sp-xl); margin-bottom: var(--sp-xl); }
+.zig-4 { margin-right: var(--sp-xl); margin-bottom: 0; }
+
+.zig-title {
+  gap: var(--sp-xs);             /* was 14px → 16px */
+  margin-bottom: var(--sp-xs);   /* was 14px → 16px */
+}
+
+.zig-overview {
+  margin-bottom: var(--sp-md);   /* was 0 after fix — restore readable gap */
+}
+
+.zig-checks {
+  gap: var(--sp-xs);             /* was 18px → 16px */
+}
+
+.zig-checks li {
+  gap: var(--sp-xs);             /* was 18px → 16px */
+}
+
+.curriculum-cta {
+  padding: var(--sp-xl) var(--page-padding) 0;   /* was 60px 60px 0 ✓ */
+  gap: var(--sp-md);             /* was 30px → 32px */
+}
+
+
+/* ── TESTIMONIALS ── */
+#testimonials {
+  padding: var(--sp-2xl) var(--page-padding);   /* was 80px 60px → 120px 60px (section rhythm) */
+}
+
+#testimonials .section-label {
+  margin-bottom: var(--sp-xs);   /* 16px ✓ */
+}
+
+#testimonials h2 {
+  margin-bottom: var(--sp-xs);   /* 16px ✓ */
+}
+
+#testimonials .sub {
+  margin-bottom: var(--sp-xl);   /* was 56px → 60px */
+}
+
+.testimonial-stage {
+  gap: var(--sp-sm);             /* was 24px ✓ */
+}
+
+.testimonial-card {
+  padding: var(--sp-xl) var(--sp-xl);            /* was 78px 56px → 60px uniform */
+  gap: var(--sp-lg);             /* was 40px ✓ */
+}
+
+.testimonial-avatar-wrap {
+  margin-left: var(--sp-xl);     /* was 80px → 60px */
+}
+
+.testimonial-body {
+  gap: var(--sp-sm);             /* was 24px ✓ */
+}
+
+.testimonial-dots {
+  gap: var(--sp-xs);             /* was 10px → 16px for easier tapping */
+  margin-top: var(--sp-xl);      /* was 50px → 60px */
+}
+
+.reg-pill-wrap {
+  margin-top: var(--sp-xl);      /* was 80px → 60px */
+}
+
+
+/* ── CTA ── */
+#cta {
+  padding: var(--sp-xl) var(--page-padding) var(--sp-2xl);   /* was 60px 60px 120px ✓ */
+}
+
+#cta h2 {
+  margin-bottom: var(--sp-sm);   /* was 24px ✓ */
+}
+
+#cta p {
+  margin-bottom: var(--sp-xs);   /* was 16px ✓ */
+}
+
+.cta-buttons {
+  gap: var(--sp-xs);             /* was 18px → 16px */
+  margin-top: var(--sp-md);      /* was 32px ✓ */
+}
+
+
+/* ── FOOTER ── */
+footer {
+  padding: var(--sp-xl) var(--sp-xl) var(--sp-lg);   /* was 80px 80px 40px → 60px uniform */
+}
+
+.footer-grid {
+  gap: var(--sp-xl);             /* was 48px → 60px */
+  margin-bottom: var(--sp-xl);   /* was 80px → 60px */
+}
+
+.footer-col h4 {
+  margin-bottom: var(--sp-sm);   /* was 24px ✓ */
+}
+
+.footer-col a {
+  margin-bottom: var(--sp-xs);   /* was 16px ✓ */
+}
+
+.footer-socials {
+  gap: var(--sp-xs);             /* was 14px → 16px */
+  margin-bottom: var(--sp-sm);   /* was 28px → 24px */
+}
+
+.footer-bottom {
+  padding-top: var(--sp-md);     /* was 32px ✓ */
+  gap: var(--sp-sm);             /* was 24px ✓ */
+}
+
+.footer-legal {
+  gap: var(--sp-md);             /* was 32px ✓ */
+}
+
+
+/* ── Shared Back Card Spacing ── */
+.track-card-back {
+  padding: var(--sp-md) var(--sp-lg);    /* was 22px 26px → 32px 40px (matches front) */
+  gap: var(--sp-xs);                     /* was 12px → 16px */
+}
+
+.back-header {
+  gap: var(--sp-xs);             /* was 10px → 16px */
+}
+
+.back-bottom {
+  gap: var(--sp-xs);             /* was 12px → 16px */
+  margin-top: auto;
+}
+
+.feature-card-back {
+  padding: var(--sp-md) var(--sp-lg);    /* 32px 40px ✓ */
+}
+
+.back-bottom .back-icon {
+  width: 24px;
+  height: 24px;
+}
+
+
+/* ── Card Icon spacing ── */
+.card-icon-img {
+  margin-bottom: var(--sp-sm);   /* was 20px → 24px */
+}
+
+.track-icon-img {
+  margin-bottom: var(--sp-sm);   /* was 28px → 24px */
+}
+
+
+/* ── Scroll offset anchors ── */
+#about, #features, #tracks, #phases, #curriculum, #testimonials, #cta {
+  scroll-margin-top: var(--sp-xl);   /* was 80px → 60px (matches nav height) */
+}

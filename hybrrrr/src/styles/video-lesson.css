@@ -1,0 +1,186 @@
+/* ════════════════════════════════════════════════════════════
+   VIDEO LESSON PAGE — Custom player matching Figma
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Video player container ── */
+.video-player-wrap {
+  position: relative;
+  width: 100%;
+  height: 474.9px;               
+  background: #2a0a14;          /* dark reddish fallback while loading */
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+/* ── BIG WHITE PLAY BUTTON OVERLAY ── */
+.video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.video-play-overlay:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video-play-overlay svg {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+/* ── FULLSCREEN ICON BOTTOM-RIGHT ── */
+.video-fullscreen-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.2s;
+}
+
+.video-fullscreen-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ── Hide native controls (just in case) ── */
+.video-player::-webkit-media-controls {
+  display: none !important;
+}
+
+.video-player::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+/* ── TRANSCRIPT CARD ── */
+.transcript-card {
+  background: #FFFFFF;
+  border: 1px solid #EDEDED;
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.transcript-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  color: #000000;
+  margin: 0;
+}
+
+.transcript-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.transcript-body p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000000;
+  margin: 0;
+}
+
+.transcript-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin: 8px auto 0;
+  color: #000000;
+  transition: opacity 0.2s;
+}
+
+.transcript-expand:hover {
+  opacity: 0.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .video-player-wrap {
+    height: 360px;
+  }
+  
+  .video-play-overlay {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .video-play-overlay svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-player-wrap {
+    height: 240px;
+    border-radius: 16px;
+  }
+  
+  .video-player {
+    border-radius: 16px;
+  }
+
+  .video-play-overlay {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .video-play-overlay svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .video-fullscreen-btn {
+    width: 32px;
+    height: 32px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .transcript-card {
+    padding: 20px;
+  }
+
+  .transcript-title {
+    font-size: 18px;
+  }
+}

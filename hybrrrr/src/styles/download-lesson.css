@@ -1,0 +1,78 @@
+/* ── Download Card ── */
+.download-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+}
+
+.download-heading {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 100%;
+  color: #000;
+  margin: 0 0 20px 0;
+}
+
+.download-body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0 0 32px 0;
+}
+
+/* ── Download Button ── */
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 22px;
+  background: #fff;
+  border: 1.5px solid #000;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  color: #000;
+  transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.download-btn:hover svg {
+  stroke: #fff;
+}
+
+.download-btn:active {
+  transform: scale(0.98);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .download-card {
+    padding: 24px;
+  }
+  
+  .download-heading {
+    font-size: 24px;
+  }
+  
+  .download-body {
+    font-size: 16px;
+  }
+  
+  .download-btn {
+    font-size: 18px;
+    padding: 16px;
+  }
+}

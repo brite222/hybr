@@ -1,0 +1,719 @@
+/* ════════════════════════════════════════════════════════════
+   COACH PORTAL
+   ════════════════════════════════════════════════════════════ */
+
+.coach-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ── SIDEBAR ── */
+.coach-sidebar {
+  width: 240px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  position: fixed;
+  height: 100vh;
+  border-radius: 0 16px 16px 0;
+  overflow-y: auto;
+}
+
+.coach-sidebar-logo {
+  padding: 0 24px 32px;
+  text-align: center;
+}
+
+.coach-alpha {
+  font-family: "Raleway", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.coach-by {
+  font-size: 10px;
+  opacity: 0.6;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.coach-by img {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Nav — packed tight at top (no flex:1) ── */
+.coach-nav {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coach-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+  border-radius: 8px;
+}
+
+.coach-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.coach-nav-link.active {
+  background: #8DC540;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ── User block — pinned to bottom + clickable ── */
+.coach-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid #222;
+  margin-top: auto;            /* ← pushes to bottom */
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.coach-user:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.coach-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;            /* ← keeps uploaded img circular */
+}
+
+.coach-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.coach-user-name {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coach-user-role {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  color: #8DC540;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── Logout button — pill style with icon ── */
+.coach-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  width: auto;                 /* ← overrides old 100% width */
+  margin-top: 0;               /* ← overrides old margin */
+}
+
+.coach-logout:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.coach-logout svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── MAIN ── */
+.coach-main {
+  flex: 1;
+  margin-left: 240px;
+  padding: 32px 40px;
+}
+
+/* ── HEADER ── */
+.coach-header {
+  margin-bottom: 28px;
+}
+
+.coach-greeting {
+  font-family: "Raleway", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.coach-subgreeting {
+  color: #666;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* ── STATS GRID — polished with icons ── */
+.coach-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.coach-stat-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.coach-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.coach-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.coach-stat-content { flex: 1; min-width: 0; }
+
+.coach-stat-label {
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.coach-stat-value {
+  font-family: "Raleway", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 4px;
+  color: #000;
+  line-height: 1.1;
+}
+
+.coach-stat-value.green { color: #8DC540; }
+.coach-stat-value.blue { color: #4FC2F0; }
+.coach-stat-value.orange { color: #F0AD4E; }
+.coach-stat-value.red { color: #E74C3C; }
+
+/* ── HERO BANNER ── */
+.coach-hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1a3a 50%, #4a1a3a 100%);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.coach-hero-content { flex: 1; min-width: 280px; }
+
+.coach-hero-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px 0;
+}
+
+.coach-hero-text {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  margin: 0;
+}
+
+.coach-hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.coach-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.coach-hero-btn.primary {
+  background: #8DC540;
+  color: #000;
+}
+
+.coach-hero-btn.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.coach-hero-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ── 2-COLUMN GRID FOR PANELS ── */
+.coach-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ── PANEL CARD ── */
+.coach-panel {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.coach-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.coach-panel-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coach-panel-badge {
+  background: #F0AD4E;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.coach-panel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: #196AB4;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.coach-panel-link:hover { text-decoration: underline; }
+
+/* ── LIST INSIDE PANEL ── */
+.coach-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.coach-list-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.coach-list-item:hover { background: #f7f7f7; }
+
+.coach-list-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8DC540, #648C2D);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.coach-list-info { flex: 1; min-width: 0; }
+
+.coach-list-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.coach-list-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.coach-list-meta svg { color: #888; }
+
+.coach-pill {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.coach-pill.orange { background: #F0AD4E; color: #fff; }
+.coach-pill.green { background: #8DC540; color: #fff; }
+
+.coach-progress-mini {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  min-width: 90px;
+}
+
+.coach-progress-mini-bar {
+  flex: 1;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  min-width: 50px;
+}
+
+.coach-progress-mini-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #F0AD4E, #8DC540);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ── EMPTY STATE INSIDE PANEL ── */
+.coach-empty-mini {
+  text-align: center;
+  padding: 32px 16px;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ── CHART ── */
+.coach-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  height: 200px;
+  padding: 16px 0;
+}
+
+.coach-chart-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+}
+
+.coach-chart-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+}
+
+.coach-chart-bar {
+  flex: 1;
+  width: 100%;
+  max-width: 50px;
+  background: #f0f0f0;
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.coach-chart-fill {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.5s ease;
+  min-height: 4px;
+}
+
+.coach-chart-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #666;
+  letter-spacing: 0.5px;
+}
+
+.coach-chart-legend {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+}
+
+.coach-chart-legend i {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ── LOADING ── */
+.coach-loading {
+  text-align: center;
+  padding: 80px 24px;
+  color: #666;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MY STUDENTS PAGE
+   ════════════════════════════════════════════════════════════ */
+
+.tier-section { margin-bottom: 32px; }
+
+.tier-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.tier-label.premium { color: #648C2D; }
+.tier-label.standard { color: #196AB4; }
+
+.tier-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #000;
+  margin: 0 0 20px 0;
+}
+
+.students-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.student-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.student-row:last-child { border-bottom: none; }
+.student-row:hover { background: #f9f9f9; }
+
+.student-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  border-radius: 8px;
+  flex-shrink: 0;
+  color: #666;
+}
+
+.student-name {
+  flex: 1;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+.student-status-badge {
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+.student-status-badge.on-track { background: #8DC540; color: #fff; }
+.student-status-badge.off-track { background: #E74C3C; color: #fff; }
+
+.student-progress {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE
+   ════════════════════════════════════════════════════════════ */
+
+.coach-mobile-header { display: none; }
+
+@media (max-width: 1024px) {
+  .coach-dashboard-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .coach-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+    color: #fff;
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  .coach-mobile-header-logo {
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+  .coach-mobile-hamburger {
+    background: transparent; border: none; color: #fff; cursor: pointer; padding: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .coach-sidebar {
+    position: fixed; left: -100%; top: 0; height: 100vh; width: 280px;
+    transition: left 0.3s ease; z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3); border-radius: 0;
+  }
+  .coach-sidebar.open { left: 0; }
+
+  .coach-mobile-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 999;
+  }
+  .coach-mobile-overlay.open { display: block; }
+
+  .coach-main { margin-left: 0 !important; padding: 20px !important; }
+
+  .coach-greeting { font-size: 22px !important; }
+  .coach-subgreeting { font-size: 13px; }
+
+  .coach-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .coach-stat-card { padding: 14px; }
+  .coach-stat-value { font-size: 22px; }
+  .coach-stat-icon { width: 40px; height: 40px; }
+
+  .coach-hero { padding: 20px; flex-direction: column; align-items: stretch; }
+  .coach-hero-actions { flex-direction: column; }
+  .coach-hero-btn { justify-content: center; }
+
+  .coach-chart { height: 160px; gap: 6px; }
+}
+
+@media (max-width: 480px) {
+  .coach-stats { grid-template-columns: 1fr; }
+  .coach-greeting { font-size: 20px !important; }
+}
+
+/* Force number input arrows to always show */
+.always-show-arrows::-webkit-inner-spin-button,
+.always-show-arrows::-webkit-outer-spin-button {
+  opacity: 1;
+  -webkit-appearance: inner-spin-button;
+  margin: 0;
+  cursor: pointer;
+}
+
+.always-show-arrows {
+  -moz-appearance: number-input;
+}

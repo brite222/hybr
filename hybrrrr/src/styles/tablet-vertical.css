@@ -1,0 +1,1355 @@
+/* ════════════════════════════════════════════════════════════
+   TABLET VERTICAL (768px - 1024px portrait)
+   ════════════════════════════════════════════════════════════ */
+
+@media (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
+
+  /* ── NAV (tablet vertical) ── */
+  nav {
+    padding: 32px 80px 16px 80px !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .nav-links {
+    display: none !important;
+  }
+
+  nav .btn-login {
+    display: none !important;
+  }
+
+  /* ALPHA logo lockup */
+  .nav-logo {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: auto !important;
+  }
+
+  .nav-logo .dot {
+    display: none !important;
+  }
+
+  .nav-logo::before {
+    content: "ALPHA";
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    display: block;
+    flex-basis: 100%;
+    margin: 0 0 2px 0;
+    order: 0;
+  }
+
+  .nav-logo .by {
+    display: inline-flex !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 9px !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    margin: 0 !important;
+    order: 1 !important;
+  }
+
+  .nav-logo .hybr-lockup {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 3px !important;
+    order: 2 !important;
+  }
+
+  .nav-logo .hybr-mark {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .nav-logo .hybr-word {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    color: #FFFFFF !important;
+    line-height: 1 !important;
+  }
+
+  /* Hamburger menu */
+  .nav-hamburger {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    width: 44px !important;
+    height: 44px !important;
+    justify-content: center !important;
+  }
+
+  .nav-hamburger span {
+    display: block !important;
+    width: 28px !important;
+    height: 2px !important;
+    background: #FFFFFF !important;
+    border-radius: 2px !important;
+  }
+
+  /* ── HERO (tablet vertical) ── */
+  #hero {
+    min-height: auto !important;
+    padding: 0 0 80px 0 !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Hero blob/image — top right */
+  .hero-bg-blob {
+    position: absolute !important;
+    top: -80px !important;
+    right: -120px !important;
+    width: 600px !important;
+    height: 600px !important;
+    border-radius: 1000px !important;
+    overflow: hidden;
+    animation: none !important;
+    z-index: 1;
+  }
+
+  .blob-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+  }
+
+  /* Hero content */
+  .hero-content {
+    position: relative !important;
+    z-index: 2;
+    max-width: 640px !important;
+    width: 100% !important;
+    margin: 200px 0 0 80px !important;
+    padding: 0 !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* H1 — Raleway 500, 64px */
+  #hero .hero-content h1 {
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 64px !important;
+    line-height: 100% !important;
+    letter-spacing: 0 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 16px !important;
+    max-width: 640px !important;
+  }
+
+  /* Hero paragraph — Montserrat 500, 20px */
+  .hero-content p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 100% !important;
+    letter-spacing: 0 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 24px !important;
+    max-width: 640px !important;
+  }
+
+  /* Hide Curated byline and Roadmap button on tablet vertical (matches prototype) */
+  .hero-byline {
+    display: none !important;
+  }
+
+  .hero-content .btn-outline {
+    display: none !important;
+  }
+
+  /* ── ABOUT (tablet vertical) ── */
+  #about {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+    padding: 80px 80px !important;
+    align-items: flex-start !important;
+    grid-template-columns: none !important;
+  }
+
+  /* About image — egg/teardrop shape */
+  .about-image {
+    width: 640px !important;
+    max-width: 100% !important;
+    height: 248px !important;
+    margin: 0 !important;
+    justify-self: auto !important;
+    order: -1 !important;          /* image appears BEFORE text */
+    border-radius: 1000px 0 2000px 1000px !important;   /* top-left, top-right(0), bottom-right, bottom-left */
+    overflow: hidden !important;
+    background: transparent !important;
+  }
+
+  .about-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  /* Eyebrow */
+  #about .section-label,
+  #about .eyebrow {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 100% !important;
+    letter-spacing: 0 !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    margin-bottom: 16px !important;
+
+  }
+
+  /* Heading — Raleway 500, 32px */
+  #about h2 {
+    font-family: 'Raleway', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 32px !important;
+    line-height: 100% !important;
+    letter-spacing: 0 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 24px !important;
+    max-width: 640px !important;
+  }
+
+  /* Paragraph — Montserrat 400 Regular, 20px */
+  #about p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 140% !important;
+    letter-spacing: 0 !important;
+    color: #FFFFFF !important;
+    margin-bottom: 32px !important;
+    max-width: 640px !important;
+  }
+
+  /* "Join The Program" button — Montserrat 500, 20px */
+  #about .btn-outline {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+    color: #FFFFFF !important;
+    background: transparent !important;
+    border: 2px solid #FFFFFF !important;
+    border-radius: 100px !important;
+    padding: 14px 32px !important;
+    width: auto !important;
+    min-width: 180px !important;
+    cursor: pointer;
+  }
+
+  /* Hide arrow on button (prototype shows clean button) */
+  #about .btn-outline .btn-arrow {
+    display: none !important;
+  }
+
+  /* ── FEATURES (tablet vertical) ── */
+#features {
+  background: #000 !important;
+  padding: 0 80px !important;
+  margin: 60px auto 0 auto !important;
+  max-width: 800px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Eyebrow */
+#features .section-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  margin: 0 0 16px 0 !important;
+  text-align: left !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+#features .section-label .blue {
+  color: var(--blue) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+}
+
+/* Heading — Raleway 500, 32px */
+#features h2 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  margin: 0 0 48px 0 !important;
+  max-width: 640px !important;
+  text-align: left !important;
+}
+
+/* Cards grid — 1 column, 4 cards stacked vertically */
+#features .feature-grid,
+#features .feature-grid-row2 {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  gap: 16px !important;
+  margin: 0 0 16px 0 !important;
+  max-width: 640px !important;
+  width: 100% !important;
+}
+
+/* Card wrapper */
+#features .feature-card-wrapper {
+  width: 100% !important;
+  min-height: 196px !important;
+}
+
+#features .feature-card-wrapper .feature-card {
+  min-height: 196px !important;
+  padding: 32px 40px !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 24px !important;
+  background: #000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  box-sizing: border-box;
+}
+
+/* Card icon — top left */
+#features .card-icon-img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+  margin-bottom: 0 !important;
+}
+
+/* Card label — Montserrat 500 Medium, 16px, Uppercase */
+#features .feature-card .card-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+/* Card value — Raleway 500 Medium, 32px */
+#features .feature-card .card-value {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+/* Info icon top-right */
+#features .feature-card .card-info {
+  top: 24px !important;
+  right: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  border: 1.5px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+}
+
+/* Features CTA — "2027 Registration" */
+#features .features-cta {
+  margin: 48px auto 0 auto !important;
+  text-align: center !important;
+  padding: 0 !important;
+  max-width: 640px !important;
+}
+
+#features .btn-outline {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  padding: 14px 32px !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 100px !important;
+  background: transparent !important;
+  color: #FFFFFF !important;
+  width: auto !important;
+  min-width: 178px !important;
+  cursor: pointer;
+}
+
+/* Hide arrow on button */
+#features .btn-outline .btn-arrow {
+  display: none !important;
+}
+
+/* ── TRACKS (tablet vertical) ── */
+#tracks {
+  background: #000 !important;
+  text-align: center !important;
+  padding: 60px 80px 60px 80px !important;
+  margin: 0 auto !important;
+  max-width: 800px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Eyebrow */
+#tracks .section-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 auto 16px auto !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#tracks .section-label .green {
+  color: #CBE4A7 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+}
+
+/* Heading — Raleway 500, 32px, CENTER */
+#tracks h2 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  margin: 0 auto 16px auto !important;
+}
+
+/* Sub-paragraph — Montserrat 400 Regular, 20px, CENTER */
+#tracks .sub {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  margin: 0 auto 40px auto !important;
+}
+
+/* Stack all top cards vertically — 1 column */
+#tracks .tracks-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  gap: 16px !important;
+  margin: 0 auto 16px auto !important;
+  max-width: 640px !important;
+  width: 100% !important;
+}
+
+/* Hide video card on tablet vertical */
+#tracks .tracks-bottom .video-card {
+  display: none !important;
+}
+
+/* Bottom row — just Environmental Impact card */
+#tracks .tracks-bottom {
+  display: flex !important;
+  flex-direction: column !important;
+  grid-template-columns: none !important;
+  gap: 16px !important;
+  margin: 0 auto 40px auto !important;
+  max-width: 640px !important;
+  width: 100% !important;
+}
+
+/* Track card wrapper */
+#tracks .track-card-wrapper {
+  width: 100% !important;
+  min-height: 158px !important;
+  height: 158px !important;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+#tracks .track-card-inner {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+#tracks .track-card-wrapper.flipped .track-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Track card — height 158px, padding 32px 40px */
+#tracks .track-card {
+  background: #000 !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 24px !important;
+  padding: 32px 40px !important;
+  min-height: 158px !important;
+  height: 158px !important;
+  position: relative !important;
+  backface-visibility: hidden;
+  width: 100% !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 16px !important;
+  text-align: left !important;
+}
+
+#tracks .track-card-front {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+#tracks .track-card-back {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  align-items: flex-start !important;
+}
+
+/* Track icon — top-left, green */
+#tracks .track-icon-img {
+  width: 36px !important;
+  height: 36px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+/* Info icon top-right */
+#tracks .card-info {
+  position: absolute !important;
+  top: 24px !important;
+  right: 24px !important;
+  width: 24px !important;
+  height: 24px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid #FFFFFF !important;
+  color: #FFFFFF !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Card title — Raleway 500, 32px */
+#tracks .track-card h3 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  max-width: none !important;
+  margin-top: 0 !important;
+}
+
+/* Back of card */
+#tracks .track-card-back .back-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+#tracks .track-card-back .back-icon {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
+}
+
+#tracks .track-card-back .back-title {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  color: #FFFFFF !important;
+}
+
+#tracks .track-card-back .back-text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 140% !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+}
+
+/* CTA button — "Registered? Let's Begin" */
+#tracks > .btn-outline {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+  color: #FFFFFF !important;
+  background: transparent !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 100px !important;
+  padding: 16px 32px !important;
+  width: 304px !important;
+  height: 56px !important;
+  margin: 0 auto !important;
+  cursor: pointer;
+}
+
+/* Hide arrow on button */
+#tracks > .btn-outline .btn-arrow {
+  display: none !important;
+}
+/* ── PHASES (tablet vertical) ── */
+#phases {
+  background: #000 !important;
+  padding: 60px 80px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* The white card container */
+#phases .phases-card {
+  background: #FFFFFF !important;
+  border-radius: 24px !important;
+  padding: 48px !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+  overflow: hidden;
+}
+
+/* Reset desktop grid layout */
+#phases .phases-top {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  grid-template-columns: none !important;
+}
+
+/* Eyebrow — "ABOUT THE PROGRAM: PHASES" */
+#phases .phases-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #000000 !important;
+  text-align: left !important;
+  margin: 0 0 16px 0 !important;
+}
+
+#phases .phases-label .blue {
+  color: var(--blue) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+}
+
+/* Heading — Raleway 500, 32px, BLACK */
+#phases h2,
+#phases .phases-card h2 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  text-align: left !important;
+  margin: 0 0 24px 0 !important;
+  max-width: 544px !important;
+}
+
+/* Description — Montserrat 400 Regular, 20px, BLACK */
+#phases .desc,
+#phases .phases-card .desc {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #000000 !important;
+  text-align: left !important;
+  margin: 0 0 24px 0 !important;
+  max-width: 544px !important;
+}
+
+/* Phase list */
+#phases .phases-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 32px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+#phases .phase-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  color: #000000 !important;
+  max-width: 544px !important;
+}
+
+/* Blue phase icons */
+#phases .phase-icon-img {
+  width: 24px !important;
+  height: 24px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+
+/* Phase label — bold */
+#phases .phase-item strong {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  color: #000000 !important;
+}
+
+/* Phase description text */
+#phases .phase-item .desc-text {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  color: #000000 !important;
+}
+
+#phases .phase-item > span {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+}
+
+/* Image at bottom — use natural blob shape */
+#phases .phases-image {
+  width: 100% !important;
+  max-width: 544px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+  overflow: visible !important;
+  display: block !important;
+  background: transparent !important;
+}
+
+#phases .phases-img {
+  width: 100% !important;
+  height: 200px !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 0 !important;
+  clip-path: none !important;
+}
+/* ── CURRICULUM / ROADMAP HEADER (tablet vertical) ── */
+#curriculum {
+  background: #000 !important;
+  padding: 100px 80px 0 80px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#curriculum .inner {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 640px !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Reset desktop hero layout — stack image on top, text below */
+#curriculum .syllabus-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 32px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 640px !important;
+  box-sizing: border-box;
+  align-items: flex-start !important;
+}
+
+/* Image wrapper — pill/blob shape (sharp top-left) */
+#curriculum .syllabus-img-wrap {
+  width: 100% !important;
+  max-width: 640px !important;
+  height: 248px !important;
+  border-radius: 0 1000px 1000px 1900px !important;  
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+#curriculum .syllabus-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Text block */
+#curriculum .syllabus-text {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 640px !important;
+  box-sizing: border-box;
+  text-align: left !important;
+}
+
+/* Eyebrow — "ABOUT THE PROGRAM: MODULES/SYLLABUS" */
+#curriculum .section-label,
+#curriculum .syllabus-text .section-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  text-align: left !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  max-width: 640px !important;
+  width: auto !important;
+}
+
+#curriculum .section-label .blue,
+#curriculum .syllabus-text .section-label .blue {
+  color: var(--blue) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+}
+
+/* Heading — Raleway 500, 32px, WHITE */
+#curriculum h2,
+#curriculum .syllabus-text h2 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: left !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+  max-width: 640px !important;
+  width: auto !important;
+}
+
+/* Sub-paragraph — Montserrat 400 Regular, 20px, WHITE */
+#curriculum .sub,
+#curriculum .syllabus-text .sub {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: left !important;
+  margin: 0 0 32px 0 !important;
+  padding: 0 !important;
+  max-width: 640px !important;
+  width: auto !important;
+}
+
+/* ── ZIGZAG ROADMAP (tablet vertical) ── */
+#curriculum .zigzag-wrap {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 120px !important;                /* space between blocks for arrows */
+
+  padding: 0 !important;
+  max-width: 800px !important;
+  width: 100% !important;
+  background: #000 !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* Hide desktop wireframe decorations */
+#curriculum .zigzag-wrap .wire {
+  display: none !important;
+}
+
+/* Each zig block — base */
+#curriculum .zig-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  width: 370px !important;
+  max-width: 370px !important;
+  position: relative !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Title row — icon + heading */
+#curriculum .zig-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#curriculum .zig-icon-img {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+}
+
+/* Overview line */
+#curriculum .zig-overview {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Checklist */
+#curriculum .zig-checks {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+#curriculum .zig-checks li {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 24px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  padding-left: 28px !important;
+  position: relative !important;
+  margin-left: 0 !important;
+  display: block !important;
+}
+
+#curriculum .zig-checks li::before {
+  content: "✓" !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  color: var(--blue) !important;       /* blue checkmarks like prototype */
+  font-weight: 500 !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+}
+
+
+
+#curriculum .zig-1 {
+  align-self: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+
+#curriculum .zig-2 {
+  align-self: flex-end !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+
+#curriculum .zig-3 {
+  align-self: flex-start !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+
+#curriculum .zig-4 {
+  align-self: flex-end !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+
+
+#curriculum .arrow {
+  position: absolute !important;
+  display: block !important;
+  z-index: 5 !important;
+  pointer-events: none;
+  height: auto !important;
+}
+
+
+#curriculum .arrow-1 {
+  width: 190px !important;
+  top: 200px !important;
+  left: 60% !important;
+  transform: translateX(-50%) rotate(0deg) !important;
+}
+
+#curriculum .arrow-2 {
+  width: 190px !important;
+  top: 560px !important;
+  left: 30% !important;
+  transform: translateX(-50%) rotate(0deg) !important;
+}
+
+#curriculum .arrow-3 {
+  width: 170px !important;
+  top: 1029px !important;
+  left: 35% !important;
+  transform: translateX(-50%) rotate(-15deg) !important;
+}
+
+/* ── CTA BUTTONS at bottom ── */
+#curriculum .curriculum-cta {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 16px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  margin: 80px auto 60px auto !important;
+  padding: 0 !important;
+  max-width: 640px !important;
+  width: 100% !important;
+}
+
+#curriculum .curriculum-cta .btn-outline {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  color: #FFFFFF !important;
+  background: transparent !important;
+  border: 2px solid #FFFFFF !important;
+  border-radius: 100px !important;
+  padding: 14px 32px !important;
+  width: auto !important;
+  min-width: 260px !important;
+  height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer;
+}
+
+/* Hide arrow on button */
+#curriculum .curriculum-cta .btn-outline .btn-arrow {
+  display: none !important;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TESTIMONIALS (tablet vertical) — CLEANED
+   ════════════════════════════════════════════════════════════ */
+
+#testimonials {
+  background: #000;
+  padding: 100px 24px 0 24px;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#testimonials .section-label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 auto 16px auto !important;
+  padding: 0 !important;
+  max-width: 342px !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+#testimonials h2 {
+  font-family: 'Raleway', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 32px !important;
+  line-height: 100% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 auto 16px auto !important;
+  padding: 0 !important;
+  max-width: 342px !important;
+  width: 100% !important;
+}
+
+#testimonials .sub {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  letter-spacing: 0 !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 auto 40px auto !important;
+  padding: 0 !important;
+  max-width: 342px !important;
+  width: 100% !important;
+}
+
+/* ── Slider stage ── */
+#testimonials .testimonial-stage {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Arrows */
+#testimonials .t-arrow {
+  display: flex !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+  width: 32px !important;
+  height: 60px !important;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+#testimonials .t-arrow:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+#testimonials .t-arrow svg {
+  width: 20px !important;
+  height: 36px !important;
+  stroke: #4FC2F0 !important;
+  stroke-width: 2.5 !important;
+  fill: none !important;
+}
+
+/* Viewport */
+#testimonials .testimonial-viewport {
+  flex: 1;
+  max-width: 640px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+#testimonials .testimonial-track {
+  display: flex;
+  transition: transform 0.6s ease;
+  width: 100%;
+  gap: 0;
+}
+
+/* If you want 2 cards per slide: */
+#testimonials .testimonial-slide {
+  flex: 0 0 calc(50% - 4px) !important;
+  min-width: calc(50% - 4px) !important;
+  width: calc(50% - 4px) !important;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card */
+#testimonials .testimonial-card {
+  background: #FFFFFF !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  min-height: 780px !important;
+  border-radius: 1000px 1000px 100px 2000px !important;
+  padding: 60px 32px 48px 32px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Avatar — scoped to #testimonials only */
+#testimonials .testimonial-avatar-wrap {
+  position: relative;
+  width: 188px;
+  height: 188px;
+  flex-shrink: 0;
+  margin: 0 auto;
+}
+
+/* Body */
+#testimonials .testimonial-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  flex: 1;
+}
+
+/* Quote — ONE definition (was 16px earlier, 20px later — pick one!) */
+#testimonials .testimonial-quote {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  color: #000000 !important;
+  text-align: left;
+  margin: 0;
+  max-width: 240px;
+  width: 100%;
+}
+
+/* Name */
+#testimonials .testimonial-name {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: #000000 !important;
+  text-align: right;
+  width: 100%;
+  margin-top: auto;
+}
+
+#testimonials .testimonial-meta {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  color: #000000 !important;
+  text-align: right;
+  width: 100%;
+  margin: 0;
+}
+
+/* Dots */
+#testimonials .testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto 0 auto;
+  padding: 0;
+}
+}

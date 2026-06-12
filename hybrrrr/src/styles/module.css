@@ -1,0 +1,635 @@
+/* ════════════════════════════════════════════════════════════
+   MODULE PAGE (LMS Overview Template)
+   ════════════════════════════════════════════════════════════ */
+
+/* Hide mobile menu button on desktop */
+.mobile-menu-btn {
+  display: none;
+}
+
+.module-page {
+  min-height: 100vh;
+  background: #F5F5F5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SIDEBAR (Desktop) — FIXED to viewport
+   ════════════════════════════════════════════════════════════ */
+.module-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 4px;
+  border-radius: 0 16px 16px 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+/* Logo */
+.sidebar-logo {
+  text-align: center;
+  padding: 16px 0 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.sidebar-alpha {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.sidebar-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.sidebar-hybr-mark {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+/* Nav links */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;           
+  padding: 8px 12px;
+  
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: left;
+  width: 100%;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.sidebar-link svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar-link span {
+  white-space: nowrap;
+  overflow: visible;
+  flex: 1;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-link.active {
+  background: #8DC540;
+  color: #000000;
+  font-weight: 600;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;      /* ← THIS pushes user block to the bottom */
+  color: #FFFFFF;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-user-name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MAIN CONTENT — pushed right to make room for fixed sidebar
+   ════════════════════════════════════════════════════════════ */
+.module-main {
+  margin-left: 260px;
+  padding: 24px 40px 40px;
+  background: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── TOP BAR ── */
+.module-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EDEDED;
+  border-radius: 16px;
+  padding: 24px 40px;
+  gap: 24px;
+}
+
+.module-topbar-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.topbar-dot {
+  color: #000000;
+}
+
+.module-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 600px;
+}
+
+.module-progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #C8C8C8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.module-progress-fill {
+  height: 100%;
+  background: #8DC540;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.module-progress-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ── CONTENT GRID ── */
+.module-content {
+  display: grid;
+  grid-template-columns: 1fr 305px;
+  gap: 24px;
+  align-items: start;
+}
+
+/* LEFT */
+.module-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.module-image-wrap {
+  width: 100%;
+  height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.module-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.module-overview-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 32px 40px;
+  border: 1px solid #EDEDED;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.module-heading {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0;
+}
+
+.module-body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000000;
+  margin: 0;
+}
+
+.module-program-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-top: 8px;
+}
+
+/* RIGHT — Objectives + Module Content */
+.module-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 24px;
+}
+
+.module-card {
+  background: #FFFFFF;
+  border: 1px solid #EDEDED;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.module-card-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+  color: #000000;
+  margin: 0 0 16px 0;
+}
+
+.module-card-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-card-list li {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #000000;
+}
+
+.module-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-content-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000000;
+}
+
+.module-content-item svg {
+  color: #4FC2F0;
+  flex-shrink: 0;
+}
+
+/* ── NAVIGATION BUTTONS (Previous / Next) ── */
+.module-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding: 24px 0;
+  gap: 16px;
+}
+
+.module-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000000;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+/* ── PREVIOUS — WHITE default, BLUE hover (#4FC2F0) ── */
+.module-nav-prev {
+  background: transparent;
+  border: 1.5px solid #000000;
+}
+
+.module-nav-prev:hover {
+  background: #4FC2F0;
+  border-color: #4FC2F0;
+}
+
+/* ── NEXT — WHITE default, GREEN hover (#8DC540) ── */
+.module-nav-next {
+  background: transparent;
+  border: 1.5px solid #000000;
+}
+
+.module-nav-next:hover {
+  background: #8DC540;
+  border-color: #8DC540;
+}
+
+/* ── Hide lesson title by default, reveal on hover ── */
+.nav-btn-detail {
+  display: none;
+  margin-left: 4px;
+}
+
+.module-nav-btn:hover .nav-btn-detail {
+  display: inline;
+}
+
+/* ── Disabled state ── */
+.module-nav-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.module-nav-btn:disabled:hover {
+  background: transparent;
+  border-color: #000000;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE ELEMENTS — Hidden on desktop
+   ════════════════════════════════════════════════════════════ */
+
+.mobile-top-header,
+.mobile-overlay {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE (Tablet 1024px)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .module-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .module-right {
+    position: static;
+    order: -1;
+  }
+
+  .lesson-banner-title {
+    font-size: 28px !important;
+  }
+
+  .lesson-banner-subtitle {
+    font-size: 16px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Show mobile header */
+  .mobile-top-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    background: #000;
+    color: #fff;
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobile-top-header-logo {
+    font-family: "Raleway", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+
+  .mobile-hamburger {
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
+  }
+
+  /* Show floating mobile menu button (for pages using it) */
+  .mobile-menu-btn {
+    display: flex;
+    position: fixed;
+    top: 14px;
+    right: 16px;
+    z-index: 1001;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+.module-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: #000000;
+  display: flex;           /* ← must be flex */
+  flex-direction: column;  /* ← must be column */
+  padding: 32px 4px;
+  border-radius: 0 16px 16px 0;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+  .module-sidebar.open {
+    left: 0;
+  }
+
+  /* Overlay */
+  .mobile-overlay {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    z-index: 999;
+    pointer-events: none;
+    transition: background 0.3s;
+  }
+
+  .mobile-overlay.open {
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+  }
+
+  /* Main content — reset margin since sidebar is drawer */
+  .module-main {
+    margin-left: 0;
+    padding: 20px 16px !important;
+  }
+
+  /* Topbar */
+  .module-topbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    padding: 16px 20px;
+  }
+
+  .module-topbar-label {
+    justify-content: center;
+  }
+
+  .module-progress {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Image */
+  .module-image-wrap {
+    height: 240px;
+  }
+
+  /* Hero banner */
+  .lesson-banner {
+    padding: 32px 20px !important;
+    border-radius: 12px;
+  }
+
+  .lesson-banner-title {
+    font-size: 24px !important;
+    line-height: 1.2;
+  }
+
+  .lesson-banner-subtitle {
+    font-size: 14px !important;
+  }
+
+  /* Content cards */
+  .module-overview-card,
+  .download-card,
+  .upload-card,
+  .quiz-card {
+    padding: 20px !important;
+    border-radius: 12px;
+  }
+
+  .module-heading,
+  .download-heading,
+  .upload-heading,
+  .quiz-title {
+    font-size: 20px !important;
+  }
+
+  /* Navigation buttons */
+  .module-nav-buttons {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .module-nav-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Video player */
+  .video-player-wrap {
+    max-width: 100% !important;
+    border-radius: 12px;
+  }
+
+  .video-player {
+    height: 220px !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   SMALL MOBILE (480px and below)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .module-main {
+    padding: 16px 12px !important;
+  }
+
+  .lesson-banner {
+    padding: 24px 16px !important;
+  }
+
+  .lesson-banner-title {
+    font-size: 20px !important;
+  }
+}

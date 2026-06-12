@@ -1,0 +1,880 @@
+/* ── Dashboard Page Layout ── */
+.dashboard-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f5f5;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ── SIDEBAR (reuses module sidebar styles) ── */
+.dashboard-sidebar {
+  width: 240px;
+  background: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  position: fixed;
+  height: 100vh;
+}
+
+.dashboard-sidebar .sidebar-logo {
+  padding: 0 24px 32px;
+  border-bottom: 1px solid #222;
+}
+
+.dashboard-sidebar .sidebar-alpha {
+  font-family: "Raleway", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.dashboard-sidebar .sidebar-by {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dashboard-sidebar .sidebar-hybr-mark {
+  width: 16px;
+  height: 16px;
+}
+
+.dashboard-sidebar .sidebar-nav {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dashboard-sidebar .sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+   padding: 12px 16px;
+  border-radius: 8px;           
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.dashboard-sidebar .sidebar-link:hover {
+  background: #1a1a1a;
+}
+
+.dashboard-sidebar .sidebar-link.active {
+  background: #8DC540;
+  color: #000;
+  font-weight: 600;
+}
+
+.dashboard-sidebar .sidebar-user {
+  padding: 16px;
+  border-top: 1px solid #222;
+  margin-top: auto;            
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-sidebar .sidebar-user-info {
+  margin-top: 8px;
+}
+
+.dashboard-sidebar .sidebar-user-name {
+  font-size: 13px;
+}
+
+.sidebar-logout {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.sidebar-logout:hover {
+  background: #1a1a1a;
+}
+
+/* ── MAIN CONTENT ── */
+.dashboard-main {
+  flex: 1;
+  margin-left: 240px;
+  padding: 40px;
+}
+
+/* ── HEADER ── */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.dashboard-greeting {
+  font-family: "Raleway", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.dashboard-subgreeting {
+  color: #666;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.dashboard-progress {
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  min-width: 240px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-progress-label {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.dashboard-progress-bar {
+  height: 8px;
+  background: #e5e5e5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dashboard-progress-fill {
+  height: 100%;
+  background: #8DC540;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.dashboard-progress-text {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 6px;
+  color: #000;
+}
+
+/* ── HERO BANNER ── */
+.dashboard-hero {
+  background: linear-gradient(135deg, #2a0a2e 0%, #4a1a3e 100%);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-hero-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+}
+
+.dashboard-hero-text {
+  font-size: 16px;
+  margin: 0;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+/* ── WEEKS SECTION ── */
+.weeks-section-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #000;
+}
+
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ── WEEK CARD ── */
+.week-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  position: relative;
+}
+
+.week-card.unlocked:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.week-card.current {
+  border-color: #8DC540;
+  background: linear-gradient(135deg, #fff 0%, #f4fae9 100%);
+}
+
+.week-card.locked {
+  background: #f0f0f0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.week-card.locked:hover {
+  transform: none;
+}
+
+/* ── Top Section ── */
+.week-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.week-number {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.week-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.week-badge.current {
+  background: #8DC540;
+  color: #000;
+}
+
+.week-badge.unlocked {
+  background: #d6f5ff;
+  color: #0077aa;
+}
+
+.week-badge.locked {
+  background: #ddd;
+  color: #666;
+}
+
+/* ── Lock icon overlay ── */
+.week-lock-icon {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  color: #999;
+  opacity: 0.3;
+}
+
+/* ── Title ── */
+.week-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #000;
+}
+
+.week-card.locked .week-title {
+  color: #888;
+}
+
+.week-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 auto 0;
+  line-height: 1.4;
+  padding-bottom: 16px;
+}
+
+/* ── Footer ── */
+.week-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.week-progress-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #8DC540;
+  font-weight: 600;
+}
+
+.week-arrow {
+  color: #8DC540;
+  transition: transform 0.2s;
+}
+
+.week-card.unlocked:hover .week-arrow {
+  transform: translateX(4px);
+}
+
+.week-unlock-info {
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* ── States ── */
+.dashboard-loading,
+.dashboard-error {
+  text-align: center;
+  padding: 80px 24px;
+  color: #666;
+}
+
+.dashboard-error h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #000;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .dashboard-sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  .dashboard-main {
+    margin-left: 0;
+    padding: 20px;
+  }
+  
+  .dashboard-page {
+    flex-direction: column;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .weeks-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE — DASHBOARD
+   ════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .weeks-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .dashboard-progress,
+  .dashboard-progress + div {
+    width: 100%;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+  }
+
+  .dashboard-sidebar.open {
+    left: 0;
+  }
+
+  .dashboard-main {
+    margin-left: 0;
+    padding: 60px 16px 24px;
+  }
+
+  .dashboard-greeting {
+    font-size: 24px !important;
+  }
+
+  .dashboard-subgreeting {
+    font-size: 12px !important;
+  }
+
+  .dashboard-header {
+    margin-bottom: 24px;
+    gap: 16px;
+  }
+
+  .dashboard-hero {
+    padding: 24px 20px !important;
+    border-radius: 12px;
+  }
+
+  .dashboard-hero-title {
+    font-size: 22px !important;
+  }
+
+  .dashboard-hero-text {
+    font-size: 14px !important;
+  }
+
+  .weeks-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .week-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-main {
+    padding: 56px 12px 20px;
+  }
+
+  .dashboard-greeting {
+    font-size: 20px !important;
+  }
+}
+
+
+
+/* ════════════════════════════════════════════════════════════
+   NEW DASHBOARD STYLES (Figma redesign)
+   ════════════════════════════════════════════════════════════ */
+
+/* ── DARK WELCOME HERO ── */
+.student-hero {
+  background: #350020;
+  border-radius: 16px;
+  padding: 32px 36px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: #fff;
+}
+
+.student-hero-content {
+  flex: 1;
+  min-width: 240px;
+}
+
+.student-hero-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.1;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.student-hero-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── BLUE KICK-OFF BANNER ── */
+.kickoff-banner {
+  background: #196AB4;
+  border-radius: 16px;
+  padding: 18px 32px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(25, 106, 180, 0.2);
+}
+
+.kickoff-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.kickoff-content {
+  text-align: center;
+}
+
+.kickoff-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.kickoff-date {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+  opacity: 0.95;
+}
+
+/* ── DASHBOARD SECTION CARD ── */
+.dash-section-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.dash-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.dash-section-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #000;
+  margin: 0;
+  flex: 1;
+}
+
+.dash-section-sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 20px 0;
+}
+
+.dash-section-link {
+  background: transparent;
+  border: none;
+  color: #196AB4;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dash-section-link:hover {
+  text-decoration: underline;
+}
+
+/* ── COURSE ROW ── */
+.course-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border: 1px solid #EDEDED;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.course-row:hover {
+  background: #FAFAFA;
+  border-color: #DDD;
+}
+
+.course-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  flex: 1;
+  min-width: 200px;
+}
+
+.course-pills {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.course-percent {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ── ACHIEVEMENTS GRID ── */
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.achievement-item {
+  text-align: center;
+  padding: 20px 12px;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+
+.achievement-item:hover {
+  background: #FAFAFA;
+}
+
+.achievement-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.achievement-name {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.achievement-desc {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.4;
+}
+
+.achievements-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+}
+
+/* ── MOBILE ADJUSTMENTS ── */
+@media (max-width: 768px) {
+  .student-hero {
+    padding: 24px 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .student-hero-title {
+    font-size: 24px;
+  }
+
+  .kickoff-banner {
+    padding: 14px 20px;
+    gap: 12px;
+  }
+
+  .kickoff-title {
+    font-size: 18px;
+  }
+
+  .kickoff-emoji {
+    font-size: 22px;
+  }
+
+  .dash-section-card {
+    padding: 20px;
+  }
+
+  .dash-section-title {
+    font-size: 18px;
+  }
+
+  .course-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 16px;
+  }
+
+  .course-pills {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .achievement-icon {
+    font-size: 36px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   COURSE HERO CARD (with background image)
+   ════════════════════════════════════════════════════════════ */
+
+.course-hero-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 180px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 36px;
+  gap: 24px;
+  flex-wrap: wrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.course-hero-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark gradient overlay so text is readable over the photo */
+.course-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.course-hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 240px;
+  color: #fff;
+}
+
+.course-hero-status {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #4FC2F0;
+  margin-bottom: 10px;
+}
+
+.course-hero-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #fff;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.course-hero-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.course-hero-sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.course-hero-ring {
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .course-hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    min-height: auto;
+  }
+
+  .course-hero-title {
+    font-size: 22px;
+  }
+
+  .course-hero-sub {
+    font-size: 13px;
+  }
+}

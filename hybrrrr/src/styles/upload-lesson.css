@@ -1,0 +1,139 @@
+/* ════════════════════════════════════════════════════════════
+   UPLOAD LESSON PAGE
+   ════════════════════════════════════════════════════════════ */
+
+.upload-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  margin-bottom: 40px;
+}
+
+.upload-heading {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #000;
+  margin: 0 0 16px 0;
+}
+
+.upload-body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0 0 32px 0;
+}
+
+/* ── Alerts ── */
+.upload-alert {
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.upload-alert.error {
+  background: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #ffb3b3;
+}
+
+.upload-alert.success {
+  background: #e6f7d6;
+  color: #5a8a1a;
+  border: 1px solid #c4e89a;
+}
+
+/* ── Dropzone ── */
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 24px;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #fafafa;
+  transition: all 0.2s ease;
+  margin-bottom: 24px;
+}
+
+.upload-dropzone:hover {
+  border-color: #8DC540;
+  background: #f4fae9;
+}
+
+.upload-dropzone svg {
+  color: #999;
+}
+
+.upload-dropzone:hover svg {
+  color: #8DC540;
+}
+
+.upload-dropzone-text {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  color: #000;
+}
+
+.upload-dropzone-text strong {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.upload-dropzone-text small {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── Submit button ── */
+.upload-btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.upload-btn:hover {
+  opacity: 0.9;
+}
+
+.upload-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .upload-card {
+    padding: 24px;
+  }
+  
+  .upload-heading {
+    font-size: 24px;
+  }
+  
+  .upload-body {
+    font-size: 16px;
+  }
+}

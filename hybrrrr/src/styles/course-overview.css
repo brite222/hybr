@@ -1,0 +1,257 @@
+/* ════════════════════════════════════════════════════════════
+   COURSE OVERVIEW PAGE
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Week card (current = white, past/locked = dark maroon) ── */
+.course-week-card {
+  border-radius: 16px;
+  margin-bottom: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.course-week-card.current-week {
+  background: #fff;
+}
+
+.course-week-card.dark-week {
+  background: #350020;
+  color: #fff;
+}
+
+.course-week-card.locked-week {
+  opacity: 0.85;
+}
+
+/* ── Header (label + title + ring) ── */
+.course-week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.course-week-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  color: #648C2D;
+  margin-bottom: 6px;
+}
+
+.course-week-label-dark {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1.8px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.course-week-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.course-week-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #000;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.course-week-title-dark {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.course-week-icon-inline,
+.course-week-icon-inline-white {
+  display: inline-flex;
+  align-items: center;
+}
+
+.course-week-sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin: 8px 0 0 0;
+  line-height: 1.5;
+}
+
+.course-week-sub-dark {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 8px 0 0 0;
+  line-height: 1.5;
+}
+
+/* ── Module Breakdown section (current week only) ── */
+.module-breakdown {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.module-breakdown-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.breakdown-icon {
+  font-size: 20px;
+}
+
+.breakdown-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000;
+  margin: 0;
+}
+
+.breakdown-sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 18px 0;
+}
+
+/* ── Lesson row (white card, current week) ── */
+.lesson-row-card {
+  display: grid;
+  grid-template-columns: 28px 28px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  background: #fff;
+}
+
+.lesson-row-card:hover {
+  background: #FAFAFA;
+  border-color: #DDD;
+}
+
+.lesson-row-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-row-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-row-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.lesson-row-duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Dark lesson rows (past weeks) ── */
+.module-breakdown-dark {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lesson-row-dark {
+  display: grid;
+  grid-template-columns: 28px 28px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.lesson-row-dark:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-row-name-dark {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+.lesson-row-duration-dark {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .course-week-card {
+    padding: 20px;
+  }
+
+  .course-week-title,
+  .course-week-title-dark {
+    font-size: 22px;
+  }
+
+  .lesson-row-card,
+  .lesson-row-dark {
+    grid-template-columns: 24px 24px 1fr;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .lesson-row-duration,
+  .lesson-row-duration-dark {
+    grid-column: 2 / 4;
+    padding-left: 38px;
+    margin-top: 2px;
+  }
+
+  .lesson-row-card span,
+  .lesson-row-dark span {
+    grid-column: 2 / 4;
+  }
+}

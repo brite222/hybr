@@ -1,0 +1,187 @@
+/* ── Back Button ── */
+.week-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #4FC2F0;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 12px 0;
+  margin-bottom: 16px;
+}
+
+.week-back-btn:hover {
+  color: #3aacd9;
+}
+
+/* ── Week Hero ── */
+.week-hero {
+  background: linear-gradient(135deg, #2a0a2e 0%, #4a1a3e 100%);
+  border-radius: 16px;
+  padding: 40px;
+  color: #fff;
+  margin-bottom: 32px;
+}
+
+.week-hero-week {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  opacity: 0.7;
+  margin-bottom: 8px;
+}
+
+.week-hero-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+}
+
+.week-hero-subtitle {
+  font-size: 18px;
+  margin: 0 0 24px 0;
+  opacity: 0.9;
+}
+
+.week-hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.week-stat {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.week-stat strong {
+  font-size: 24px;
+  display: block;
+  font-weight: 700;
+}
+
+/* ── Lessons List ── */
+.lessons-list-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #000;
+}
+
+.lessons-list {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Lesson Row ── */
+.lesson-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lesson-row:last-child {
+  border-bottom: none;
+}
+
+.lesson-row:hover {
+  background: #fafafa;
+  transform: translateX(4px);
+}
+
+.lesson-row.completed {
+  opacity: 0.7;
+}
+
+.lesson-row-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #666;
+  flex-shrink: 0;
+}
+
+.lesson-row.completed .lesson-row-number {
+  background: transparent;
+}
+
+.lesson-row-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.lesson-row-info {
+  flex: 1;
+}
+
+.lesson-row-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.lesson-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #888;
+}
+
+.lesson-row-type {
+  background: #e8f4fa;
+  color: #0077aa;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.lesson-row-dot {
+  opacity: 0.5;
+}
+
+.lesson-row-action {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8DC540;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .week-hero {
+    padding: 24px;
+  }
+  
+  .week-hero-title {
+    font-size: 28px;
+  }
+  
+  .lesson-row {
+    flex-wrap: wrap;
+  }
+  
+  .lesson-row-action {
+    margin-left: auto;
+  }
+}

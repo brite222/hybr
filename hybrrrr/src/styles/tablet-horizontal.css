@@ -1,0 +1,580 @@
+/* ════════════════════════════════════════════════════════════
+   TABLET HORIZONTAL (1025px - 1280px landscape)
+   Mostly like desktop, with smaller text + 2-col tracks grid
+   ════════════════════════════════════════════════════════════ */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+  :root {
+    --page-padding: 48px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 24px 48px !important;
+  }
+
+  .nav-logo {
+    gap: 8px !important;
+  }
+
+  .nav-logo .dot {
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .hybr-lockup-nav .hybr-mark { 
+    width: 24px !important; 
+    height: 24px !important; 
+  }
+
+  .hybr-lockup-nav .hybr-word { 
+    font-size: 20px !important; 
+  }
+
+  .nav-links {
+    gap: 28px !important;
+  }
+
+  .nav-links a {
+    font-size: 16px !important;
+  }
+
+  .btn-login {
+    font-size: 16px !important;
+    padding: 10px 22px !important;
+  }
+
+  /* Hide hamburger on tablet horizontal */
+  .nav-hamburger {
+    display: none !important;
+  }
+
+  /* ── HERO ── */
+  .hero-content {
+    max-width: 720px !important;
+    margin-top: 90px !important;
+    margin-left: 48px !important;
+  }
+
+  #hero .hero-content h1 {
+    font-size: 56px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-content p {
+    font-size: 18px !important;
+    margin-bottom: 24px !important;
+    max-width: 640px !important;
+  }
+
+  .hero-content .btn-outline {
+    font-size: 18px !important;
+    padding: 12px 28px !important;
+  }
+
+  /* Hero blob — smaller */
+  .hero-bg-blob {
+    width: 580px !important;
+    height: 580px !important;
+    right: -80px !important;
+    top: -80px !important;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 80px 48px !important;
+    gap: 48px !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  #about .section-label {
+    font-size: 16px !important;
+  }
+
+  #about h2 {
+    font-size: 32px !important;
+    max-width: 480px !important;
+    margin-bottom: 20px !important;
+  }
+
+  #about p {
+    font-size: 18px !important;
+    max-width: 480px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 24px !important;
+  }
+
+  #about .btn-outline {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+  }
+
+  .about-image {
+    width: 700px !important;
+    height: 280px !important;
+    margin-right: -100px !important;
+  }
+
+  /* ── FEATURES ── */
+  #features {
+    padding: 80px 48px !important;
+    max-width: 1100px !important;
+  }
+
+  #features .section-label,
+  #features .section-label .blue {
+    font-size: 16px !important;
+  }
+
+  #features h2 {
+    font-size: 32px !important;
+    max-width: 720px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .feature-grid,
+  .feature-grid-row2 {
+    gap: 12px !important;
+  }
+
+  .feature-card {
+    padding: 28px 32px !important;
+    min-height: 180px !important;
+  }
+
+  .feature-card-wrapper {
+    min-height: 180px !important;
+  }
+
+  .feature-card-wrapper .feature-card {
+    min-height: 180px !important;
+  }
+
+  .feature-card .card-label {
+    font-size: 14px !important;
+  }
+
+  .feature-card .card-value {
+    font-size: 28px !important;
+  }
+
+  .card-icon-img {
+    width: 34px !important;
+    height: 34px !important;
+    margin-bottom: 16px !important;
+  }
+
+  #features .btn-outline {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+  }
+
+  /* ── TRACKS — 2 COLUMNS instead of 3 ── */
+  #tracks {
+    padding: 80px 48px !important;
+  }
+
+  #tracks .section-label,
+  #tracks .section-label .green {
+    font-size: 16px !important;
+  }
+
+  #tracks h2 {
+    font-size: 32px !important;
+    max-width: 760px !important;
+  }
+
+  #tracks .sub {
+    font-size: 18px !important;
+    max-width: 720px !important;
+    margin-bottom: 24px !important;
+  }
+
+  /* TRACKS GRID — 2 cols + video card in right column of row 1 */
+  .tracks-grid {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    gap: 14px !important;
+    max-width: 1100px !important;
+  }
+
+  .tracks-bottom {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    max-width: 1100px !important;
+  }
+
+  .track-card {
+    padding: 24px !important;
+    min-height: 170px !important;
+  }
+
+  .track-card-wrapper {
+    height: 180px !important;
+  }
+
+  .track-card h3,
+  .track-card-front h3 {
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+  }
+
+  .track-icon-img {
+    width: 34px !important;
+    height: 34px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .tracks-bottom .track-card.video-card {
+    height: 180px !important;
+    min-height: 180px !important;
+  }
+
+  #tracks .btn-outline {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+    margin-top: 24px !important;
+  }
+
+  /* ── PHASES ── */
+  #phases {
+    padding: 48px !important;
+  }
+
+  .phases-card {
+    max-width: 1040px !important;
+  }
+
+  .phases-top {
+    padding: 40px 48px 24px !important;
+    gap: 48px !important;
+  }
+
+  .phases-label,
+  .phases-label .blue {
+    font-size: 16px !important;
+  }
+
+  .phases-card h2 {
+    font-size: 32px !important;
+  }
+
+  .phases-card .desc {
+    font-size: 18px !important;
+    max-width: 420px !important;
+  }
+
+  .phase-item strong,
+  .phase-item .desc-text,
+  .phase-item > span {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+
+  .phases-image {
+    height: 220px !important;
+    margin: 0 48px 40px 48px !important;
+  }
+
+  /* ── CURRICULUM ── */
+  #curriculum {
+    padding: 80px 0 !important;
+  }
+
+  #curriculum .inner {
+    padding: 0 48px 0 0 !important;
+    margin-bottom: 64px !important;
+  }
+
+  .syllabus-hero {
+    gap: 48px !important;
+  }
+
+  .syllabus-img-wrap {
+    width: 580px !important;
+    height: 280px !important;
+  }
+
+  .syllabus-text {
+    width: 480px !important;
+  }
+
+  .syllabus-text .section-label,
+  .syllabus-text .section-label .blue {
+    font-size: 16px !important;
+  }
+
+  .syllabus-text h2 {
+    font-size: 32px !important;
+    width: 480px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .syllabus-text .sub {
+    font-size: 18px !important;
+    width: 480px !important;
+    line-height: 1.4 !important;
+  }
+
+ /* ── ZIGZAG (tablet horizontal) — FIXED ── */
+.zigzag-wrap {
+  min-height: 1500px !important;        /* increased from 1800px */
+  padding: 20px 0 60px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.zig-block {
+  max-width: 440px !important;
+  width: 100% !important;
+  margin-bottom: 100px !important;       /* more space between blocks */
+}
+
+/* Left-aligned blocks (1 & 3) */
+.zig-1 { 
+  margin-left: 48px !important; 
+  margin-right: auto !important;
+  margin-top: 0 !important;  
+}
+
+.zig-3 { 
+  margin-left: 48px !important; 
+  margin-right: auto !important;
+  margin-bottom: 100px !important;
+}
+
+/* Right-aligned blocks (2 & 4) */
+.zig-2 { 
+  margin-left: auto !important; 
+  margin-right: 48px !important;
+}
+
+.zig-4 { 
+  margin-left: auto !important; 
+  margin-right: 48px !important;
+  margin-bottom: 0 !important;
+}
+
+.zig-title {
+  font-size: 32px !important;
+}
+
+.zig-icon-img {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.zig-overview {
+  font-size: 14px !important;
+  margin-bottom: 20px !important;
+}
+
+.zig-checks li,
+.zig-checks li::before {
+  font-size: 22px !important;            /* slightly smaller */
+}
+
+.zig-checks {
+  gap: 12px !important;
+}
+
+/* ── ARROWS — REPOSITIONED ── */
+.arrow {
+  position: absolute !important;
+  z-index: 4 !important;
+  pointer-events: none !important;
+}
+
+.arrow-1 {
+  width: 180px !important;
+  height: auto !important;
+  top: 150px !important;                 /* moved down between zig-1 and zig-2 */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
+.arrow-2 {
+  width: 180px !important;
+  height: auto !important;
+  top: 580px !important;                 /* moved down between zig-2 and zig-3 */
+  left: 42% !important;
+  transform: translateX(-50%) !important;
+}
+
+.arrow-3 {
+  width: 210px !important;
+  height: auto !important;
+  top: 850px !important;              
+  left: 55% !important;
+  transform: translateX(-50%) rotate(0deg) !important;
+}
+
+.wire {
+  width: 380px !important;
+  height: 600px !important;
+  opacity: 0.4 !important;
+}
+
+.wire-tr { top: -60px !important; right: -60px !important; }
+.wire-ml { top: 200px !important; left: -60px !important; }
+.wire-br { top: 570px !important; right: -50px !important; }
+.wire-bl { top: 900px !important; left: -60px !important; }
+  .curriculum-cta {
+    padding: 48px 48px 0 !important;
+    gap: 20px !important;
+  }
+
+  .curriculum-cta .btn-outline {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    padding: 80px 48px !important;
+  }
+
+  #testimonials .section-label {
+    font-size: 16px !important;
+  }
+
+  #testimonials h2 {
+    font-size: 32px !important;
+  }
+
+  #testimonials .sub {
+    font-size: 18px !important;
+    margin-bottom: 40px !important;
+  }
+
+  .testimonial-card {
+    width: 100% !important;
+    max-width: 1040px !important;
+    height: auto !important;
+    min-height: 300px !important;
+    padding: 56px 48px !important;
+    gap: 32px !important;
+  }
+
+  .testimonial-avatar-wrap {
+    margin-left: 40px !important;
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .ring-outer {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .ring-inner {
+    width: 120px !important;
+    height: 120px !important;
+    top: 40px !important;
+    left: 20px !important;
+  }
+
+  .testimonial-photo,
+  .testimonial-avatar-placeholder {
+    width: 115px !important;
+    height: 115px !important;
+    top: 42px !important;
+    left: 22px !important;
+  }
+
+  .testimonial-quote {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+  }
+
+  .reg-pill-wrap .btn-outline {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    padding: 48px 48px 80px !important;
+  }
+
+  #cta h2,
+  #cta h2 span,
+  #cta h2 .blue {
+    font-size: 32px !important;
+  }
+
+  #cta p {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+
+  #cta .btn-outline,
+  #cta .btn-solid {
+    font-size: 18px !important;
+    padding: 14px 28px !important;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 60px 48px 32px !important;
+  }
+
+  .footer-grid {
+    gap: 32px !important;
+    margin-bottom: 60px !important;
+  }
+
+  .footer-col h4 {
+    font-size: 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .footer-col a {
+    font-size: 14px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .footer-socials {
+    gap: 10px !important;
+  }
+
+  .social-icon {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .social-icon svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .btn-footer-login {
+    font-size: 13px !important;
+    padding: 12px 36px !important;
+  }
+
+  .footer-rainbow-img {
+    width: 380px !important;
+    height: 380px !important;
+    bottom: -100px !important;
+    right: -80px !important;
+  }
+
+  /* ── LOGIN PAGE (tablet horizontal) ── */
+  .login-left {
+    padding: 48px 64px !important;
+  }
+
+  .login-right {
+    padding: 48px 64px !important;
+  }
+
+  .login-title {
+    font-size: 36px !important;
+  }
+
+  .login-tagline {
+    font-size: 26px !important;
+  }
+}
