@@ -23,16 +23,62 @@ export default function AdminCohorts() {
   const [savingId, setSavingId] = useState(null);
   const [successId, setSuccessId] = useState(null);
 
-  // Local state for unsaved changes
+  // Local state for unsaved changes (lock mode)
   const [edits, setEdits] = useState({});
 
-  useEffect(() => {
+  // ✅ NEW: Create cohort form state
+  const [showForm, setShowForm] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [createSuccess, setCreateSuccess] = useState(false);
+  const [newCohort, setNewCohort] = useState({
+    name: "",
+    startDate: "",
+    totalWeeks: 8,
+  });
+
+  // ✅ Load cohorts
+  const loadCohorts = () => {
+    setLoading(true);
     api.get("/admin/cohorts")
       .then(res => setCohorts(res.data.cohorts || []))
       .catch(err => setError(err.response?.data?.message || "Failed to load"))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    loadCohorts();
   }, []);
 
+  // ✅ NEW: Create cohort handler
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    if (!newCohort.name || !newCohort.startDate) {
+      alert("Please fill in name and start date");
+      return;
+    }
+
+    setCreating(true);
+    try {
+      await api.post("/admin/cohorts", {
+        name: newCohort.name,
+        startDate: newCohort.startDate,
+        totalWeeks: parseInt(newCohort.totalWeeks) || 8,
+      });
+      setCreateSuccess(true);
+      setNewCohort({ name: "", startDate: "", totalWeeks: 8 });
+      setTimeout(() => {
+        setCreateSuccess(false);
+        setShowForm(false);
+        loadCohorts(); // reload list
+      }, 1500);
+    } catch (err) {
+      alert("Failed to create cohort: " + (err.response?.data?.message || err.message));
+    } finally {
+      setCreating(false);
+    }
+  };
+
+  // ── Lock mode helpers ──
   const getValue = (cohort, field) => {
     const editKey = `${cohort.id}_${field}`;
     return edits[editKey] !== undefined ? edits[editKey] : cohort[field];
@@ -57,14 +103,12 @@ export default function AdminCohorts() {
         max_unlocked_week: lockMode === "manual" ? maxUnlockedWeek : null,
       });
 
-      // Update local cohort with new values
       setCohorts(prev => prev.map(c =>
         c.id === cohort.id
           ? { ...c, lock_mode: res.data.cohort.lock_mode, max_unlocked_week: res.data.cohort.max_unlocked_week }
           : c
       ));
 
-      // Clear edits for this cohort
       setEdits(prev => {
         const newEdits = { ...prev };
         Object.keys(newEdits).forEach(key => {
@@ -84,22 +128,177 @@ export default function AdminCohorts() {
 
   return (
     <AdminLayout>
-      <div className="admin-header">
+      {/* ── PAGE HEADER with Create button ── */}
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginBottom: 24,
+        gap: 12,
+        flexWrap: "wrap",
+      }}>
         <div>
-          <h1 className="admin-title">Cohorts</h1>
-          <p className="admin-subtitle">Manage program cohorts and week unlock settings</p>
+          <h1 style={{
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 28,
+            fontWeight: 700,
+            margin: 0,
+            color: "#000",
+          }}>
+            Cohorts
+          </h1>
+          <p style={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: 13,
+            color: "#666",
+            margin: "4px 0 0 0",
+          }}>
+            Manage program cohorts and week unlock settings
+          </p>
         </div>
+
+        {/* ✅ Create button — always visible */}
+        <button
+          onClick={() => setShowForm(!showForm)}
+          style={{
+            padding: "12px 24px",
+            background: showForm ? "#C0392B" : "#8DC540",
+            color: "#fff",
+            border: "none",
+            borderRadius: 100,
+            cursor: "pointer",
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: 0.5,
+            transition: "background 0.2s",
+          }}
+        >
+          {showForm ? "✕ Cancel" : "+ Create Cohort"}
+        </button>
       </div>
 
       {error && <div className="alert alert-error">{error}</div>}
 
+      {/* ── CREATE COHORT FORM ── */}
+      {showForm && (
+        <form
+          onSubmit={handleCreate}
+          style={{
+            background: "#fff",
+            padding: 28,
+            borderRadius: 16,
+            marginBottom: 24,
+            boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+          }}
+        >
+          <h3 style={{
+            fontFamily: "Raleway, sans-serif",
+            fontSize: 20,
+            fontWeight: 600,
+            margin: "0 0 20px 0",
+            color: "#000",
+          }}>
+            New Cohort
+          </h3>
+
+          {createSuccess && (
+            <div style={{
+              background: "#d4edda",
+              color: "#155724",
+              padding: 12,
+              borderRadius: 8,
+              marginBottom: 16,
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: 14,
+            }}>
+              ✅ Cohort created successfully!
+            </div>
+          )}
+
+          <div style={{ marginBottom: 16 }}>
+            <label style={labelStyle}>COHORT NAME *</label>
+            <input
+              type="text"
+              value={newCohort.name}
+              onChange={(e) => setNewCohort({ ...newCohort, name: e.target.value })}
+              placeholder="e.g., ALPHA 2026 Summer"
+              required
+              style={inputStyle}
+            />
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+            <div>
+              <label style={labelStyle}>START DATE *</label>
+              <input
+                type="date"
+                value={newCohort.startDate}
+                onChange={(e) => setNewCohort({ ...newCohort, startDate: e.target.value })}
+                required
+                style={inputStyle}
+              />
+            </div>
+            <div>
+              <label style={labelStyle}>TOTAL WEEKS</label>
+              <input
+                type="number"
+                min="1"
+                max="52"
+                value={newCohort.totalWeeks}
+                onChange={(e) => setNewCohort({ ...newCohort, totalWeeks: e.target.value })}
+                style={inputStyle}
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            disabled={creating}
+            style={{
+              padding: "14px 32px",
+              background: "#000",
+              color: "#fff",
+              border: "none",
+              borderRadius: 100,
+              cursor: creating ? "not-allowed" : "pointer",
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: 14,
+              fontWeight: 700,
+              opacity: creating ? 0.6 : 1,
+              width: "100%",
+            }}
+          >
+            {creating ? "Creating..." : "📚 Create Cohort"}
+          </button>
+        </form>
+      )}
+
+      {/* ── COHORTS LIST ── */}
       {loading ? (
-        <div style={{ padding: 60, textAlign: "center", color: "#666" }}>Loading cohorts...</div>
+        <div style={{ padding: 60, textAlign: "center", color: "#666", fontFamily: "Montserrat, sans-serif" }}>
+          Loading cohorts...
+        </div>
       ) : cohorts.length === 0 ? (
-        <div style={{ background: "#fff", padding: 60, borderRadius: 12, textAlign: "center", color: "#666" }}>
+        <div style={{
+          background: "#fff",
+          padding: 60,
+          borderRadius: 16,
+          textAlign: "center",
+          color: "#666",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+        }}>
           <div style={{ fontSize: 48, marginBottom: 12 }}>📚</div>
-          <h3 style={{ fontFamily: "Raleway", margin: 0 }}>No cohorts yet</h3>
-          <p>Cohorts will appear here once they are created.</p>
+          <h3 style={{
+            fontFamily: "Raleway, sans-serif",
+            margin: "0 0 8px 0",
+            color: "#000",
+          }}>
+            No cohorts yet
+          </h3>
+          <p style={{ fontFamily: "Montserrat, sans-serif", fontSize: 14, margin: 0 }}>
+            Click <strong>"+ Create Cohort"</strong> above to add your first one!
+          </p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -153,7 +352,6 @@ export default function AdminCohorts() {
                     </div>
                   </div>
 
-                  {/* Current status badge */}
                   <div style={{
                     padding: "8px 16px",
                     borderRadius: 100,
@@ -192,7 +390,6 @@ export default function AdminCohorts() {
                     WEEK UNLOCK MODE
                   </div>
 
-                  {/* Toggle buttons */}
                   <div style={{
                     display: "inline-flex",
                     background: "#fff",
@@ -200,6 +397,7 @@ export default function AdminCohorts() {
                     borderRadius: 100,
                     padding: 4,
                     marginBottom: 20,
+                    flexWrap: "wrap",
                   }}>
                     <button
                       onClick={() => setValue(cohort.id, "lock_mode", "auto")}
@@ -237,7 +435,6 @@ export default function AdminCohorts() {
                     </button>
                   </div>
 
-                  {/* Mode descriptions */}
                   {lockMode === "auto" && (
                     <div style={{
                       fontFamily: "Montserrat, sans-serif",
@@ -361,3 +558,26 @@ export default function AdminCohorts() {
     </AdminLayout>
   );
 }
+
+// ── Reusable styles ──
+const labelStyle = {
+  display: "block",
+  fontFamily: "Montserrat, sans-serif",
+  fontWeight: 700,
+  fontSize: 11,
+  letterSpacing: 1,
+  color: "#000",
+  marginBottom: 6,
+};
+
+const inputStyle = {
+  width: "100%",
+  padding: "11px 14px",
+  border: "1px solid #DDD",
+  borderRadius: 8,
+  fontFamily: "Montserrat, sans-serif",
+  fontSize: 14,
+  color: "#000",
+  outline: "none",
+  boxSizing: "border-box",
+};
