@@ -1,10 +1,18 @@
 /* ──────────────────────────────────────────────────────────
    MOBILE STYLES — All Sections
    Breakpoint: max-width 480px
-   Uniform 24px vertical rhythm
+   Spacing system:
+     Section padding:  80px top/bottom, 24px sides
+     Between elements: 24px (flex gap)
+     Eyebrow sub-line: 4px top offset
+     Footer top gap:   60px
    ────────────────────────────────────────────────────────── */
 
 @media (max-width: 480px) {
+
+  /* ════════════════════════════════════════════
+     HIDE HERO OUTLINE BUTTON ON MOBILE
+     ════════════════════════════════════════════ */
 
   #hero .hero-content .btn-outline,
   #hero .hero-content a.btn-outline,
@@ -18,6 +26,7 @@
   /* ════════════════════════════════════════════
      NAV
      ════════════════════════════════════════════ */
+
   nav {
     padding: 48px 24px 16px 24px;
     justify-content: space-between;
@@ -45,43 +54,10 @@
     display: none !important;
   }
 
-  .nav-logo::before {
-    content: "ALPHA";
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 30px;
-    line-height: 100%;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    display: block;
-    flex-basis: 100%;
-    margin: 0 0 2px 0;
-    order: 0;
-  }
-
-  .nav-logo .by {
-    display: inline-flex !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 9px !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    color: #FFFFFF !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    align-items: center !important;
-    order: 1 !important;
-  }
-
-  .nav-logo .hybr-lockup {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 3px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    order: 2 !important;
+  .nav-alpha-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
   }
 
   .nav-logo .hybr-mark {
@@ -124,6 +100,7 @@
   /* ════════════════════════════════════════════
      HERO
      ════════════════════════════════════════════ */
+
   #hero {
     min-height: auto;
     padding-bottom: 60px;
@@ -171,6 +148,8 @@
     z-index: 2;
     max-width: 342px;
     width: 100%;
+
+    /* Uniform 24px rhythm within hero content */
     margin-top: 90px;
     margin-left: 24px;
     margin-right: 24px;
@@ -186,7 +165,7 @@
     line-height: 100% !important;
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;  /* ← 24px rhythm */
   }
 
   .hero-content p {
@@ -196,7 +175,7 @@
     line-height: 100%;
     letter-spacing: 0;
     color: #FFFFFF;
-    margin-bottom: 24px;
+    margin-bottom: 24px;              /* ← 24px rhythm */
   }
 
   .hero-byline {
@@ -210,26 +189,27 @@
   /* ════════════════════════════════════════════
      ABOUT
      ════════════════════════════════════════════ */
+
   #about,
   section#about {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     background: #000 !important;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     grid-template-columns: none !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
   }
 
   #about .about-image {
     width: 100% !important;
     max-width: 342px !important;
     height: 118px !important;
-    margin: 0 auto 24px auto !important;
+    margin: 0 auto !important;        /* ← no extra bottom margin; gap handles spacing */
     padding: 0 !important;
     overflow: hidden !important;
     border-radius: 1000px 0 2000px 1000px !important;
@@ -248,7 +228,7 @@
   #about .about-content {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
     width: 100% !important;
     max-width: 342px !important;
     margin: 0 auto !important;
@@ -264,7 +244,7 @@
     letter-spacing: 0 !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     text-align: left !important;
     width: 100% !important;
@@ -278,7 +258,7 @@
     line-height: 110% !important;
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -292,7 +272,7 @@
     line-height: 150% !important;
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -323,21 +303,23 @@
     cursor: pointer !important;
     text-decoration: none !important;
     box-sizing: border-box !important;
+    margin-bottom: 40px !important;          /* ← gap on parent handles spacing */
   }
 
   /* ════════════════════════════════════════════
      FEATURES
      ════════════════════════════════════════════ */
+
   #features {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
     box-sizing: border-box;
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
   }
 
   #features .section-label {
@@ -348,7 +330,7 @@
     letter-spacing: 0 !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     text-align: left !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -361,7 +343,8 @@
     color: var(--blue) !important;
     text-transform: uppercase !important;
     display: block !important;
-    margin-bottom: 4px !important;
+    margin-top: 4px !important;       /* ← consistent 4px eyebrow sub-line offset */
+    margin-bottom: 0 !important;
   }
 
   #features h2 {
@@ -373,7 +356,7 @@
     color: #FFFFFF !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     text-align: left !important;
   }
 
@@ -387,7 +370,7 @@
     text-align: left !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
   }
 
   .feature-grid,
@@ -395,7 +378,7 @@
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: none !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform card gap */
     margin: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -421,7 +404,7 @@
     letter-spacing: 0 !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 8px !important;    /* ← tight internal card spacing */
   }
 
   .feature-card .card-value {
@@ -433,7 +416,7 @@
   }
 
   .features-cta {
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     text-align: center !important;
     padding: 0 !important;
     max-width: 342px !important;
@@ -450,7 +433,6 @@
     padding: 16px 32px !important;
     border: 2px solid #FFFFFF !important;
     border-radius: 100px !important;
-    width: auto;
     min-width: 242px;
     margin: 0 !important;
   }
@@ -458,16 +440,17 @@
   /* ════════════════════════════════════════════
      TRACKS
      ════════════════════════════════════════════ */
+
   #tracks {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0 !important;
     max-width: 100% !important;
     width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
     box-sizing: border-box;
   }
 
@@ -480,7 +463,7 @@
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     max-width: 342px !important;
     width: 100% !important;
     display: block !important;
@@ -493,7 +476,8 @@
     font-size: 16px !important;
     text-transform: uppercase !important;
     display: block !important;
-    margin-top: 4px !important;
+    margin-top: 4px !important;       /* ← consistent 4px eyebrow sub-line offset */
+    margin-bottom: 0 !important;
   }
 
   #tracks h2 {
@@ -506,7 +490,7 @@
     text-align: center !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
   }
 
   #tracks .sub {
@@ -519,15 +503,15 @@
     text-align: center !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
   }
 
   #tracks .tracks-grid {
     display: flex !important;
     flex-direction: column !important;
     grid-template-columns: none !important;
-    gap: 24px !important;
-    margin: 0 auto !important;
+    gap: 24px !important;             /* ← uniform card gap */
+    margin: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
   }
@@ -539,8 +523,8 @@
   #tracks .tracks-bottom {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
-    margin: 0 auto !important;
+    gap: 24px !important;             /* ← uniform card gap */
+    margin: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
   }
@@ -593,7 +577,7 @@
     transform: rotateY(180deg);
     display: flex !important;
     flex-direction: column !important;
-    gap: 12px !important;
+    gap: 12px !important;             /* ← tighter gap for back-of-card content */
   }
 
   #tracks .track-icon-img {
@@ -636,7 +620,7 @@
     display: flex !important;
     align-items: center !important;
     gap: 10px !important;
-    margin-bottom: 4px !important;
+    margin-bottom: 4px !important;    /* ← tight internal card spacing */
   }
 
   #tracks .track-card-back .back-icon {
@@ -678,10 +662,9 @@
     border: 2px solid #FFFFFF !important;
     border-radius: 100px !important;
     padding: 16px 32px !important;
-    width: auto !important;
     min-width: 240px !important;
     height: 56px !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     align-self: center !important;
     cursor: pointer;
   }
@@ -689,9 +672,10 @@
   /* ════════════════════════════════════════════
      PHASES
      ════════════════════════════════════════════ */
+
   #phases {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0;
     width: 100%;
     max-width: 100%;
@@ -707,7 +691,8 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform element gap */
+    box-sizing: border-box;
   }
 
   #phases .phases-top {
@@ -715,6 +700,13 @@
     padding: 0;
     margin: 0;
   }
+
+  /*
+   * Phases uses display:block on .phases-top, so children
+   * rely on margin-bottom instead of flex gap.
+   * All margins set to 0 here — spacing comes from the
+   * parent .phases-card gap: 24px above.
+   */
 
   #phases .phases-label {
     font-family: 'Montserrat', sans-serif;
@@ -725,7 +717,7 @@
     text-transform: uppercase;
     color: #000000;
     text-align: left;
-    margin: 0 0 24px 0;
+    margin: 0;                        /* ← gap on parent handles spacing */
   }
 
   #phases .phases-label .blue {
@@ -734,6 +726,8 @@
     font-weight: 600;
     font-size: 16px;
     text-transform: uppercase;
+    display: block;
+    margin-top: 4px;                  /* ← consistent 4px eyebrow sub-line offset */
   }
 
   #phases h2 {
@@ -744,7 +738,7 @@
     letter-spacing: 0;
     color: #000000;
     text-align: left;
-    margin: 0 0 24px 0;
+    margin: 0;                        /* ← gap on parent handles spacing */
     max-width: 278px;
   }
 
@@ -756,23 +750,23 @@
     letter-spacing: 0;
     color: #000000;
     text-align: left;
-    margin: 0 0 24px 0;
+    margin: 0;                        /* ← gap on parent handles spacing */
     max-width: 278px;
   }
 
   #phases .phases-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 24px 0;
+    margin: 0;                        /* ← gap on parent handles spacing */
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform list-item gap */
   }
 
   #phases .phase-item {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 16px;                        /* ← icon-to-text gap */
     font-family: 'Montserrat', sans-serif;
     color: #000000;
     max-width: 278px;
@@ -828,7 +822,7 @@
 
   #phases .phases-img {
     width: 100%;
-   height: 100% !important;
+    height: 100% !important;
     display: block;
     border-radius: 0 !important;
     clip-path: none !important;
@@ -840,9 +834,10 @@
   /* ════════════════════════════════════════════
      CURRICULUM / ROADMAP
      ════════════════════════════════════════════ */
+
   #curriculum {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -861,7 +856,7 @@
   #curriculum .syllabus-hero {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -875,7 +870,7 @@
     height: 118px !important;
     border-radius: 0 1000px 1000px 2000px !important;
     overflow: hidden !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     box-sizing: border-box;
   }
@@ -894,7 +889,7 @@
   #curriculum .syllabus-text {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap */
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -911,7 +906,7 @@
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     text-align: left !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     display: block !important;
     width: 100% !important;
@@ -925,7 +920,8 @@
     font-size: 16px !important;
     text-transform: uppercase !important;
     display: block !important;
-    margin-top: 4px !important;
+    margin-top: 4px !important;       /* ← consistent 4px eyebrow sub-line offset */
+    margin-bottom: 0 !important;
   }
 
   #curriculum h2 {
@@ -936,7 +932,7 @@
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
     text-align: left !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -950,7 +946,7 @@
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
     text-align: left !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -960,8 +956,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 100px;
-    margin: 24px auto 0 auto;
+    gap: 100px;                       /* ← intentional large gap for zigzag visual */
+    margin: 24px auto 0 auto;         /* ← 24px top separates from intro text */
     padding: 0;
     max-width: 342px;
     width: 100%;
@@ -975,7 +971,7 @@
   #curriculum .zig-block {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform element gap within each block */
     width: auto !important;
     max-width: 280px !important;
     position: relative;
@@ -1022,7 +1018,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 8px;                         /* ← tight internal list spacing */
   }
 
   #curriculum .zig-checks li {
@@ -1033,7 +1029,7 @@
     color: #FFFFFF;
     padding-left: 24px;
     position: relative;
-    margin-left: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
   }
 
   #curriculum .zig-checks li::before {
@@ -1045,6 +1041,8 @@
     font-weight: 700;
     font-size: 16px;
   }
+
+  /* Zigzag alternating alignment — layout preserved */
 
   #curriculum .zig-1 {
     align-self: flex-start !important;
@@ -1068,23 +1066,27 @@
     justify-content: flex-start !important;
   }
 
-  #curriculum .zig-2 .zig-overview {
+  #curriculum .zig-2 .zig-overview,
+  #curriculum .zig-4 .zig-overview {
     text-align: left !important;
     width: auto !important;
   }
 
-  #curriculum .zig-2 .zig-checks {
+  #curriculum .zig-2 .zig-checks,
+  #curriculum .zig-4 .zig-checks {
     width: auto !important;
     align-items: flex-start !important;
   }
 
-  #curriculum .zig-2 .zig-checks li {
+  #curriculum .zig-2 .zig-checks li,
+  #curriculum .zig-4 .zig-checks li {
     padding-left: 24px !important;
     padding-right: 0 !important;
     text-align: left !important;
   }
 
-  #curriculum .zig-2 .zig-checks li::before {
+  #curriculum .zig-2 .zig-checks li::before,
+  #curriculum .zig-4 .zig-checks li::before {
     left: 0 !important;
     right: auto !important;
   }
@@ -1109,28 +1111,6 @@
     flex-direction: row !important;
     text-align: left !important;
     justify-content: flex-start !important;
-  }
-
-  #curriculum .zig-4 .zig-overview {
-    text-align: left !important;
-    width: auto !important;
-  }
-
-  #curriculum .zig-4 .zig-checks {
-    width: auto !important;
-    align-items: flex-start !important;
-  }
-
-  #curriculum .zig-4 .zig-checks li {
-    padding-left: 24px !important;
-    padding-right: 0 !important;
-    text-align: left !important;
-  }
-
-  #curriculum .zig-4 .zig-checks li::before {
-    content: "✓" !important;
-    left: 0 !important;
-    right: auto !important;
   }
 
   #curriculum .arrow {
@@ -1166,9 +1146,9 @@
   #curriculum .curriculum-cta {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform element gap */
     align-items: center;
-    margin: 24px auto 0 auto;
+    margin: 24px auto 0 auto;         /* ← 24px top separates from zigzag */
     padding: 0;
     max-width: 342px;
     width: 100%;
@@ -1184,7 +1164,6 @@
     border: 2px solid #FFFFFF !important;
     border-radius: 100px !important;
     padding: 16px 32px !important;
-    width: auto;
     min-width: 280px;
     height: 56px;
     display: flex;
@@ -1192,14 +1171,16 @@
     justify-content: center;
     gap: 10px;
     cursor: pointer;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
   }
 
   /* ════════════════════════════════════════════
      TESTIMONIALS
      ════════════════════════════════════════════ */
+
   #testimonials {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0;
     width: 100%;
     max-width: 100%;
@@ -1207,7 +1188,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform element gap */
   }
 
   #testimonials .section-label {
@@ -1219,7 +1200,7 @@
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -1234,7 +1215,7 @@
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -1248,7 +1229,7 @@
     letter-spacing: 0 !important;
     color: #FFFFFF !important;
     text-align: center !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -1258,7 +1239,7 @@
     position: relative;
     width: 100%;
     max-width: 342px;
-    margin: 0 auto;
+    margin: 0;                        /* ← gap on parent handles spacing */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1272,7 +1253,7 @@
     width: 100%;
     max-width: 342px;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 0;                        /* ← gap on parent handles spacing */
   }
 
   #testimonials .testimonial-track {
@@ -1297,9 +1278,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform internal card gap */
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
   }
 
@@ -1308,7 +1289,7 @@
     width: 188px;
     height: 188px;
     flex-shrink: 0;
-    margin: 0 auto;
+    margin: 0;                        /* ← gap on parent handles spacing */
   }
 
   #testimonials .ring-outer {
@@ -1359,7 +1340,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform internal body gap */
     width: 100%;
   }
 
@@ -1402,7 +1383,7 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 24px auto 0 auto;
+    margin: 0;                        /* ← gap on parent handles spacing */
     padding: 0;
   }
 
@@ -1410,8 +1391,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 24px;
-    margin-bottom: 0;
+    margin: 0;                        /* ← gap on parent handles spacing */
   }
 
   .t-dot {
@@ -1435,7 +1415,7 @@
   #testimonials .reg-pill-wrap {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0;                        /* ← gap on parent handles spacing */
     padding: 0;
     width: 100%;
     max-width: 342px;
@@ -1451,7 +1431,6 @@
     border: 2px solid #FFFFFF !important;
     border-radius: 100px !important;
     padding: 16px 32px !important;
-    width: auto;
     min-width: 280px;
     height: 56px;
     display: flex;
@@ -1459,14 +1438,16 @@
     justify-content: center;
     gap: 10px;
     cursor: pointer;
+    margin: 0 !important;
   }
 
   /* ════════════════════════════════════════════
      CTA
      ════════════════════════════════════════════ */
+
   #cta {
     background: #000;
-    padding: 80px 24px !important;
+    padding: 80px 24px !important;    /* ← uniform section padding */
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -1474,7 +1455,7 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 24px;
+    gap: 24px;                        /* ← uniform element gap */
   }
 
   #cta h2 {
@@ -1487,7 +1468,7 @@
     text-align: center !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
   }
 
@@ -1508,14 +1489,14 @@
     text-align: center !important;
     max-width: 342px !important;
     width: 100% !important;
-    margin: 0 auto !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
   }
 
   #cta .cta-buttons {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform button group gap */
     align-items: center !important;
     margin: 0 !important;
     width: 100% !important;
@@ -1534,7 +1515,6 @@
     border: 2px solid #FFFFFF !important;
     border-radius: 100px !important;
     padding: 16px 32px !important;
-    width: auto;
     min-width: 240px;
     height: 56px;
     display: flex !important;
@@ -1542,6 +1522,7 @@
     justify-content: center !important;
     gap: 10px !important;
     cursor: pointer;
+    margin: 0 !important;
   }
 
   #cta .cta-buttons .btn-arrow {
@@ -1551,6 +1532,7 @@
   /* ════════════════════════════════════════════
      FOOTER
      ════════════════════════════════════════════ */
+
   .footer-wrapper {
     background: #FFFFFF !important;
     padding: 0 !important;
@@ -1562,7 +1544,7 @@
 
   footer {
     background: #FFFFFF !important;
-    padding: 60px 24px 40px 24px !important;
+    padding: 60px 24px 40px 24px !important; /* ← 60px top (footer differs from sections) */
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -1574,7 +1556,7 @@
   footer .footer-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform grid gap */
     margin: 0 !important;
     padding: 0 !important;
     max-width: 342px !important;
@@ -1605,7 +1587,7 @@
 
   footer .footer-grid > .footer-col:nth-child(2) h4:nth-of-type(1) {
     order: 3 !important;
-    margin-top: 24px !important;
+    margin-top: 24px !important;      /* ← explicit group separator within reordered col */
   }
 
   footer .footer-grid > .footer-col:nth-child(2) a:nth-of-type(1) {
@@ -1626,7 +1608,7 @@
   footer .footer-col {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform element gap within columns */
     padding: 0 !important;
     margin: 0 !important;
   }
@@ -1639,7 +1621,7 @@
     letter-spacing: 0 !important;
     text-transform: uppercase !important;
     color: #000000 !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
   }
 
@@ -1652,7 +1634,7 @@
     color: #000000 !important;
     text-decoration: none !important;
     display: block !important;
-    margin: 0 !important;
+    margin: 0 !important;             /* ← gap on parent handles spacing */
     padding: 0 !important;
     cursor: pointer;
   }
@@ -1661,7 +1643,7 @@
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform icon gap */
     margin: 0 !important;
     padding: 0 !important;
     align-items: center !important;
@@ -1717,8 +1699,8 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 24px !important;
-    margin: 24px 0 0 0 !important;
+    gap: 24px !important;             /* ← uniform element gap */
+    margin: 24px 0 0 0 !important;   /* ← 24px top separates from grid */
     padding: 0 !important;
     max-width: 342px !important;
     width: 100% !important;
@@ -1727,7 +1709,7 @@
   footer .footer-legal {
     display: flex !important;
     flex-direction: row !important;
-    gap: 24px !important;
+    gap: 24px !important;             /* ← uniform link gap */
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1748,7 +1730,7 @@
     flex-direction: row !important;
     flex-wrap: wrap !important;
     align-items: center !important;
-    gap: 4px !important;
+    gap: 4px !important;              /* ← tight brand lockup gap */
     margin: 0 !important;
     padding: 0 !important;
   }
@@ -1837,74 +1819,5 @@
     position: relative !important;
     z-index: 2 !important;
   }
-@media (max-width: 480px) {
 
-  /* Force eyebrow → H2 spacing to match About across all sections */
-  #features .section-label,
-  #tracks .section-label,
-  #curriculum .section-label,
-  #testimonials .section-label,
-  #phases .phases-label {
-    margin-bottom: 0 !important;
-  }
-
-  /* Remove extra spacing on the colored second line of eyebrows */
-  #features .section-label .blue,
-  #tracks .section-label .green,
-  #curriculum .section-label .blue,
-  #phases .phases-label .blue {
-    margin-top: 2px !important;  /* was 4px - tighter like About */
-    display: block !important;
-    line-height: 100% !important;
-  }
-
-  /* Ensure all section containers use uniform 24px gap (same as About) */
-  #features,
-  #tracks,
-  #curriculum .syllabus-text,
-  #testimonials,
-  #cta {
-    gap: 24px !important;
-  }
-
-  /* Phases card already uses flex gap 24px - ensure inner margins are zero */
-  #phases .phases-card {
-    gap: 24px !important;
-  }
-  
-  #phases .phases-label,
-  #phases h2,
-  #phases .desc,
-  #phases .phases-list {
-    margin: 0 !important;
-  }
-
-}
-@media (max-width: 480px) {
-
-  #features,
-  #tracks,
-  #testimonials,
-  #cta {
-    gap: 4px !important;
-  }
-
-  #curriculum .syllabus-text {
-    gap: 4px !important;
-  }
-
-  #phases .phases-card {
-    gap: 4px !important;
-  }
-
-  #features .section-label,
-  #tracks .section-label,
-  #curriculum .section-label,
-  #testimonials .section-label,
-  #phases .phases-label {
-    margin-top: 24px !important;
-    margin-bottom: 0 !important;
-  }
-
-}
-}
+} /* END @media (max-width: 480px) */
