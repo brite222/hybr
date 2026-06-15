@@ -221,9 +221,9 @@ function HomePage() {
 
         <div className="hero-content animate-fadeUp">
           <h1>
-            Don't Let Your Summer Fly By.
+           Gain Real-World Innovation
             <br />
-            Build Something With It.
+            Experience
           </h1>
           <p>
             Welcome to an 8-week virtual innovation journey where students work like young
