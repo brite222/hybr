@@ -9,7 +9,11 @@
 .footer-col a {
   cursor: pointer;
 }
-
+.nav-alpha-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+}
 /* Offset for scroll so nav doesn't cover section headings */
 #about,
 #features,

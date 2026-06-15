@@ -48,6 +48,7 @@ import AdminClasses from "./pages/admin/AdminClasses";
 
 
 // ── Images ───────────────────────────────────────────────────────────────────
+import alphaLogo from "./assets/images/alpha-loggo.png";
 import heroImg from "./assets/images/hero.jpg";
 import aboutImg from "./assets/images/about.jpg";
 import videoThumb from "./assets/images/video-thumb.jpg";
@@ -203,9 +204,7 @@ function HomePage() {
       <section id="hero">
         <nav className={scrolled ? "nav-scrolled" : ""}>
           <div className="nav-logo">
-            <div className="dot" />
-            <span className="by">BY</span>
-            <HybrLogo variant="white" size="nav" />
+            <img src={alphaLogo} alt="ALPHA by HYBR" className="nav-alpha-logo" />
           </div>
           <div className="nav-links">
             <a onClick={() => scrollTo("about")}>About the Program</a>
@@ -227,9 +226,9 @@ function HomePage() {
             Build Something With It.
           </h1>
           <p>
-            Welcome to an 8-week virtual innovation journey where you will team up with
-            other students, explore real-world problems, discover insights, build solutions,
-            create prototypes, and present your ideas with confidence. If you're already
+            Welcome to an 8-week virtual innovation journey where students work like young
+            innovators: exploring real-world problems, discovering insights, building solutions,
+            creating prototypes, and presenting ideas with confidence. If you're already
             registered, log in to start your journey.
           </p>
           <p className="hero-byline">Curated by HYBR in partnership with 7Edu.</p>
@@ -280,14 +279,14 @@ function HomePage() {
             {
               icon: calendarIcon,
               label: "Program Duration",
-              value: "8-10 Weeks",
+              value: "8 Weeks",
               back: "Innovation training designed for students, with weekly missions that show you what to focus on.",
             },
             {
               icon: groupIcon,
               label: "Program Structure",
-              value: "4-5 Person Groups",
-              back: "4-5 person groups, with team collaboration through Slack and Google Workspace. Research, build, test, and present with practical tools.",
+              value: "1-5 Person Groups",
+              back: "1-5 person groups, with team collaboration through Slack and Google Workspace. Research, build, test, and present with practical tools.",
             },
           ].map((f, i) => {
             const id = `feat-row1-${i}`;
@@ -358,7 +357,7 @@ function HomePage() {
 
         <div className="features-cta">
           <button className="btn-outline btn-with-arrow">
-            2027 Registration
+            Interested in the Next Cohort?
             <span className="btn-arrow">→</span>
           </button>
         </div>
@@ -374,7 +373,7 @@ function HomePage() {
           prototype, and a stage.
         </h2>
         <p className="sub">
-          This summer, you will not just learn about innovation. You will practice it.
+          You will not just learn about innovation. You will practice it.
         </p>
 
         {/* TOP ROW — 3 cards */}
@@ -696,7 +695,7 @@ function HomePage() {
 
         <div className="reg-pill-wrap">
           <button className="btn-outline btn-with-arrow">
-            Register for ALPHA 2027
+            Interested in the Next Cohort?
             <span className="btn-arrow">→</span>
           </button>
         </div>
@@ -705,12 +704,12 @@ function HomePage() {
       {/* ── CTA ── */}
       <section id="cta">
         <h2>
-          Are you or a loved one interested in joining ALPHA's 2027 Edition? Or are you
+          Are you or a loved one interested in joining the next Alpha cohort? Or are you
           interested in working with us at <span className="blue">HYBR</span>? We'd love
           to hear from you!
         </h2>
         <p>
-          ALPHA is not just a summer program. It is your launchpad for learning how to
+          Alpha is not just an after-school program. It is your launchpad for learning how to
           think clearly, build boldly, and turn ideas into real-world impact.
         </p>
         <p>Log in. Team up. Build what's next.</p>
@@ -761,8 +760,7 @@ function HomePage() {
             <div className="footer-col">
               <h4>Contact Us</h4>
               <a>Address 1</a>
-              <a href="tel:+1234567890">Phone Number</a>
-              <a href="mailto:hello@alpha.com">Email Address</a>
+              <a href="mailto:sale@hybrgroup.net">Email: sale@hybrgroup.net</a>
             </div>
 
             {/* Column 4: FOLLOW US + LOG IN */}
@@ -1040,5 +1038,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-
