@@ -22,7 +22,14 @@
   border-radius: 0 16px 16px 0;
   overflow-y: auto;
 }
-
+.sidebar-logo-img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  mix-blend-mode: screen;  
+}
 .coach-sidebar-logo {
   padding: 0 24px 32px;
   text-align: center;

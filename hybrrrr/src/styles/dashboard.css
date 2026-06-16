@@ -17,6 +17,14 @@
   position: fixed;
   height: 100vh;
 }
+.sidebar-logo-img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  mix-blend-mode: screen;  
+}
 
 .dashboard-sidebar .sidebar-logo {
   padding: 0 24px 32px;

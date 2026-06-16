@@ -92,3 +92,12 @@ h1, h2, h3 {
 }
 .section-label .blue { color: var(--blue); }
 .section-label .green { color: var(--green); }
+
+.sidebar-logo-img {
+  width: 80px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  mix-blend-mode: screen;  
+}
