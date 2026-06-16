@@ -143,8 +143,8 @@ const handleSubmit = async (e) => {
               </Link>
             </div>
 
-            <button type="submit" className="login-submit" disabled={loading}>
-              {loading ? "Logging in..." : "Submit"}
+           <button type="submit" className="login-submit" disabled={loading}>
+              {loading ? "Logging in..." : "Log in"}
             </button>
           </form>
 

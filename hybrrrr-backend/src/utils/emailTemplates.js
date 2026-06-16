@@ -75,71 +75,76 @@ const button = (text, url, color = BRAND.green) => `
 `;
 
 // ═══════════════════════════════════════════════════════════════
-// 🎓 NEW USER WELCOME (admin created account)
+// 🎓 NEW USER WELCOME — Spam-filter optimized
 // ═══════════════════════════════════════════════════════════════
 export const welcomeNewUserTemplate = ({ firstName, lastName, email, tempPassword, role }) => {
   const isStudent = role === "student";
   const isCoach = role === "coach";
-  
+
+  const roleLabel = isStudent
+    ? "ALPHA innovation program"
+    : isCoach
+      ? "ALPHA coaching team"
+      : "ALPHA administration team";
+
   const content = `
-    <h2 style="color:${BRAND.black};font-size:28px;margin:0 0 16px;font-weight:600;">
-      Welcome to ALPHA, ${firstName}! 🎉
+    <h2 style="color:${BRAND.black};font-size:24px;margin:0 0 16px;font-weight:600;">
+      Hello ${firstName},
     </h2>
-    
-    <p style="color:${BRAND.gray};font-size:16px;line-height:1.6;margin:0 0 20px;">
-      Your ${role} account has been created. You're now part of the ${
-        isStudent ? "ALPHA innovation journey" : 
-        isCoach ? "ALPHA coaching team" : 
-        "ALPHA administration team"
-      }!
+
+    <p style="color:${BRAND.gray};font-size:16px;line-height:1.6;margin:0 0 16px;">
+      Your account has been created. You are now part of the ${roleLabel}.
+    </p>
+
+    <p style="color:${BRAND.gray};font-size:16px;line-height:1.6;margin:0 0 24px;">
+      Below are your login credentials to access the platform.
     </p>
 
     <div style="background:${BRAND.lightGray};border-left:4px solid ${BRAND.green};padding:20px;border-radius:8px;margin:24px 0;">
       <p style="margin:0 0 12px;color:${BRAND.gray};font-size:13px;font-weight:700;letter-spacing:0.5px;">
-        YOUR LOGIN DETAILS
+        ACCOUNT INFORMATION
       </p>
       <p style="margin:8px 0;color:${BRAND.black};font-size:15px;">
-        <strong>Email:</strong> ${email}
+        <strong>Email address:</strong> ${email}
       </p>
       <p style="margin:8px 0;color:${BRAND.black};font-size:15px;">
-        <strong>Temporary Password:</strong>
-      </p>
-      <div style="background:${BRAND.black};color:${BRAND.green};padding:12px 20px;border-radius:6px;font-family:monospace;font-size:18px;font-weight:700;letter-spacing:2px;text-align:center;margin:8px 0;">
-        ${tempPassword}
-      </div>
-    </div>
-
-    <div style="background:#fff8e1;border:1px solid #ffd54f;border-radius:8px;padding:16px;margin:16px 0;">
-      <p style="margin:0;color:#666;font-size:14px;">
-        🔒 <strong>For your security:</strong> You'll be required to change your password the first time you log in.
+        <strong>One-time access code:</strong> <span style="font-family:Courier New, monospace;background:#fff;padding:4px 10px;border-radius:4px;border:1px solid #ddd;">${tempPassword}</span>
       </p>
     </div>
 
-    ${button("Log In Now", `${FRONTEND_URL}/login`)}
+    <p style="color:${BRAND.gray};font-size:14px;line-height:1.6;margin:0 0 16px;">
+      For your security, you will be asked to set a new access code the first time you sign in.
+    </p>
+
+    ${button("Sign In", `${FRONTEND_URL}/login`)}
 
     ${isStudent ? `
-      <h3 style="color:${BRAND.black};font-size:18px;margin:32px 0 12px;">What's next?</h3>
-      <ul style="color:${BRAND.gray};font-size:14px;line-height:1.8;padding-left:20px;">
-        <li>Log in and change your password</li>
-        <li>Explore your 8-week roadmap</li>
-        <li>Start your Week 1 lessons</li>
-        <li>Earn points and badges as you progress 🏆</li>
+      <h3 style="color:${BRAND.black};font-size:18px;margin:32px 0 12px;font-weight:600;">Getting started</h3>
+      <ul style="color:${BRAND.gray};font-size:14px;line-height:1.8;padding-left:20px;margin:0;">
+        <li>Sign in and set your new access code</li>
+        <li>Review the 8-week program roadmap</li>
+        <li>Begin Week 1 lessons</li>
+        <li>Track your progress as you complete activities</li>
       </ul>
     ` : isCoach ? `
-      <h3 style="color:${BRAND.black};font-size:18px;margin:32px 0 12px;">What's next?</h3>
-      <ul style="color:${BRAND.gray};font-size:14px;line-height:1.8;padding-left:20px;">
-        <li>Log in and change your password</li>
-        <li>View your assigned students</li>
-        <li>Track their progress through the program</li>
-        <li>Grade their assignments with the rubric</li>
+      <h3 style="color:${BRAND.black};font-size:18px;margin:32px 0 12px;font-weight:600;">Getting started</h3>
+      <ul style="color:${BRAND.gray};font-size:14px;line-height:1.8;padding-left:20px;margin:0;">
+        <li>Sign in and set your new access code</li>
+        <li>View students assigned to you</li>
+        <li>Monitor their weekly progress</li>
+        <li>Provide feedback on submitted work</li>
       </ul>
     ` : ""}
 
-    <p style="color:${BRAND.gray};font-size:12px;margin:32px 0 0;text-align:center;">
-      Need help? Reply to this email and we'll get back to you.
+    <p style="color:${BRAND.gray};font-size:13px;margin:32px 0 0;line-height:1.6;">
+      If you have questions, reply to this email and our team will assist you.
+    </p>
+
+    <p style="color:#999;font-size:12px;margin:24px 0 0;line-height:1.6;border-top:1px solid #eee;padding-top:16px;">
+      You received this message because an administrator created an ALPHA account using your email address. If this was not expected, please contact us at <a href="mailto:support@hybrgroup.net" style="color:${BRAND.blue};">support@hybrgroup.net</a>.
     </p>
   `;
-  
+
   return emailWrapper(content);
 };
 
