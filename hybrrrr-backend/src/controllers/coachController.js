@@ -278,7 +278,7 @@ export const gradeSubmission = async (req, res) => {
 
          await sendEmail({
           to: studentInfo.rows[0].email,
-          subject: `Your Week ${studentInfo.rows[0].week_number} assignment has been graded! 📝`,
+          subject: `Your Week ${studentInfo.rows[0].week_number} assignment has been graded! `,
           html: assignmentGradedTemplate({
             firstName: studentInfo.rows[0].first_name,
             weekNumber: studentInfo.rows[0].week_number,

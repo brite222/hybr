@@ -103,7 +103,7 @@ export async function checkAndAwardBadges(userId) {
             if (userInfo.rows[0]?.email) {
               await sendEmail({
                 to: userInfo.rows[0].email,
-                subject: `🎉 You earned a new badge: ${badge.rows[0].name}!`,
+                subject: ` You earned a new badge: ${badge.rows[0].name}!`,
                 html: badgeEarnedTemplate({
                   firstName: userInfo.rows[0].first_name,
                   badgeName: badge.rows[0].name,

@@ -20,7 +20,7 @@ async function sendReminders(classRow, when /* '24h' | '1h' */) {
     if (students.length === 0) return;
 
     const timeLabel = when === "24h" ? "tomorrow" : "in 1 hour";
-    const subjectPrefix = when === "24h" ? "⏰ Reminder" : "🔔 Starting Soon";
+    const subjectPrefix = when === "24h" ? " Reminder" : " Starting Soon";
 
     for (const student of students) {
       // 1) Create in-app notification

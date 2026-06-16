@@ -82,7 +82,7 @@ router.post(
         if (coachInfo.rows[0]?.coach_email) {
           await sendEmail({
             to: coachInfo.rows[0].coach_email,
-            subject: `📥 New submission from ${coachInfo.rows[0].student_first}`,
+            subject: ` New submission from ${coachInfo.rows[0].student_first}`,
             html: newSubmissionTemplate({
               coachName: coachInfo.rows[0].coach_first,
               studentName: `${coachInfo.rows[0].student_first} ${coachInfo.rows[0].student_last}`,

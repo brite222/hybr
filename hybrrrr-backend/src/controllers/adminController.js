@@ -114,7 +114,7 @@ export const createUser = async (req, res) => {
     try {
       await sendEmail({
         to: email,
-        subject: `Welcome to ALPHA, ${firstName}! 🎉`,
+        subject: `Welcome aboard — your ALPHA login details`,
         html: welcomeNewUserTemplate({
           firstName,
           lastName,
