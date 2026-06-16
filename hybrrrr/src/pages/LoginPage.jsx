@@ -5,6 +5,7 @@ import "../styles/login.css";
 import loginBg from "../assets/images/login-img.jpg";
 import hybrMarkColor from "../assets/logos/hybr-mark-color.png";
 import sevenEduLogo from "../assets/logos/7Edu.png";
+import alphaLogo from "../assets/images/alpha-loggo.png";   // ✅ NEW
 
 // Eye icons for password toggle
 const EyeIcon = () => (
@@ -35,42 +36,40 @@ export default function LoginPage() {
     setError("");
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError("");
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
 
-  try {
-    const result = await login(formData.email, formData.password);
-    
-    // ✅ NEW: Force password change on first login
-    if (result.user.mustChangePassword) {
-      navigate("/change-password");
-      return;
+    try {
+      const result = await login(formData.email, formData.password);
+
+      // ✅ Force password change on first login
+      if (result.user.mustChangePassword) {
+        navigate("/change-password");
+        return;
+      }
+
+      // Redirect based on user role
+      if (result.user.role === "admin") {
+        navigate("/admin/dashboard");
+      } else if (result.user.role === "coach") {
+        navigate("/coach/dashboard");
+      } else {
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.message === "Network Error") {
+        setError("Cannot reach the server. Is the backend running?");
+      } else {
+        setError(err.message || "Login failed. Try again.");
+      }
+    } finally {
+      setLoading(false);
     }
-    
-    // Redirect based on user role
-    if (result.user.role === "admin") {
-      navigate("/admin/dashboard");
-    } else if (result.user.role === "coach") {
-      navigate("/coach/dashboard");
-    } else {
-      navigate("/dashboard");
-    }
-  }
-  catch (err) {
-  if (err.response?.data?.message) {
-    setError(err.response.data.message);
-  } else if (err.message === "Network Error") {
-    setError("Cannot reach the server. Is the backend running?");
-  } else {
-    setError(err.message || "Login failed. Try again.");
-  }
-}
-   finally {
-    setLoading(false);
-  }
-};
+  };
 
   return (
     <div className="login-page">
@@ -78,12 +77,9 @@ const handleSubmit = async (e) => {
       <div className="login-left">
         <img src={loginBg} alt="" className="login-bg" />
         <div className="login-left-content">
+          {/* ✅ NEW: Use the full ALPHA logo image */}
           <div className="login-brand">
-            <span className="login-alpha">ALPHA</span>
-            <span className="login-by">
-              BY <img src={hybrMarkColor} alt="" className="login-hybr-mark" />
-              <span className="login-by-text">HYBR</span>
-            </span>
+            <img src={alphaLogo} alt="ALPHA by HYBR" className="login-logo-img" />
           </div>
           <p className="login-tagline">
             Explore real-world problems, discover insights, build solutions,
@@ -143,7 +139,7 @@ const handleSubmit = async (e) => {
               </Link>
             </div>
 
-           <button type="submit" className="login-submit" disabled={loading}>
+            <button type="submit" className="login-submit" disabled={loading}>
               {loading ? "Logging in..." : "Log in"}
             </button>
           </form>
