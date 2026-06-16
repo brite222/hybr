@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import "../../styles/admin.css";
 import hybrMarkColor from "../../assets/logos/hybr-mark-color.png";
-
+import alphaLogo from "../../assets/images/alpha-loggo.png";
 // ── Icons ────────────────────────────────────────
 const HamburgerIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -137,12 +137,10 @@ export default function AdminLayout({ children }) {
       {/* Sidebar */}
       <aside className={`admin-sidebar ${mobileMenuOpen ? "open" : ""}`}>
         {/* ── ALPHA + HYBR logo ── */}
-        <div className="sidebar-logo">
-          <div className="sidebar-alpha">ALPHA</div>
-          <div className="sidebar-by">
-            BY <img src={hybrMarkColor} alt="" className="sidebar-hybr-mark" />
-          </div>
-        </div>
+        
+            <div className="sidebar-logo">
+              <img src={alphaLogo} alt="ALPHA by HYBR" className="sidebar-logo-img" />
+            </div>
 
         <nav className="admin-nav">
           {navItems.map((item) => {
