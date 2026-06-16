@@ -6,6 +6,7 @@ import "../styles/login.css";
 import loginBg from "../assets/images/login-img.jpg";
 import hybrMarkColor from "../assets/logos/hybr-mark-color.png";
 import sevenEduLogo from "../assets/logos/7Edu.png";
+import alphaLogo from "../assets/images/alpha-loggo.png";  // ✅ NEW
 
 const EyeIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -85,12 +86,9 @@ export default function ChangePasswordPage() {
       <div className="login-left">
         <img src={loginBg} alt="" className="login-bg" />
         <div className="login-left-content">
+          {/* ✅ NEW: Use the full ALPHA logo image */}
           <div className="login-brand">
-            <span className="login-alpha">ALPHA</span>
-            <span className="login-by">
-              BY <img src={hybrMarkColor} alt="" className="login-hybr-mark" />
-              <span className="login-by-text">HYBR</span>
-            </span>
+            <img src={alphaLogo} alt="ALPHA by HYBR" className="login-logo-img" />
           </div>
           <p className="login-tagline">
             Explore real-world problems, discover insights, build solutions,
@@ -102,14 +100,20 @@ export default function ChangePasswordPage() {
       {/* RIGHT — form */}
       <div className="login-right">
         <div className="login-form-wrap">
+          {/* ✅ NEW: Use the full ALPHA logo above the heading */}
           <div style={{ textAlign: "center", marginBottom: 24 }}>
-            <img src={hybrMarkColor} alt="" style={{ width: 48, height: 48 }} />
+            <img
+              src={alphaLogo}
+              alt="ALPHA"
+              className="login-logo-img"
+              style={{ width: 100, margin: "0 auto" }}
+            />
           </div>
 
-          <h1 className="login-title">
+          <h1 className="login-title" style={{ textAlign: "center" }}>
             {isFirstLogin ? "Welcome to ALPHA!" : "Change Password"}
           </h1>
-          <p className="login-subtitle">
+          <p className="login-subtitle" style={{ textAlign: "center" }}>
             {isFirstLogin
               ? "For security, please set a new password before continuing."
               : "Update your account password."}
