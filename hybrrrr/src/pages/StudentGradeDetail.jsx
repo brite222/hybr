@@ -5,6 +5,8 @@ import api from "../api/axios";
 import { CURRICULUM } from "../data/curriculum";
 import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
+import "../styles/grade-detail.css";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const HamburgerIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -16,6 +18,13 @@ const HamburgerIcon = () => (
 const ArrowLeft = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
+  </svg>
+);
+const UploadIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="17 8 12 3 7 8" />
+    <line x1="12" y1="3" x2="12" y2="15" />
   </svg>
 );
 
@@ -30,22 +39,15 @@ function ProgressRing({ percent, size = 90, strokeWidth = 8 }) {
     <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size}>
         <circle cx={size / 2} cy={size / 2} r={radius} stroke="#E5E5E5" strokeWidth={strokeWidth} fill="none" />
-        <circle
-          cx={size / 2} cy={size / 2} r={radius}
-          stroke={color} strokeWidth={strokeWidth} fill="none"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
+        <circle cx={size / 2} cy={size / 2} r={radius} stroke={color} strokeWidth={strokeWidth} fill="none"
+          strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset}
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          style={{ transition: "stroke-dashoffset 0.6s ease" }}
-        />
+          style={{ transition: "stroke-dashoffset 0.6s ease" }} />
       </svg>
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "Montserrat, sans-serif",
-        fontWeight: 700,
-        fontSize: 20,
+        fontFamily: "Montserrat, sans-serif", fontWeight: 700, fontSize: 20,
         color: safePercent === 0 ? "#999" : "#000",
       }}>
         {safePercent}%
@@ -57,77 +59,46 @@ function ProgressRing({ percent, size = 90, strokeWidth = 8 }) {
 const StatusPill = ({ type, text }) => {
   const styles = {
     submitted: { bg: "#8DC540", color: "#fff" },
+    "not-started": { bg: "#D5D5D5", color: "#666" },
     ungraded: { bg: "#D5D5D5", color: "#666" },
     graded: { bg: "#8DC540", color: "#fff" },
   };
   const s = styles[type] || styles.ungraded;
   return (
     <span style={{
-      padding: "5px 12px",
-      borderRadius: 4,
-      background: s.bg,
-      color: s.color,
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: 1.2,
-      textTransform: "uppercase",
-      fontFamily: "Montserrat, sans-serif",
-      display: "inline-block",
-      minWidth: 90,
-      textAlign: "center",
+      padding: "5px 12px", borderRadius: 4,
+      background: s.bg, color: s.color,
+      fontSize: 10, fontWeight: 700, letterSpacing: 1.2,
+      textTransform: "uppercase", fontFamily: "Montserrat, sans-serif",
+      display: "inline-block", minWidth: 90, textAlign: "center",
     }}>
       {text}
     </span>
   );
 };
 
-// ── Pretty Yes/No/Pending tag ──
 const YesNoTag = ({ value }) => {
   if (value === true) {
     return (
       <span style={{
-        padding: "5px 12px",
-        borderRadius: 4,
-        background: "#8DC540",
-        color: "#fff",
-        fontSize: 10,
-        fontWeight: 700,
-        letterSpacing: 1.2,
-        fontFamily: "Montserrat, sans-serif",
-      }}>
-        YES
-      </span>
+        padding: "5px 12px", borderRadius: 4, background: "#8DC540", color: "#fff",
+        fontSize: 10, fontWeight: 700, letterSpacing: 1.2, fontFamily: "Montserrat, sans-serif",
+      }}>YES</span>
     );
   }
   if (value === false) {
     return (
       <span style={{
-        padding: "5px 12px",
-        borderRadius: 4,
-        background: "#C0392B",
-        color: "#fff",
-        fontSize: 10,
-        fontWeight: 700,
-        letterSpacing: 1.2,
-        fontFamily: "Montserrat, sans-serif",
-      }}>
-        NO
-      </span>
+        padding: "5px 12px", borderRadius: 4, background: "#C0392B", color: "#fff",
+        fontSize: 10, fontWeight: 700, letterSpacing: 1.2, fontFamily: "Montserrat, sans-serif",
+      }}>NO</span>
     );
   }
   return (
     <span style={{
-      padding: "5px 12px",
-      borderRadius: 4,
-      background: "#EDEDED",
-      color: "#666",
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: 1.2,
-      fontFamily: "Montserrat, sans-serif",
-    }}>
-      PENDING
-    </span>
+      padding: "5px 12px", borderRadius: 4, background: "#EDEDED", color: "#666",
+      fontSize: 10, fontWeight: 700, letterSpacing: 1.2, fontFamily: "Montserrat, sans-serif",
+    }}>PENDING</span>
   );
 };
 
@@ -160,7 +131,6 @@ export default function StudentGradeDetail() {
   const submission = weekSubs.find(s => s.lesson_id === lessonId);
   const lessonInfo = weekData?.lessons.find(l => l.id === lessonId);
 
-  // Overall avg
   const gradedSubs = data.submissions.filter(s => s.is_graded);
   const overallAvg = gradedSubs.length > 0
     ? Math.round(gradedSubs.reduce((sum, s) => sum + s.percent, 0) / gradedSubs.length)
@@ -171,18 +141,15 @@ export default function StudentGradeDetail() {
   const currentWeek = data.currentWeek || 1;
   const currentWeekData = CURRICULUM[currentWeek];
 
-  // Top progress bar
   const currentWeekFromProgram = program?.weeks?.find(w => w.weekNumber === currentWeek);
   const currentWeekCompletedCount = currentWeekFromProgram?.completedCount || 0;
   const currentWeekTotalLessons = currentWeekData?.lessons?.length || 0;
   const topProgress = currentWeekTotalLessons > 0
-    ? Math.round((currentWeekCompletedCount / currentWeekTotalLessons) * 100)
-    : 0;
+    ? Math.round((currentWeekCompletedCount / currentWeekTotalLessons) * 100) : 0;
 
   const isGraded = submission?.is_graded;
   const percent = isGraded ? submission.percent : 0;
 
-  // Bonus / penalty info (always defined, defaults to 0)
   const criteriaTotal = submission?.criteria_total ?? 0;
   const officeHoursPoints = submission?.office_hours_points ?? 0;
   const presentationPoints = submission?.presentation_points ?? 0;
@@ -192,7 +159,9 @@ export default function StudentGradeDetail() {
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
           <HamburgerIcon />
         </button>
@@ -201,7 +170,7 @@ export default function StudentGradeDetail() {
       <StudentSidebar open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
       <main className="module-main">
-        {/* ── TOP PROGRESS BAR ── */}
+        {/* TOP PROGRESS BAR */}
         <div className="module-topbar">
           <div className="module-topbar-label">
             <span className="topbar-title">WEEK {currentWeek}</span>
@@ -216,25 +185,8 @@ export default function StudentGradeDetail() {
           </div>
         </div>
 
-        {/* ── BACK BUTTON ── */}
-        <button
-          onClick={() => navigate("/my-grades")}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            background: "transparent",
-            border: "none",
-            color: "#196AB4",
-            cursor: "pointer",
-            fontSize: 14,
-            fontFamily: "Montserrat, sans-serif",
-            fontWeight: 500,
-            padding: 0,
-            marginBottom: 8,
-            alignSelf: "flex-start",
-          }}
-        >
+        {/* BACK BUTTON */}
+        <button onClick={() => navigate("/my-grades")} className="grade-back-btn">
           <ArrowLeft /> Back to My Grades
         </button>
 
@@ -242,95 +194,39 @@ export default function StudentGradeDetail() {
           <div style={{ padding: 80, textAlign: "center", color: "#666" }}>Loading...</div>
         ) : error ? (
           <div style={{ padding: 80, textAlign: "center", color: "#cc0000" }}>{error}</div>
-        ) : !submission ? (
-          <div style={{
-            background: "#fff",
-            padding: 60,
-            borderRadius: 16,
-            textAlign: "center",
-            color: "#888",
-          }}>
-            <div style={{ fontSize: 48, marginBottom: 16 }}>⚠️</div>
-            <h3 style={{ fontFamily: "Raleway", color: "#000" }}>Submission not found</h3>
-            <p>This assignment hasn't been submitted yet.</p>
-          </div>
         ) : (
           <>
-            {/* ── My Average ── */}
-            <div style={{
-              background: "#fff",
-              padding: "24px 32px",
-              borderRadius: 16,
-              marginBottom: 16,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              flexWrap: "wrap",
-            }}>
-              <div style={{ flex: 1, minWidth: 200 }}>
-                <div style={{
-                  fontFamily: "Raleway, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 11,
-                  letterSpacing: 1.8,
-                  color: tierColor,
-                  marginBottom: 6,
-                }}>
+            {/* ── My Average / My Grade Card ── */}
+            <div className="grade-tier-card">
+              <div className="grade-tier-text">
+                <div className="grade-tier-label" style={{ color: tierColor }}>
                   {tier.toUpperCase()} TIER
                 </div>
-                <h1 style={{
-                  fontFamily: "Raleway, sans-serif",
-                  fontWeight: 600,
-                  fontSize: 26,
-                  margin: 0,
-                  color: "#000",
-                  lineHeight: 1.1,
-                }}>
-                  My Average
+                <h1 className="grade-tier-title">
+                  {submission ? "My Average" : "My Grade"}
                 </h1>
               </div>
-              <ProgressRing percent={overallAvg} size={90} strokeWidth={8} />
+              <ProgressRing percent={submission ? overallAvg : 0} size={90} strokeWidth={8} />
             </div>
 
-            {/* ── ASSIGNMENT ROW + BIG BUTTON ── */}
-            <div style={{
-              background: "#fff",
-              borderRadius: 16,
-              padding: 20,
-              marginBottom: 16,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-            }}>
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 110px 80px 110px",
-                alignItems: "center",
-                gap: 12,
-                padding: "8px 12px",
-                marginBottom: 16,
-              }}>
-                <div style={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 600,
-                  fontSize: 14,
-                  color: "#000",
-                }}>
+            {/* ── ASSIGNMENT ROW + ACTION BUTTON ── */}
+            <div className="grade-assignment-card">
+              <div className="grade-assignment-row">
+                <div className="grade-assignment-title">
                   {lessonInfo?.title || "Work Assignment"}
                 </div>
-                <div style={{ textAlign: "center" }}>
-                  <StatusPill type="submitted" text="SUBMITTED" />
+                <div className="grade-assignment-status">
+                  <StatusPill
+                    type={submission ? "submitted" : "not-started"}
+                    text={submission ? "SUBMITTED" : "NOT STARTED"}
+                  />
                 </div>
-                <div style={{
-                  textAlign: "center",
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 14,
+                <div className="grade-assignment-percent" style={{
                   color: isGraded ? (percent >= 75 ? "#8DC540" : percent >= 40 ? "#F0AD4E" : "#999") : "#999",
                 }}>
-                  {isGraded ? `${percent}%` : "—"}
+                  {isGraded ? `${percent}%` : "0%"}
                 </div>
-                <div style={{ textAlign: "center" }}>
+                <div className="grade-assignment-grade">
                   <StatusPill
                     type={isGraded ? "graded" : "ungraded"}
                     text={isGraded ? "GRADED" : "UNGRADED"}
@@ -338,81 +234,42 @@ export default function StudentGradeDetail() {
                 </div>
               </div>
 
-              <button
-                disabled
-                style={{
-                  width: "100%",
-                  padding: 16,
-                  background: "#EDEDED",
-                  color: "#666",
-                  border: "none",
-                  borderRadius: 100,
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  cursor: "not-allowed",
-                }}
-              >
-                Assignment Submitted
-              </button>
+              {/* Conditional button: Upload (clickable) vs Submitted (disabled) */}
+              {submission ? (
+                <button disabled className="grade-submitted-btn">
+                  Assignment Submitted
+                </button>
+              ) : (
+                <>
+                  <button
+                    className="grade-upload-btn"
+                    onClick={() => navigate(`/lesson/${week}/${lessonId}`)}
+                  >
+                    <UploadIcon /> Upload Your Assignment
+                  </button>
+                  <div className="grade-upload-caption">
+                    *PDF Submissions Only
+                  </div>
+                </>
+              )}
             </div>
 
             {/* ── ASSIGNMENT TITLE + DESCRIPTION + RUBRIC ── */}
-            <div style={{
-              background: "#fff",
-              padding: 32,
-              borderRadius: 16,
-              marginBottom: 16,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-            }}>
-              <h2 style={{
-                fontFamily: "Raleway, sans-serif",
-                fontSize: 22,
-                fontWeight: 600,
-                margin: "0 0 12px 0",
-                color: "#000",
-              }}>
+            <div className="grade-rubric-card">
+              <h2 className="grade-rubric-title">
                 {lessonInfo?.title || "Assignment Title, Lorem Ipsum Dolor"}
               </h2>
-              <p style={{
-                fontFamily: "Montserrat, sans-serif",
-                fontSize: 14,
-                color: "#666",
-                lineHeight: 1.5,
-                margin: "0 0 28px 0",
-              }}>
+              <p className="grade-rubric-desc">
                 About the assignment. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Vestibulum aliquam tellus sit amet eros maximus gravida. Vestibulum sit amet nisl libero.
               </p>
 
-              <h3 style={{
-                fontFamily: "Raleway, sans-serif",
-                fontSize: 18,
-                fontWeight: 600,
-                margin: "0 0 16px 0",
-                color: "#000",
-              }}>
-                Grading Rubric/Criteria
-              </h3>
+              <h3 className="grade-rubric-subtitle">Grading Rubric/Criteria</h3>
 
               {[1, 2, 3, 4, 5].map((n) => (
-                <div key={n} style={{ marginBottom: 14 }}>
-                  <div style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontWeight: 700,
-                    fontSize: 12,
-                    letterSpacing: 1,
-                    color: "#000",
-                    marginBottom: 4,
-                  }}>
-                    CRITERION {n}
-                  </div>
-                  <div style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: 13,
-                    color: "#555",
-                    lineHeight: 1.5,
-                  }}>
+                <div key={n} className="grade-criterion-item">
+                  <div className="grade-criterion-label">CRITERION {n}</div>
+                  <div className="grade-criterion-text">
                     Criteria Details. Aliquam dignissim, dui vel auctor congue, ipsum sem interdum magna.
                   </div>
                 </div>
@@ -420,63 +277,16 @@ export default function StudentGradeDetail() {
             </div>
 
             {/* ── GRADING SECTION ── */}
-            <div style={{
-              background: "#fff",
-              padding: 32,
-              borderRadius: 16,
-              marginBottom: 16,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-            }}>
-              <h3 style={{
-                fontFamily: "Raleway, sans-serif",
-                fontSize: 20,
-                fontWeight: 600,
-                margin: "0 0 20px 0",
-                color: "#000",
-              }}>
-                Grading
-              </h3>
+            <div className="grade-grading-card">
+              <h3 className="grade-grading-title">Grading</h3>
 
-              {/* 5 criterion cards */}
-              <div style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(5, 1fr)",
-                gap: 12,
-                marginBottom: 24,
-              }}>
+              {/* 5 criterion cards (empty boxes if not graded) */}
+              <div className="grade-criterion-grid">
                 {[1, 2, 3, 4, 5].map((n) => (
-                  <div
-                    key={n}
-                    style={{
-                      background: "#fff",
-                      border: "1px solid #E5E5E5",
-                      borderRadius: 10,
-                      padding: "20px 8px",
-                      textAlign: "center",
-                      minHeight: 90,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <div style={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontSize: 10,
-                      fontWeight: 700,
-                      letterSpacing: 1,
-                      color: "#666",
-                      marginBottom: isGraded ? 12 : 0,
-                    }}>
-                      CRITERION {n}
-                    </div>
+                  <div key={n} className="grade-criterion-card">
+                    <div className="grade-criterion-card-label">CRITERION {n}</div>
                     {isGraded && (
-                      <div style={{
-                        fontFamily: "Montserrat, sans-serif",
-                        fontSize: 28,
-                        fontWeight: 700,
-                        color: "#000",
-                        lineHeight: 1,
-                      }}>
+                      <div className="grade-criterion-card-value">
                         {submission[`criterion_${n}`] ?? "—"}
                       </div>
                     )}
@@ -484,182 +294,94 @@ export default function StudentGradeDetail() {
                 ))}
               </div>
 
-              {/* ── PARTICIPATION & PRESENTATION (always shows) ── */}
-              <div style={{
-                paddingTop: 20,
-                marginBottom: 20,
-                borderTop: "1px solid #f0f0f0",
-              }}>
-                <h4 style={{
-                  fontFamily: "Raleway, sans-serif",
-                  fontSize: 14,
-                  fontWeight: 700,
-                  letterSpacing: 1,
-                  textTransform: "uppercase",
-                  margin: "0 0 14px 0",
-                  color: "#000",
-                }}>
-                  Participation & Presentation
-                </h4>
+              {/* ── PARTICIPATION & PRESENTATION (only if submitted) ── */}
+              {submission && (
+                <div className="grade-participation-section">
+                  <h4 className="grade-participation-title">
+                    Participation & Presentation
+                  </h4>
 
-                {/* Office Hours row */}
-                <div style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "14px 18px",
-                  border: "1px solid #EDEDED",
-                  borderRadius: 10,
-                  marginBottom: 10,
-                }}>
-                  <div>
-                    <div style={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontWeight: 600,
-                      fontSize: 14,
-                      color: "#000",
-                    }}>
-                      Attended Office Hours
+                  {/* Office Hours row */}
+                  <div className="grade-participation-row">
+                    <div className="grade-participation-text">
+                      <div className="grade-participation-name">Attended Office Hours</div>
+                      <div className="grade-participation-hint">
+                        Yes = +2 pts &nbsp;•&nbsp; No = −2 pts
+                      </div>
                     </div>
-                    <div style={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontSize: 11,
-                      color: "#888",
-                      marginTop: 2,
-                    }}>
-                      Yes = +2 pts &nbsp;•&nbsp; No = −2 pts
+                    <div className="grade-participation-right">
+                      {isGraded && (
+                        <span className="grade-participation-points" style={{
+                          color: officeHoursPoints > 0 ? "#5a8a1a" : officeHoursPoints < 0 ? "#C0392B" : "#888",
+                        }}>
+                          {officeHoursPoints > 0 ? `+${officeHoursPoints}` : officeHoursPoints}
+                        </span>
+                      )}
+                      <YesNoTag value={isGraded ? submission.attended_office_hours : null} />
                     </div>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    {isGraded && (
-                      <span style={{
-                        fontFamily: "Montserrat, sans-serif",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: officeHoursPoints > 0 ? "#5a8a1a" : officeHoursPoints < 0 ? "#C0392B" : "#888",
-                        minWidth: 36,
-                        textAlign: "right",
-                      }}>
-                        {officeHoursPoints > 0 ? `+${officeHoursPoints}` : officeHoursPoints}
-                      </span>
-                    )}
-                    <YesNoTag value={isGraded ? submission.attended_office_hours : null} />
+
+                  {/* Presentation row */}
+                  <div className="grade-participation-row">
+                    <div className="grade-participation-text">
+                      <div className="grade-participation-name">Presented</div>
+                      <div className="grade-participation-hint">
+                        Yes = +5 pts &nbsp;•&nbsp; No = 0 pts
+                      </div>
+                    </div>
+                    <div className="grade-participation-right">
+                      {isGraded && (
+                        <span className="grade-participation-points" style={{
+                          color: presentationPoints > 0 ? "#5a8a1a" : "#888",
+                        }}>
+                          {presentationPoints > 0 ? `+${presentationPoints}` : presentationPoints}
+                        </span>
+                      )}
+                      <YesNoTag value={isGraded ? submission.presented : null} />
+                    </div>
                   </div>
                 </div>
+              )}
 
-                {/* Presentation row */}
-                <div style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "14px 18px",
-                  border: "1px solid #EDEDED",
-                  borderRadius: 10,
-                }}>
-                  <div>
-                    <div style={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontWeight: 600,
-                      fontSize: 14,
-                      color: "#000",
-                    }}>
-                      Presented
-                    </div>
-                    <div style={{
-                      fontFamily: "Montserrat, sans-serif",
-                      fontSize: 11,
-                      color: "#888",
-                      marginTop: 2,
-                    }}>
-                      Yes = +5 pts &nbsp;•&nbsp; No = 0 pts
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    {isGraded && (
-                      <span style={{
-                        fontFamily: "Montserrat, sans-serif",
-                        fontSize: 13,
-                        fontWeight: 700,
-                        color: presentationPoints > 0 ? "#5a8a1a" : "#888",
-                        minWidth: 36,
-                        textAlign: "right",
-                      }}>
-                        {presentationPoints > 0 ? `+${presentationPoints}` : presentationPoints}
-                      </span>
-                    )}
-                    <YesNoTag value={isGraded ? submission.presented : null} />
-                  </div>
-                </div>
-              </div>
-
-              {/* ── SCORE BREAKDOWN ── */}
+              {/* ── SCORE BREAKDOWN (only if graded) ── */}
               {isGraded && (
-                <div style={{
-                  padding: "18px 22px",
-                  background: "#FAFAFA",
-                  borderRadius: 12,
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: 13,
-                  color: "#333",
-                  marginBottom: 24,
-                }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <div className="grade-breakdown">
+                  <div className="grade-breakdown-row">
                     <span>Criteria (1–5)</span>
                     <span style={{ fontWeight: 600 }}>{criteriaTotal} / 25</span>
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                  <div className="grade-breakdown-row">
                     <span>Office Hours</span>
                     <span style={{ fontWeight: 600, color: officeHoursPoints < 0 ? "#C0392B" : "#000" }}>
                       {officeHoursPoints > 0 ? `+${officeHoursPoints}` : officeHoursPoints}
                     </span>
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+                  <div className="grade-breakdown-row">
                     <span>Presentation</span>
                     <span style={{ fontWeight: 600 }}>
                       {presentationPoints > 0 ? `+${presentationPoints}` : presentationPoints}
                     </span>
                   </div>
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    paddingTop: 10,
-                    borderTop: "1px solid #E5E5E5",
-                    fontSize: 15,
-                    fontWeight: 700,
-                    color: "#000",
-                  }}>
+                  <div className="grade-breakdown-total">
                     <span>Final Score</span>
                     <span>{totalScore} / {maxScore}</span>
                   </div>
                 </div>
               )}
 
-              {/* Coach Feedback */}
-              <div>
-                <div style={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 12,
-                  letterSpacing: 1,
-                  color: "#000",
-                  marginBottom: 8,
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}>
+              {/* Coach Feedback — always show */}
+              <div className="grade-feedback">
+                <div className="grade-feedback-label">
                   COACH FEEDBACK
-                  {isGraded && submission.coach_first_name && (
+                  {isGraded && submission?.coach_first_name && (
                     <span style={{ opacity: 0.6, fontWeight: 500, fontSize: 11 }}>
                       — {submission.coach_first_name} {submission.coach_last_name?.charAt(0)}.
                     </span>
                   )}
                 </div>
-                <div style={{
-                  fontFamily: "Montserrat, sans-serif",
-                  fontSize: 14,
+                <div className="grade-feedback-text" style={{
                   color: isGraded ? "#333" : "#999",
                   fontStyle: isGraded ? "normal" : "italic",
-                  lineHeight: 1.6,
                 }}>
                   {isGraded ? (
                     submission.feedback || (
@@ -672,13 +394,8 @@ export default function StudentGradeDetail() {
                   )}
                 </div>
 
-                {isGraded && submission.graded_at && (
-                  <div style={{
-                    fontFamily: "Montserrat, sans-serif",
-                    fontSize: 11,
-                    color: "#999",
-                    marginTop: 12,
-                  }}>
+                {isGraded && submission?.graded_at && (
+                  <div className="grade-feedback-date">
                     Graded on {new Date(submission.graded_at).toLocaleDateString()}
                   </div>
                 )}

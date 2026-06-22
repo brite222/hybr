@@ -1,0 +1,547 @@
+/* ════════════════════════════════════════════════════════════
+   STUDENT GRADE DETAIL PAGE
+   ════════════════════════════════════════════════════════════ */
+
+/* Back button */
+.grade-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: #196AB4;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  padding: 0;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+/* ── My Average / Tier Card ── */
+.grade-tier-card {
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+}
+
+.grade-tier-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.grade-tier-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  margin-bottom: 6px;
+}
+
+.grade-tier-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0;
+  color: #000;
+  line-height: 1.1;
+}
+
+/* ── Assignment Row Card (with Submitted button) ── */
+.grade-assignment-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.grade-assignment-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 80px 110px;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}
+
+.grade-assignment-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.grade-assignment-status,
+.grade-assignment-grade {
+  text-align: center;
+}
+
+.grade-assignment-percent {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.grade-submitted-btn {
+  width: 100%;
+  padding: 16px;
+  background: #EDEDED;
+  color: #666;
+  border: none;
+  border-radius: 100px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: not-allowed;
+}
+
+/* ── Assignment Title + Rubric Card ── */
+.grade-rubric-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.grade-rubric-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: #000;
+}
+
+.grade-rubric-desc {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0 0 28px 0;
+}
+
+.grade-rubric-subtitle {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  color: #000;
+}
+
+.grade-criterion-item {
+  margin-bottom: 14px;
+}
+
+.grade-criterion-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.grade-criterion-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ── Grading Section Card ── */
+.grade-grading-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.grade-grading-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: #000;
+}
+
+/* 5-column grid on desktop */
+.grade-criterion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.grade-criterion-card {
+  background: #fff;
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+  padding: 20px 8px;
+  text-align: center;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.grade-criterion-card-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.grade-criterion-card-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000;
+  line-height: 1;
+}
+
+/* ── Participation & Presentation ── */
+.grade-participation-section {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.grade-participation-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 14px 0;
+  color: #000;
+}
+
+.grade-participation-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.grade-participation-text {
+  flex: 1;
+}
+
+.grade-participation-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.grade-participation-hint {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.grade-participation-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.grade-participation-points {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ── Score Breakdown ── */
+.grade-breakdown {
+  padding: 18px 22px;
+  background: #FAFAFA;
+  border-radius: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.grade-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.grade-breakdown-row:last-of-type {
+  margin-bottom: 10px;
+}
+
+.grade-breakdown-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid #E5E5E5;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* ── Coach Feedback ── */
+.grade-feedback-label {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #000;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grade-feedback-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.grade-feedback-date {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: #999;
+  margin-top: 12px;
+}
+
+
+/* ── Upload Button (when not yet submitted) ── */
+.grade-upload-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: #fff;
+  color: #000;
+  border: 1.5px solid #000;
+  border-radius: 100px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.grade-upload-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+.grade-upload-btn:hover svg {
+  stroke: #fff;
+}
+
+.grade-upload-caption {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: #888;
+  margin-top: 10px;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+  .grade-upload-btn {
+    padding: 14px;
+    font-size: 13px;
+  }
+
+  .grade-upload-caption {
+    font-size: 11px;
+    margin-top: 8px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below) — Match prototype
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* My Average — ring on TOP, text centered below */
+  .grade-tier-card {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 24px 20px !important;
+    gap: 14px !important;
+  }
+
+  .grade-tier-text {
+    text-align: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .grade-tier-label {
+    text-align: center !important;
+  }
+
+  .grade-tier-title {
+    font-size: 22px !important;
+    text-align: center !important;
+  }
+
+  /* Assignment row — STACK vertically, centered */
+  .grade-assignment-card {
+    padding: 24px 20px;
+  }
+
+  .grade-assignment-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+    padding: 8px 0 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .grade-assignment-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .grade-assignment-percent {
+    font-size: 16px;
+  }
+
+  .grade-submitted-btn {
+    padding: 14px;
+    font-size: 13px;
+  }
+
+  /* Rubric card — centered, smaller padding */
+  .grade-rubric-card {
+    padding: 24px 20px !important;
+    text-align: center;
+  }
+
+  .grade-rubric-title {
+    font-size: 20px !important;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .grade-rubric-desc {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .grade-rubric-subtitle {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .grade-criterion-item {
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .grade-criterion-label {
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .grade-criterion-text {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  /* Grading section card */
+  .grade-grading-card {
+    padding: 24px 20px !important;
+    text-align: center;
+  }
+
+  .grade-grading-title {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  /* Criterion grid → 2 columns on mobile, 5th item spans full width */
+  .grade-criterion-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px;
+  }
+
+  .grade-criterion-grid > .grade-criterion-card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .grade-criterion-card {
+    padding: 16px 8px;
+    min-height: 80px;
+  }
+
+  .grade-criterion-card-value {
+    font-size: 24px;
+  }
+
+  /* Participation section */
+  .grade-participation-title {
+    text-align: center;
+  }
+
+  .grade-participation-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .grade-participation-text {
+    text-align: center;
+  }
+
+  .grade-participation-right {
+    justify-content: center;
+  }
+
+  /* Score breakdown — keep as is, just smaller padding */
+  .grade-breakdown {
+    padding: 16px 18px;
+    text-align: left;
+  }
+
+  /* Coach feedback */
+  .grade-feedback-label {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .grade-feedback-text {
+    text-align: center;
+  }
+
+  .grade-feedback-date {
+    text-align: center;
+  }
+}
