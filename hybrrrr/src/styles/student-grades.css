@@ -1,0 +1,257 @@
+/* ════════════════════════════════════════════════════════════
+   STUDENT GRADES PAGE
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Tier / My Average Card ── */
+.grades-tier-card {
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  flex-wrap: wrap;
+}
+
+.grades-tier-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.grades-tier-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  margin-bottom: 6px;
+}
+
+.grades-tier-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  margin: 0;
+  color: #000;
+  line-height: 1.1;
+}
+
+/* ── Week Card ── */
+.grades-week-card {
+  position: relative;
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.grades-week-card.current-week {
+  /* Optional: highlight current week */
+}
+
+/* Mobile-only "VIEW" pill — hidden on desktop */
+.grades-week-view-pill {
+  display: none;
+}
+
+.grades-week-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+}
+
+.grades-week-text {
+  flex: 1;
+}
+
+.grades-week-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  margin-bottom: 4px;
+}
+
+.grades-week-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
+
+.grades-week-body {
+  margin-top: 20px;
+  padding-top: 4px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.grades-week-empty {
+  padding: 20px 0;
+  text-align: center;
+  color: #888;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+}
+
+/* ── Assignment Row (desktop grid) ── */
+.grades-assignment-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 80px 110px;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 8px;
+  border-bottom: 1px solid #f5f5f5;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.grades-assignment-row:last-child {
+  border-bottom: none;
+}
+
+.grades-assignment-row:hover {
+  background: #f9f9f9;
+}
+
+.grades-assignment-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.grades-assignment-status,
+.grades-assignment-grade {
+  text-align: center;
+}
+
+.grades-assignment-percent {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.grades-week-chevron {
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below) — Match prototype
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── Tier card — centered, ring on TOP ── */
+  .grades-tier-card {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 24px 20px !important;
+    gap: 14px !important;
+  }
+
+  .grades-tier-text {
+    text-align: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .grades-tier-label {
+    text-align: center !important;
+  }
+
+  .grades-tier-title {
+    font-size: 22px !important;
+    text-align: center !important;
+  }
+
+  /* ── Week card — centered, ring on TOP ── */
+  .grades-week-card {
+    padding: 24px 20px;
+  }
+
+  .grades-week-header {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+  }
+
+  .grades-week-text {
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .grades-week-label {
+    text-align: center !important;
+  }
+
+  .grades-week-title {
+    font-size: 20px !important;
+    text-align: center !important;
+  }
+
+  /* ── VIEW pill — show on mobile (top-right) when collapsed ── */
+  .grades-week-view-pill {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 14px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #000;
+    z-index: 2;
+  }
+
+  /* ── Hide bottom chevron on mobile (VIEW pill handles toggling) ── */
+  .grades-week-chevron {
+    display: none;
+  }
+
+  /* ── Assignment row → vertical stacked card ── */
+  .grades-assignment-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+    padding: 18px 16px !important;
+    border: 1px solid #EDEDED !important;
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  .grades-assignment-row:last-child {
+    border-bottom: 1px solid #EDEDED !important;
+  }
+
+  .grades-assignment-title {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .grades-assignment-percent {
+    font-size: 16px;
+  }
+
+  .grades-assignment-status,
+  .grades-assignment-grade {
+    width: 100%;
+  }
+}

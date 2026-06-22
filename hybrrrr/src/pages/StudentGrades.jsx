@@ -5,6 +5,8 @@ import api from "../api/axios";
 import { CURRICULUM } from "../data/curriculum";
 import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
+import "../styles/student-grades.css";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const HamburgerIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -16,6 +18,12 @@ const HamburgerIcon = () => (
 const ChevronDown = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
+const EyeIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+    <circle cx="12" cy="12" r="3" />
   </svg>
 );
 
@@ -30,21 +38,15 @@ function ProgressRing({ percent, size = 70, strokeWidth = 7 }) {
     <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
       <svg width={size} height={size}>
         <circle cx={size / 2} cy={size / 2} r={radius} stroke="#E5E5E5" strokeWidth={strokeWidth} fill="none" />
-        <circle
-          cx={size / 2} cy={size / 2} r={radius}
-          stroke={color} strokeWidth={strokeWidth} fill="none"
-          strokeLinecap="round"
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
+        <circle cx={size / 2} cy={size / 2} r={radius} stroke={color} strokeWidth={strokeWidth} fill="none"
+          strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={offset}
           transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          style={{ transition: "stroke-dashoffset 0.6s ease" }}
-        />
+          style={{ transition: "stroke-dashoffset 0.6s ease" }} />
       </svg>
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontFamily: "Montserrat, sans-serif",
-        fontWeight: 700,
+        fontFamily: "Montserrat, sans-serif", fontWeight: 700,
         fontSize: size > 80 ? 20 : 13,
         color: safePercent === 0 ? "#999" : "#000",
       }}>
@@ -63,20 +65,12 @@ const StatusPill = ({ type, text }) => {
   };
   const s = styles[type] || styles.ungraded;
   return (
-    <span style={{
-      padding: "5px 12px",
-      borderRadius: 4,
-      background: s.bg,
-      color: s.color,
-      fontSize: 10,
-      fontWeight: 700,
-      letterSpacing: 1.2,
-      textTransform: "uppercase",
-      fontFamily: "Montserrat, sans-serif",
-      display: "inline-block",
-      minWidth: 90,
-      textAlign: "center",
-      whiteSpace: "nowrap",
+    <span className="status-pill" style={{
+      padding: "5px 12px", borderRadius: 4,
+      background: s.bg, color: s.color,
+      fontSize: 10, fontWeight: 700, letterSpacing: 1.2,
+      textTransform: "uppercase", fontFamily: "Montserrat, sans-serif",
+      display: "inline-block", minWidth: 90, textAlign: "center", whiteSpace: "nowrap",
     }}>
       {text}
     </span>
@@ -113,7 +107,6 @@ export default function StudentGrades() {
     setExpandedWeeks(prev => ({ ...prev, [weekNum]: !prev[weekNum] }));
   };
 
-  // ── Overall avg (out of 32-scale percent already from backend) ──
   const gradedSubs = data.submissions.filter(s => s.is_graded);
   const overallAvg = gradedSubs.length > 0
     ? Math.round(gradedSubs.reduce((sum, s) => sum + s.percent, 0) / gradedSubs.length)
@@ -124,15 +117,13 @@ export default function StudentGrades() {
   const currentWeek = data.currentWeek || 1;
   const currentWeekData = CURRICULUM[currentWeek];
 
-  // Top progress bar: current week's lesson completion
   const currentWeekFromProgram = program?.weeks?.find(w => w.weekNumber === currentWeek);
   const currentWeekCompletedCount = currentWeekFromProgram?.completedCount || 0;
   const currentWeekTotalLessons = currentWeekData?.lessons?.length || 0;
   const topProgress = currentWeekTotalLessons > 0
-    ? Math.round((currentWeekCompletedCount / currentWeekTotalLessons) * 100)
-    : 0;
+    ? Math.round((currentWeekCompletedCount / currentWeekTotalLessons) * 100) : 0;
 
-  // Build all weeks
+  // ── Build all weeks ──
   const allWeeks = Object.values(CURRICULUM).map(week => {
     const weekSubs = data.by_week?.[week.weekNumber] || [];
     const gradeableLessons = week.lessons.filter(l =>
@@ -157,6 +148,13 @@ export default function StudentGrades() {
     };
   });
 
+  // ── Sort: current week FIRST, then rest in natural order ──
+  const sortedWeeks = [...allWeeks].sort((a, b) => {
+    if (a.weekNumber === currentWeek) return -1;
+    if (b.weekNumber === currentWeek) return 1;
+    return a.weekNumber - b.weekNumber;
+  });
+
   const handleRowClick = (weekNum, assignment) => {
     if (assignment.submission) {
       const path = `/my-grades/${weekNum}/${assignment.lessonId}`.replace(/\/+/g, '/');
@@ -167,7 +165,9 @@ export default function StudentGrades() {
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
           <HamburgerIcon />
         </button>
@@ -176,7 +176,7 @@ export default function StudentGrades() {
       <StudentSidebar open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
       <main className="module-main">
-        {/* ── TOP PROGRESS BAR ── */}
+        {/* TOP PROGRESS BAR */}
         <div className="module-topbar">
           <div className="module-topbar-label">
             <span className="topbar-title">WEEK {currentWeek}</span>
@@ -201,108 +201,56 @@ export default function StudentGrades() {
         ) : (
           <>
             {/* ── TIER / My Average ── */}
-            <div style={{
-              background: "#fff",
-              padding: "24px 32px",
-              borderRadius: 16,
-              marginBottom: 16,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 24,
-              boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-              flexWrap: "wrap",
-            }}>
-              <div style={{ flex: 1, minWidth: 200 }}>
-                <div style={{
-                  fontFamily: "Raleway, sans-serif",
-                  fontWeight: 700,
-                  fontSize: 11,
-                  letterSpacing: 1.8,
-                  color: tierColor,
-                  marginBottom: 6,
-                }}>
+            <div className="grades-tier-card">
+              <div className="grades-tier-text">
+                <div className="grades-tier-label" style={{ color: tierColor }}>
                   {tier.toUpperCase()} TIER
                 </div>
-                <h1 style={{
-                  fontFamily: "Raleway, sans-serif",
-                  fontWeight: 600,
-                  fontSize: 26,
-                  margin: 0,
-                  color: "#000",
-                  lineHeight: 1.1,
-                }}>
-                  My Average
-                </h1>
+                <h1 className="grades-tier-title">My Average</h1>
               </div>
               <ProgressRing percent={overallAvg} size={90} strokeWidth={8} />
             </div>
 
             {/* ── PER-WEEK CARDS ── */}
-            {allWeeks.map((week) => {
+            {sortedWeeks.map((week) => {
               const isCurrent = week.weekNumber === currentWeek;
               const isExpanded = expandedWeeks[week.weekNumber];
 
               return (
-                <div
-                  key={week.weekNumber}
-                  style={{
-                    background: "#fff",
-                    padding: "24px 28px",
-                    borderRadius: 16,
-                    marginBottom: 12,
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                  }}
-                >
+                <div key={week.weekNumber} className={`grades-week-card ${isCurrent ? "current-week" : ""}`}>
+                  {/* Mobile-only VIEW pill (top-right when collapsed) */}
+                  {!isExpanded && (
+                    <button
+                      className="grades-week-view-pill"
+                      onClick={() => toggleWeek(week.weekNumber)}
+                    >
+                      <EyeIcon /> VIEW
+                    </button>
+                  )}
+
                   <div
+                    className="grades-week-header"
                     onClick={() => toggleWeek(week.weekNumber)}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: 16,
-                      cursor: "pointer",
-                      marginBottom: isExpanded ? 20 : 0,
-                    }}
                   >
-                    <div style={{ flex: 1 }}>
-                      <div style={{
-                        fontFamily: "Raleway, sans-serif",
-                        fontWeight: 700,
-                        fontSize: 11,
-                        letterSpacing: 1.8,
+                    <div className="grades-week-text">
+                      <div className="grades-week-label" style={{
                         color: isCurrent ? "#648C2D" : "#196AB4",
-                        marginBottom: 4,
                       }}>
                         {isCurrent ? "CURRENT WEEK: " : ""}{week.title.toUpperCase()}
                       </div>
-                      <h2 style={{
-                        fontFamily: "Raleway, sans-serif",
-                        fontSize: 22,
-                        fontWeight: 600,
-                        margin: 0,
-                        color: "#000",
-                      }}>
-                        Week {week.weekNumber}
-                      </h2>
+                      <h2 className="grades-week-title">Week {week.weekNumber}</h2>
                     </div>
                     <ProgressRing percent={week.weekAvg} size={70} strokeWidth={7} />
                   </div>
 
                   {isExpanded && (
-                    <div style={{ paddingTop: 4, borderTop: "1px solid #f0f0f0" }}>
+                    <div className="grades-week-body">
                       {week.assignments.length === 0 ? (
-                        <div style={{
-                          padding: "20px 0",
-                          textAlign: "center",
-                          color: "#888",
-                          fontFamily: "Montserrat, sans-serif",
-                          fontSize: 13,
-                        }}>
+                        <div className="grades-week-empty">
                           No assignments in this week.
                         </div>
                       ) : (
-                        week.assignments.map((a, idx) => {
+                        week.assignments.map((a) => {
                           const sub = a.submission;
                           const isSubmitted = !!sub;
                           const isGraded = sub?.is_graded;
@@ -311,58 +259,23 @@ export default function StudentGrades() {
                           return (
                             <div
                               key={a.lessonId}
+                              className="grades-assignment-row"
                               onClick={() => handleRowClick(week.weekNumber, a)}
-                              style={{
-                                display: "grid",
-                                gridTemplateColumns: "1fr 110px 80px 110px",
-                                alignItems: "center",
-                                gap: 12,
-                                padding: "16px 0",
-                                borderBottom: idx < week.assignments.length - 1 ? "1px solid #f5f5f5" : "none",
-                                cursor: isSubmitted ? "pointer" : "default",
-                                transition: "background 0.15s",
-                                borderRadius: 8,
-                                paddingLeft: 8,
-                                paddingRight: 8,
-                              }}
-                              onMouseEnter={(e) => {
-                                if (isSubmitted) e.currentTarget.style.background = "#f9f9f9";
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.background = "transparent";
-                              }}
+                              style={{ cursor: isSubmitted ? "pointer" : "default" }}
                             >
-                              <div style={{
-                                fontFamily: "Montserrat, sans-serif",
-                                fontWeight: 600,
-                                fontSize: 14,
-                                color: "#000",
-                              }}>
-                                {a.title}
-                              </div>
-
-                              <div style={{ textAlign: "center" }}>
+                              <div className="grades-assignment-title">{a.title}</div>
+                              <div className="grades-assignment-status">
                                 <StatusPill
                                   type={isSubmitted ? "submitted" : "not-started"}
                                   text={isSubmitted ? "SUBMITTED" : "NOT STARTED"}
                                 />
                               </div>
-
-                              <div style={{
-                                textAlign: "center",
-                                fontFamily: "Montserrat, sans-serif",
-                                fontWeight: 700,
-                                fontSize: 14,
+                              <div className="grades-assignment-percent" style={{
                                 color: isGraded ? (percent >= 75 ? "#8DC540" : percent >= 40 ? "#F0AD4E" : "#999") : "#999",
                               }}>
-                                {isGraded ? (
-                                  <span title={`${sub.total_score} / ${sub.max_score} pts`}>
-                                    {percent}%
-                                  </span>
-                                ) : "—"}
+                                {isGraded ? `${percent}%` : "—"}
                               </div>
-
-                              <div style={{ textAlign: "center" }}>
+                              <div className="grades-assignment-grade">
                                 <StatusPill
                                   type={isGraded ? "graded" : "ungraded"}
                                   text={isGraded ? "GRADED" : "UNGRADED"}
@@ -375,13 +288,12 @@ export default function StudentGrades() {
                     </div>
                   )}
 
-                  <div style={{ textAlign: "center", marginTop: 8 }}>
+                  {/* Chevron — visible only on desktop or when expanded */}
+                  <div className="grades-week-chevron">
                     <button
                       onClick={() => toggleWeek(week.weekNumber)}
                       style={{
-                        background: "transparent",
-                        border: "none",
-                        cursor: "pointer",
+                        background: "transparent", border: "none", cursor: "pointer",
                         padding: 4,
                         transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)",
                         transition: "transform 0.2s",
