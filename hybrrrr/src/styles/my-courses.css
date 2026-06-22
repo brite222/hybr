@@ -1,0 +1,169 @@
+/* ════════════════════════════════════════════════════════════
+   MY COURSES PAGE — Phase header + grades layout
+   ════════════════════════════════════════════════════════════ */
+
+/* Phase header (CURRENT PHASE label + My Average title + ring) */
+.phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.phase-header-text {
+  flex: 1;
+  min-width: 200px;
+}
+
+.phase-label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+  margin-bottom: 6px;
+}
+
+.phase-average-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
+
+/* My Grades sub-header */
+.grades-subheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.grades-subheader-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grades-subheader-title h3 {
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
+
+/* Assignment row (desktop grid) */
+.assignment-row {
+  display: grid;
+  grid-template-columns: 1fr 110px 60px 110px;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.assignment-row:hover {
+  background: #FAFAFA;
+}
+
+.assignment-title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+}
+
+.assignment-status,
+.assignment-grade {
+  text-align: center;
+}
+
+.assignment-percent {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below) — Match prototype
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Phase header — stack vertically, centered, ring on TOP */
+  .phase-header {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 14px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .phase-header-text {
+    text-align: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .phase-label {
+    text-align: center !important;
+    font-size: 11px !important;
+  }
+
+  .phase-average-title {
+    font-size: 20px !important;
+    text-align: center !important;
+  }
+
+  /* My Grades sub-header — centered, hide top-right button */
+  .grades-subheader {
+    justify-content: center !important;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .grades-subheader-title {
+    justify-content: center;
+  }
+
+  .grades-subheader-title h3 {
+    font-size: 18px !important;
+    text-align: center !important;
+  }
+
+  /* HIDE top-right View All on mobile */
+  .grades-subheader .dash-section-link-top {
+    display: none !important;
+  }
+
+  /* Assignment row — STACK vertically, centered */
+  .assignment-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 10px !important;
+    padding: 18px 16px !important;
+  }
+
+  .assignment-title {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .assignment-status,
+  .assignment-grade {
+    width: 100%;
+  }
+
+  .assignment-percent {
+    font-size: 16px;
+  }
+}
