@@ -7,6 +7,7 @@ import "../styles/image-lesson.css";
 import "../styles/info-lesson.css";
 import lessonBannerBg from "../assets/images/lesson-banner-bg.jpg";
 import infoImg from "../assets/images/lesson-girl.jpg";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const ClockIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>);
 const LinkIcon = () => (
@@ -44,19 +45,23 @@ export default function InfoLessonPage({
 
   return (
     <div className="module-page">
+      {/* ✅ MOBILE HEADER — matches prototype exactly */}
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
-        <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu"><HamburgerIcon /></button>
+        <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
+          <HamburgerIcon />
+        </button>
       </div>
       <div className={`mobile-overlay ${mobileMenuOpen ? "open" : ""}`} onClick={() => setMobileMenuOpen(false)} />
       <StudentSidebar open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
       <main className="module-main">
+        {/* Top progress bar */}
         <div className="module-topbar">
           <div className="module-topbar-label">
             <span className="topbar-title">WEEK {week}</span>
             <span className="topbar-dot">•</span>
-            <span className="topbar-subtitle">INFO</span>
+            <span className="topbar-subtitle">ACTIVITY</span>
           </div>
           <div className="module-progress">
             <div className="module-progress-bar"><div className="module-progress-fill" style={{ width: `${progress}%` }} /></div>
@@ -64,6 +69,7 @@ export default function InfoLessonPage({
           </div>
         </div>
 
+        {/* Hero banner */}
         <div className="lesson-banner">
           <img src={lessonBannerBg} alt="" className="lesson-banner-bg" />
           <div className="lesson-banner-content">
@@ -76,16 +82,21 @@ export default function InfoLessonPage({
         {loading ? (<div style={{ padding: 40, textAlign: "center" }}>Loading...</div>) : (
           <div className="module-content">
             <div className="module-left">
+              {/* Main body card */}
               <div className="module-overview-card">
                 <h2 className="info-heading">{headerText}</h2>
                 <p className="info-body" style={{ whiteSpace: "pre-line" }}>{bodyText}</p>
+
+                {/* Inline image */}
                 <div className="info-image-wrap">
                   <img src={imageUrl} alt="" className="info-image" />
                   <div className="info-image-caption">{imageCaption}</div>
                 </div>
+
                 {bodyText2 && <p className="info-body" style={{ whiteSpace: "pre-line" }}>{bodyText2}</p>}
               </div>
             </div>
+
             <aside className="module-right">
               <div className="module-card">
                 <h3 className="module-card-title">Objectives</h3>
@@ -117,26 +128,27 @@ export default function InfoLessonPage({
           </div>
         )}
 
-       <div className="module-nav-buttons">
-  <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
-    <ArrowLeft />
-    <span className="nav-btn-text">
-      {hasPrev ? "Previous" : "Back to Course"}
-      {hasPrev && prevLessonTitle && (
-        <span className="nav-btn-detail">: {prevLessonTitle}</span>
-      )}
-    </span>
-  </button>
-  <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
-   <span className="nav-btn-text">
-  {hasNext ? "Next" : "Back to Course"}
-  {hasNext && nextLessonTitle && (
-    <span className="nav-btn-detail">: {nextLessonTitle}</span>
-  )}
-</span>
-    <ArrowRight />
-  </button>
-</div>
+        {/* Navigation buttons */}
+        <div className="module-nav-buttons">
+          <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
+            <ArrowLeft />
+            <span className="nav-btn-text">
+              {hasPrev ? "Previous" : "Back to Course"}
+              {hasPrev && prevLessonTitle && (
+                <span className="nav-btn-detail">: {prevLessonTitle}</span>
+              )}
+            </span>
+          </button>
+          <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
+            <span className="nav-btn-text">
+              {hasNext ? "Next" : "Back to Course"}
+              {hasNext && nextLessonTitle && (
+                <span className="nav-btn-detail">: {nextLessonTitle}</span>
+              )}
+            </span>
+            <ArrowRight />
+          </button>
+        </div>
       </main>
     </div>
   );

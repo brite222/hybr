@@ -3,18 +3,19 @@
 .info-heading {
   font-family: "Raleway", sans-serif;
   font-weight: 600;
-  font-size: 32px;
-  line-height: 100%;
+  font-size: 28px;
+  line-height: 1.2;
   color: #000;
-  margin: 0 0 20px 0;
+  margin: 0 0 16px 0;
+  text-align: center;
 }
 
 .info-body {
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.5;
-  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
   margin: 0 0 20px 0;
 }
 
@@ -24,13 +25,13 @@
 
 /* ── Inline Image with Caption ── */
 .info-image-wrap {
-  margin: 32px 0 24px;
+  margin: 24px 0;
 }
 
 .info-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   display: block;
   aspect-ratio: 16 / 9;
   object-fit: cover;
@@ -40,24 +41,85 @@
   margin-top: 12px;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 100%;
+  font-size: 11px;
+  line-height: 1.4;
   color: #000;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  text-align: left;
+}
+
+/* ── References list ── */
+.references-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reference-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4FC2F0;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+.reference-item:hover {
+  text-decoration: underline;
+}
+
+/* ── Resources list ── */
+.resources-list {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resources-list li {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.resource-link {
+  color: #4FC2F0;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.resource-link:hover {
+  text-decoration: underline;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .info-heading {
-    font-size: 24px;
+    font-size: 22px;
+    line-height: 1.3;
   }
 
   .info-body {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .info-image-caption {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-heading {
+    font-size: 20px;
+  }
+  
+  .info-body {
     font-size: 14px;
   }
 }

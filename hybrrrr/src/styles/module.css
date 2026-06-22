@@ -471,6 +471,13 @@
     color: #fff;
   }
 
+.mobile-top-header-logo-img {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
   .mobile-hamburger {
     background: transparent;
     border: none;
@@ -579,14 +586,26 @@
     font-size: 14px !important;
   }
 
-  /* Content cards */
-  .module-overview-card,
-  .download-card,
-  .upload-card,
-  .quiz-card {
-    padding: 20px !important;
-    border-radius: 12px;
-  }
+ .module-overview-card {
+  padding: 24px 20px !important;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.module-overview-card .info-body {
+  text-align: left;  /* keep body text left-aligned */
+}
+
+.module-overview-card .info-image-caption {
+  text-align: left;
+}
+
+.download-card,
+.upload-card,
+.quiz-card {
+  padding: 20px !important;
+  border-radius: 12px;
+}
 
   .module-heading,
   .download-heading,
