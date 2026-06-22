@@ -449,32 +449,34 @@
    MOBILE (768px and below) — UPDATED TO MATCH PROTOTYPE
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* Mobile header */
+  /* Mobile header — FULL WIDTH, no margin */
   .mobile-top-header {
     display: flex !important;
     align-items: center;
     justify-content: space-between;
     background: #000;
     color: #fff;
-    padding: 14px 20px;
+    padding: 16px 20px;
     position: sticky;
     top: 0;
     z-index: 998;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    margin: 8px;
+    margin: 0;           /* ← removed margin */
+    border-radius: 0;    /* ← removed radius for full edge-to-edge */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Logo wrapper */
   .mobile-top-header-logo {
     display: flex;
     align-items: center;
-    padding: 4px 12px;
+    padding: 0;
   }
 
-  /* The actual ALPHA logo image */
+  /* The actual ALPHA logo image — bigger */
   .mobile-top-header-logo-img {
-    height: 36px;
+    height: 48px;        /* ← increased size */
     width: auto;
     object-fit: contain;
     display: block;
@@ -482,16 +484,15 @@
 
   .mobile-hamburger {
     background: transparent;
-    border: 1px dashed rgba(255, 255, 255, 0.4);
+    border: none;        /* ← cleaner look */
     color: #fff;
     cursor: pointer;
-    padding: 6px;
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 36px;
-    min-width: 36px;
-    border-radius: 4px;
+    min-height: 40px;
+    min-width: 40px;
   }
 
   /* Main content */
@@ -529,13 +530,11 @@
     width: 100%;
   }
 
-  /* Flatten left/right so children participate in parent order */
   .module-left,
   .module-right {
     display: contents;
   }
 
-  /* Force full width so centered text sits in true middle */
   .module-image-wrap,
   .module-overview-card,
   .module-card {
@@ -543,7 +542,6 @@
     box-sizing: border-box;
   }
 
-  /* Reorder: image → overview → module content → objectives */
   .module-image-wrap {
     order: 1;
     height: 200px;
@@ -558,7 +556,6 @@
     text-align: center;
   }
 
-  /* Module Content card BEFORE Objectives */
   .module-right .module-card:nth-child(2) {
     order: 3;
   }
@@ -579,7 +576,6 @@
     margin-bottom: 16px;
   }
 
-  /* Force centered text inside overview card */
   .module-overview-card .module-heading,
   .module-overview-card .module-body,
   .module-overview-card .module-program-label {
@@ -587,7 +583,6 @@
     width: 100%;
   }
 
-  /* Module Content items — centered */
   .module-content-list {
     align-items: center;
   }
@@ -597,7 +592,6 @@
     font-size: 15px;
   }
 
-  /* Objectives — bullets left-aligned but list centered as a block */
   .module-card-list {
     text-align: left;
     display: inline-flex;
@@ -605,7 +599,6 @@
     margin: 0 auto;
   }
 
-  /* Headings */
   .module-heading {
     font-size: 20px !important;
     line-height: 1.3;
@@ -617,7 +610,6 @@
     text-align: center;
   }
 
-  /* Navigation buttons */
   .module-nav-buttons {
     flex-direction: column-reverse;
     gap: 8px;
@@ -628,7 +620,6 @@
     justify-content: center;
   }
 
-  /* Video player */
   .video-player-wrap {
     max-width: 100% !important;
     border-radius: 12px;
