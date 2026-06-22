@@ -81,7 +81,9 @@ export default function VideoLessonPage({
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+       <div className="mobile-top-header-logo">
+  <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+</div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu"><HamburgerIcon /></button>
       </div>
       <div className={`mobile-overlay ${mobileMenuOpen ? "open" : ""}`} onClick={() => setMobileMenuOpen(false)} />
