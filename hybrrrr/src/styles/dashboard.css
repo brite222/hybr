@@ -886,3 +886,202 @@
     font-size: 13px;
   }
 }
+
+
+/* ════════════════════════════════════════════════════════════
+   FINAL OVERRIDE — Top/Bottom "View All" buttons & mobile layout
+   (placed at end of file for highest precedence)
+   ════════════════════════════════════════════════════════════ */
+
+/* Desktop default for top-right View All */
+.dash-section-link-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #F5F5F5;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  margin-left: auto;
+}
+
+.dash-section-link-top:hover {
+  background: #e8e8e8;
+}
+
+/* Bottom pill — hidden on desktop */
+.dash-section-link-bottom {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MOBILE OVERRIDE (768px and below)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* WELCOME HERO — ring on top, text centered below */
+  .student-hero {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 28px 24px !important;
+    gap: 16px !important;
+  }
+
+  .student-hero-content {
+    text-align: center !important;
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  .student-hero-title {
+    font-size: 20px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+
+  .student-hero-text {
+    font-size: 13px !important;
+    text-align: center !important;
+  }
+
+  /* KICK-OFF */
+  .kickoff-banner {
+    padding: 12px 16px !important;
+    gap: 10px !important;
+  }
+
+  .kickoff-title {
+    font-size: 16px !important;
+  }
+
+  .kickoff-emoji {
+    font-size: 20px !important;
+  }
+
+  /* SECTION CARDS — centered */
+  .dash-section-card {
+    padding: 24px 20px !important;
+    text-align: center;
+  }
+
+  /* HIDE top-right buttons on mobile */
+  .dash-section-link-top,
+  .dash-section-link {
+    display: none !important;
+  }
+
+  /* Header centered */
+  .dash-section-header {
+    justify-content: center !important;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .dash-section-title {
+    flex: none !important;
+    font-size: 18px !important;
+    text-align: center;
+  }
+
+  .dash-section-sub {
+    text-align: center !important;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  /* SHOW bottom VIEW ALL pill */
+  .dash-section-link-bottom {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin: 20px auto 0;
+    padding: 10px 24px;
+    background: #F5F5F5;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #000;
+    min-width: 140px;
+  }
+
+  /* COURSE HERO CARD — centered, ring on TOP */
+  .course-hero-card {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 28px 24px !important;
+    min-height: auto !important;
+    gap: 14px !important;
+  }
+
+  .course-hero-ring {
+    order: 1 !important;
+  }
+
+  .course-hero-content {
+    order: 2 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .course-hero-status {
+    text-align: center !important;
+    font-size: 11px !important;
+    letter-spacing: 1.8px !important;
+  }
+
+  .course-hero-title {
+    font-size: 20px !important;
+    text-align: center !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .course-hero-icon {
+    order: -1 !important;
+  }
+
+  .course-hero-sub {
+    font-size: 13px !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievements-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+  }
+
+  .achievement-item {
+    padding: 18px 12px;
+    text-align: center;
+  }
+
+  .achievement-icon {
+    font-size: 36px !important;
+  }
+
+  .achievement-name {
+    font-size: 15px;
+  }
+
+  .achievement-desc {
+    font-size: 12px;
+  }
+}
