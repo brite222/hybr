@@ -7,6 +7,7 @@ import "../styles/module.css";
 import "../styles/quiz-lesson.css";
 import lessonBannerBg from "../assets/images/lesson-banner-bg.jpg";
 import axios from "axios";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const ClockIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>);
 const RetakeIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10" /><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" /></svg>);
@@ -82,7 +83,9 @@ export default function QuizLessonPage({
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+       <div className="mobile-top-header-logo">
+  <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+</div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu"><HamburgerIcon /></button>
       </div>
       <div className={`mobile-overlay ${mobileMenuOpen ? "open" : ""}`} onClick={() => setMobileMenuOpen(false)} />
