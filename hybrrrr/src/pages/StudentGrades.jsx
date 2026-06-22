@@ -155,11 +155,10 @@ export default function StudentGrades() {
     return a.weekNumber - b.weekNumber;
   });
 
+  // ✅ FIXED: Always navigate to detail page (submitted OR not)
   const handleRowClick = (weekNum, assignment) => {
-    if (assignment.submission) {
-      const path = `/my-grades/${weekNum}/${assignment.lessonId}`.replace(/\/+/g, '/');
-      navigate(path);
-    }
+    const path = `/my-grades/${weekNum}/${assignment.lessonId}`.replace(/\/+/g, '/');
+    navigate(path);
   };
 
   return (
@@ -261,7 +260,7 @@ export default function StudentGrades() {
                               key={a.lessonId}
                               className="grades-assignment-row"
                               onClick={() => handleRowClick(week.weekNumber, a)}
-                              style={{ cursor: isSubmitted ? "pointer" : "default" }}
+                              style={{ cursor: "pointer" }}  // ✅ FIXED: always pointer
                             >
                               <div className="grades-assignment-title">{a.title}</div>
                               <div className="grades-assignment-status">
