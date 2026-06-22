@@ -7,6 +7,8 @@ import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
 import "../styles/dashboard.css";
 import courseThumb from "../assets/images/hand.png";
+import alphaLogo from "../assets/images/alpha-loggo.png";
+
 // ── Icons ────────
 const HamburgerIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -32,6 +34,12 @@ const TrophyIcon = () => (
     <path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
     <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
     <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+  </svg>
+);
+const EyeIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+    <circle cx="12" cy="12" r="3" />
   </svg>
 );
 
@@ -114,7 +122,6 @@ export default function DashboardPage() {
     ])
       .then(([programRes, badgesRes]) => {
         setProgram(programRes.data);
-        // Get 3 most recent earned achievements
         const earned = badgesRes.data.earned || badgesRes.data || [];
         setAchievements(earned.slice(0, 3));
       })
@@ -125,14 +132,12 @@ export default function DashboardPage() {
   const currentWeek = program?.currentWeek || 1;
   const currentWeekData = CURRICULUM[currentWeek];
   const daysSinceStart = program?.daysSinceStart ?? 0;
-  const hasStarted = daysSinceStart >= 7; // past Week 1
+  const hasStarted = daysSinceStart >= 7;
 
-  // Overall lesson completion across all 8 weeks
   const totalCompleted = program?.weeks?.reduce((sum, w) => sum + (w.completedCount || 0), 0) || 0;
   const totalLessons = (program?.weeks?.length || 8) * 8;
   const overallProgress = totalLessons > 0 ? Math.round((totalCompleted / totalLessons) * 100) : 0;
 
-  // Current week progress (for top bar)
   const currentWeekFromProgram = program?.weeks?.find(w => w.weekNumber === currentWeek);
   const currentWeekCompletedCount = currentWeekFromProgram?.completedCount || 0;
   const currentWeekTotalLessons = currentWeekData?.lessons?.length || 0;
@@ -140,29 +145,19 @@ export default function DashboardPage() {
     ? Math.round((currentWeekCompletedCount / currentWeekTotalLessons) * 100)
     : 0;
 
-  // Format kickoff date
   const formatKickoffDate = () => {
     if (!program?.cohort?.startDate) return "";
     const date = new Date(program.cohort.startDate);
     return date.toLocaleDateString("en-US", { month: "long", day: "numeric" }).toUpperCase();
   };
 
-  // Course status — derived from overall progress
-  const getCourseStatus = () => {
-    if (overallProgress >= 100) return { type: "complete", text: "COMPLETE" };
-    return { type: "in-progress", text: "IN PROGRESS" };
-  };
-  const getTrackStatus = () => {
-    return overallProgress >= 75
-      ? { type: "on-track", text: "ON TRACK" }
-      : { type: "off-track", text: "OFF TRACK" };
-  };
-
   return (
     <div className="module-page">
       {/* Mobile header */}
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
         <button
           className="mobile-hamburger"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -233,62 +228,70 @@ export default function DashboardPage() {
               </div>
             )}
 
-           {/* ── MY COURSES CARD ── */}
-<div className="dash-section-card">
-  <div className="dash-section-header">
-    <BookIcon />
-    <h2 className="dash-section-title">My Courses</h2>
-    <button
-      className="dash-section-link"
-      onClick={() => navigate("/courses/overview")}
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: 6,
-        padding: "8px 16px",
-        background: "#F5F5F5",
-        border: "none",
-        borderRadius: 100,
-        cursor: "pointer",
-        fontFamily: "Montserrat, sans-serif",
-        fontSize: 12,
-        fontWeight: 600,
-        letterSpacing: 1,
-        textTransform: "uppercase",
-        color: "#000",
-      }}
-    >
-      View All
-    </button>
-  </div>
-  <p className="dash-section-sub">
-    Your enrolled programs and current standing.
-  </p>
+            {/* ── MY COURSES CARD ── */}
+            <div className="dash-section-card">
+              <div className="dash-section-header">
+                <BookIcon />
+                <h2 className="dash-section-title">My Courses</h2>
+                <button
+                  className="dash-section-link"
+                  onClick={() => navigate("/courses/overview")}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                    padding: "8px 16px",
+                    background: "#F5F5F5",
+                    border: "none",
+                    borderRadius: 100,
+                    cursor: "pointer",
+                    fontFamily: "Montserrat, sans-serif",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    letterSpacing: 1,
+                    textTransform: "uppercase",
+                    color: "#000",
+                  }}
+                >
+                  View All
+                </button>
+              </div>
+              <p className="dash-section-sub">
+                Your enrolled programs and current standing.
+              </p>
 
-  {/* ── HERO COURSE CARD with background image ── */}
-  <div
-    className="course-hero-card"
-    onClick={() => navigate("/courses/overview")}
-    style={{ backgroundImage: `url(${courseThumb})` }}
-  >
-    <div className="course-hero-overlay" />
-    <div className="course-hero-content">
-      <div className="course-hero-status">
-        {overallProgress >= 100 ? "COMPLETE" : "IN PROGRESS"}
-      </div>
-      <h3 className="course-hero-title">
-        {program?.cohort?.name || "ALPHA 2026 Summer"}
-        <span className="course-hero-icon"><GradCapIcon /></span>
-      </h3>
-      <p className="course-hero-sub">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      </p>
-    </div>
-    <div className="course-hero-ring">
-      <ProgressRing percent={overallProgress} size={90} strokeWidth={8} dark color="#8DC540" />
-    </div>
-  </div>
-</div>
+              {/* ── HERO COURSE CARD with background image ── */}
+              <div
+                className="course-hero-card"
+                onClick={() => navigate("/courses/overview")}
+                style={{ backgroundImage: `url(${courseThumb})` }}
+              >
+                <div className="course-hero-overlay" />
+                <div className="course-hero-content">
+                  <div className="course-hero-status">
+                    {overallProgress >= 100 ? "COMPLETE" : "IN PROGRESS"}
+                  </div>
+                  <h3 className="course-hero-title">
+                    {program?.cohort?.name || "ALPHA 2026 Summer"}
+                    <span className="course-hero-icon"><GradCapIcon /></span>
+                  </h3>
+                  <p className="course-hero-sub">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+                <div className="course-hero-ring">
+                  <ProgressRing percent={overallProgress} size={90} strokeWidth={8} dark color="#8DC540" />
+                </div>
+              </div>
+
+              {/* Mobile-only bottom VIEW ALL pill */}
+              <button
+                className="dash-section-link-bottom"
+                onClick={() => navigate("/courses/overview")}
+              >
+                <EyeIcon /> VIEW ALL
+              </button>
+            </div>
 
             {/* ── MY ACHIEVEMENTS CARD ── */}
             <div className="dash-section-card">
@@ -326,6 +329,14 @@ export default function DashboardPage() {
                   ))}
                 </div>
               )}
+
+              {/* Mobile-only bottom VIEW ALL pill */}
+              <button
+                className="dash-section-link-bottom"
+                onClick={() => navigate("/achievements")}
+              >
+                <EyeIcon /> VIEW ALL
+              </button>
             </div>
           </>
         )}

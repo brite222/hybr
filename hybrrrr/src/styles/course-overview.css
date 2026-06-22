@@ -225,33 +225,139 @@
   text-transform: uppercase;
 }
 
-/* ── Mobile ── */
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below) — Match prototype
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  /* ── Week card padding ── */
   .course-week-card {
-    padding: 20px;
+    padding: 24px 20px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* ── Week header — STACK vertically, ring on TOP centered ── */
+  .course-week-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  /* Reorder: ring first (top), then label/title/sub */
+  .course-week-header > div:first-child {
+    order: 2;
+    width: 100%;
+  }
+
+  .course-week-header > div:last-child,
+  .course-week-header > div + div {
+    order: 1;
+  }
+
+  /* Center label, title row, sub */
+  .course-week-label,
+  .course-week-label-dark {
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 1.6px;
+  }
+
+  .course-week-title-row {
+    justify-content: center;
   }
 
   .course-week-title,
   .course-week-title-dark {
     font-size: 22px;
+    text-align: center;
   }
 
+  .course-week-sub,
+  .course-week-sub-dark {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  /* ── Module Breakdown header — centered ── */
+  .module-breakdown {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+
+  .module-breakdown-header {
+    justify-content: center;
+  }
+
+  .breakdown-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .breakdown-sub {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  /* ── Lesson row → VERTICAL STACKED CARD ── */
   .lesson-row-card,
   .lesson-row-dark {
-    grid-template-columns: 24px 24px 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 10px;
-    padding: 12px;
+    padding: 18px 16px;
+    border-radius: 12px;
+    margin-bottom: 10px;
   }
 
+  /* Check icon on top, centered */
+  .lesson-row-check {
+    order: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Icon + name on the same row */
+  .lesson-row-icon {
+    order: 2;
+    display: inline-flex;
+    margin-right: 4px;
+  }
+
+  .lesson-row-name,
+  .lesson-row-name-dark {
+    order: 3;
+    font-size: 15px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Combine icon + name visually by placing them side by side */
+  .lesson-row-icon + .lesson-row-name,
+  .lesson-row-icon + .lesson-row-name-dark {
+    display: inline-flex;
+  }
+
+  /* Duration on its own row, centered */
   .lesson-row-duration,
   .lesson-row-duration-dark {
-    grid-column: 2 / 4;
-    padding-left: 38px;
-    margin-top: 2px;
+    order: 4;
+    justify-content: center;
+    font-size: 12px;
+    padding-left: 0;
+    margin-top: 0;
   }
 
-  .lesson-row-card span,
-  .lesson-row-dark span {
-    grid-column: 2 / 4;
+  /* Status pill — full width at bottom */
+  .lesson-row-card > span:last-child,
+  .lesson-row-dark > span:last-child {
+    order: 5;
+    width: 100%;
+    padding: 8px 12px !important;
+    margin-top: 4px;
   }
 }

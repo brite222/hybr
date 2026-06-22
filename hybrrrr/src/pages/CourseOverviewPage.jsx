@@ -6,6 +6,7 @@ import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
 import "../styles/dashboard.css";
 import "../styles/course-overview.css";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 // ── Icons ──
 const HamburgerIcon = () => (
@@ -233,7 +234,9 @@ const allWeeks = Object.values(CURRICULUM).map(week => {
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+       <div className="mobile-top-header-logo">
+  <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+</div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
           <HamburgerIcon />
         </button>
