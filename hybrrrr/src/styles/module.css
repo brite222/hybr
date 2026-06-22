@@ -461,7 +461,7 @@
     top: 0;
     z-index: 998;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border: 2px dashed #4FC2F0;
+    
     border-radius: 4px;
     margin: 8px;
   }
@@ -472,13 +472,13 @@
     font-weight: 700;
     letter-spacing: 2px;
     color: #fff;
-    border: 1px dashed rgba(255,255,255,0.4);
+    border: 1px dashed rgba(255, 255, 255, 0.4);
     padding: 4px 12px;
   }
 
   .mobile-hamburger {
     background: transparent;
-    border: 1px dashed rgba(255,255,255,0.4);
+    border: 1px dashed rgba(255, 255, 255, 0.4);
     color: #fff;
     cursor: pointer;
     padding: 6px;
@@ -517,23 +517,29 @@
     max-width: none;
   }
 
-  /* ── CONTENT GRID → single column ── */
+  /* ── CONTENT GRID → single column, full width ── */
   .module-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    width: 100%;
+  }
+
+  /* Flatten left/right so children participate in parent order */
+  .module-left,
+  .module-right {
+    display: contents;
+  }
+
+  /* Force full width so centered text sits in true middle */
+  .module-image-wrap,
+  .module-overview-card,
+  .module-card {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   /* Reorder: image → overview → module content → objectives */
-  .module-left {
-    display: contents;
-  }
-
-  .module-right {
-    display: contents;
-    position: static;
-  }
-
   .module-image-wrap {
     order: 1;
     height: 200px;
@@ -569,6 +575,14 @@
     margin-bottom: 16px;
   }
 
+  /* Force centered text inside overview card */
+  .module-overview-card .module-heading,
+  .module-overview-card .module-body,
+  .module-overview-card .module-program-label {
+    text-align: center;
+    width: 100%;
+  }
+
   /* Module Content items — centered */
   .module-content-list {
     align-items: center;
@@ -579,7 +593,7 @@
     font-size: 15px;
   }
 
-  /* Objectives — bulleted list left-aligned inside centered card */
+  /* Objectives — bullets left-aligned but list centered as a block */
   .module-card-list {
     text-align: left;
     display: inline-flex;
@@ -610,7 +624,7 @@
     justify-content: center;
   }
 
-  /* Video player — MOVED INSIDE the media query */
+  /* Video player */
   .video-player-wrap {
     max-width: 100% !important;
     border-radius: 12px;
@@ -619,7 +633,7 @@
   .video-player {
     height: 220px !important;
   }
-} /* ← closing brace for @media (max-width: 768px) */
+}
 
 /* ════════════════════════════════════════════════════════════
    SMALL MOBILE (480px and below)
