@@ -4,6 +4,7 @@ import { useContent, getMediaUrl } from "../hooks/useContent";
 import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
 import handImg from "../assets/images/hand.png";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const PencilIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>);
 const VideoIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="14" height="12" rx="2" /><path d="M22 8l-6 4 6 4V8z" /></svg>);
@@ -33,7 +34,9 @@ export default function ModulePage({
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu"><HamburgerIcon /></button>
       </div>
       <div className={`mobile-overlay ${mobileMenuOpen ? "open" : ""}`} onClick={() => setMobileMenuOpen(false)} />
@@ -81,25 +84,25 @@ export default function ModulePage({
         )}
 
         <div className="module-nav-buttons">
-  <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
-    <ArrowLeft />
-   <span className="nav-btn-text">
-  {hasPrev ? "Previous" : "Back to Course"}
-  {hasPrev && prevLessonTitle && (
-    <span className="nav-btn-detail">: {prevLessonTitle}</span>
-  )}
-</span>
-  </button>
-  <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
-   <span className="nav-btn-text">
-  {hasNext ? "Next" : "Back to Course"}
-  {hasNext && nextLessonTitle && (
-    <span className="nav-btn-detail">: {nextLessonTitle}</span>
-  )}
-</span>
-    <ArrowRight />
-  </button>
-</div>
+          <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
+            <ArrowLeft />
+            <span className="nav-btn-text">
+              {hasPrev ? "Previous" : "Back to Course"}
+              {hasPrev && prevLessonTitle && (
+                <span className="nav-btn-detail">: {prevLessonTitle}</span>
+              )}
+            </span>
+          </button>
+          <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
+            <span className="nav-btn-text">
+              {hasNext ? "Next" : "Back to Course"}
+              {hasNext && nextLessonTitle && (
+                <span className="nav-btn-detail">: {nextLessonTitle}</span>
+              )}
+            </span>
+            <ArrowRight />
+          </button>
+        </div>
       </main>
     </div>
   );

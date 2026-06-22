@@ -449,7 +449,7 @@
    MOBILE (768px and below) — UPDATED TO MATCH PROTOTYPE
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* Mobile header with blue dashed border around ALPHA logo */
+  /* Mobile header */
   .mobile-top-header {
     display: flex !important;
     align-items: center;
@@ -461,18 +461,23 @@
     top: 0;
     z-index: 998;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    
     border-radius: 4px;
     margin: 8px;
   }
 
+  /* Logo wrapper */
   .mobile-top-header-logo {
-    font-family: "Raleway", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #fff;
+    display: flex;
+    align-items: center;
     padding: 4px 12px;
+  }
+
+  /* The actual ALPHA logo image */
+  .mobile-top-header-logo-img {
+    height: 36px;
+    width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .mobile-hamburger {
