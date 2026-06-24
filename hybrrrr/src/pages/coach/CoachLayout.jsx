@@ -81,7 +81,9 @@ export default function CoachLayout({ children }) {
     <div className="coach-page">
       {/* Mobile top header */}
       <div className="coach-mobile-header">
-        <div className="coach-mobile-header-logo">ALPHA</div>
+        <div className="coach-mobile-header-logo">
+  <img src={alphaLogo} alt="ALPHA by HYBR" className="coach-mobile-header-logo-img" />
+</div>
         <button
           className="coach-mobile-hamburger"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

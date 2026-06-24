@@ -648,58 +648,113 @@
 
 .coach-mobile-header { display: none; }
 
+/* Mobile overlay — invisible by default, becomes clickable on .open */
+.coach-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 999;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.coach-mobile-overlay.open {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
 @media (max-width: 1024px) {
   .coach-dashboard-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
+  /* ── Mobile top header — full width black bar with ALPHA logo ── */
   .coach-mobile-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #000;
     color: #fff;
-    padding: 14px 20px;
+    padding: 16px 20px;
     position: sticky;
     top: 0;
     z-index: 998;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    box-sizing: border-box;
   }
+
+  /* Logo wrapper */
   .coach-mobile-header-logo {
-    font-family: "Raleway", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0;
   }
+
+  /* The actual ALPHA logo image */
+  .coach-mobile-header-logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
   .coach-mobile-hamburger {
-    background: transparent; border: none; color: #fff; cursor: pointer; padding: 8px;
-    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    min-width: 40px;
   }
 
+  /* ── Sidebar drawer behavior ── */
   .coach-sidebar {
-    position: fixed; left: -100%; top: 0; height: 100vh; width: 280px;
-    transition: left 0.3s ease; z-index: 1000;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.3); border-radius: 0;
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100vh;
+    width: 280px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    overflow-y: auto;
   }
-  .coach-sidebar.open { left: 0; }
 
-  .coach-mobile-overlay {
-    display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.5); z-index: 999;
+  .coach-sidebar.open {
+    left: 0;
   }
-  .coach-mobile-overlay.open { display: block; }
 
-  .coach-main { margin-left: 0 !important; padding: 20px !important; }
+  /* ── Main content — full width, no left margin ── */
+  .coach-page {
+    flex-direction: column;
+  }
 
+  .coach-main {
+    margin-left: 0 !important;
+    padding: 20px !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Typography */
   .coach-greeting { font-size: 22px !important; }
   .coach-subgreeting { font-size: 13px; }
 
+  /* Stats grid */
   .coach-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .coach-stat-card { padding: 14px; }
   .coach-stat-value { font-size: 22px; }
   .coach-stat-icon { width: 40px; height: 40px; }
 
+  /* Hero */
   .coach-hero { padding: 20px; flex-direction: column; align-items: stretch; }
   .coach-hero-actions { flex-direction: column; }
   .coach-hero-btn { justify-content: center; }
@@ -710,17 +765,4 @@
 @media (max-width: 480px) {
   .coach-stats { grid-template-columns: 1fr; }
   .coach-greeting { font-size: 20px !important; }
-}
-
-/* Force number input arrows to always show */
-.always-show-arrows::-webkit-inner-spin-button,
-.always-show-arrows::-webkit-outer-spin-button {
-  opacity: 1;
-  -webkit-appearance: inner-spin-button;
-  margin: 0;
-  cursor: pointer;
-}
-
-.always-show-arrows {
-  -moz-appearance: number-input;
 }
