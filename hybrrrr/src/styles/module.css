@@ -72,9 +72,8 @@
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 4px;           
+  gap: 4px;
   padding: 8px 12px;
-  
 }
 
 .sidebar-link {
@@ -124,7 +123,7 @@
   gap: 12px;
   padding: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: auto;      /* ← THIS pushes user block to the bottom */
+  margin-top: auto;
   color: #FFFFFF;
 }
 
@@ -417,9 +416,25 @@
    MOBILE ELEMENTS — Hidden on desktop
    ════════════════════════════════════════════════════════════ */
 
-.mobile-top-header,
+.mobile-top-header {
+  display: none;
+}
+
+/* Mobile overlay — invisible by default, becomes visible+clickable on .open */
 .mobile-overlay {
   display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 999;
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+
+.mobile-overlay.open {
+  display: block;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -449,6 +464,24 @@
    MOBILE (768px and below) — UPDATED TO MATCH PROTOTYPE
    ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
+  /* ── Sidebar drawer behavior (works for BOTH .module-sidebar and .dashboard-sidebar) ── */
+  .module-sidebar,
+  .dashboard-sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    z-index: 1000 !important;
+    transition: left 0.3s ease;
+    border-radius: 0;
+  }
+
+  .module-sidebar.open,
+  .dashboard-sidebar.open {
+    left: 0;
+  }
+
   /* Mobile header — FULL WIDTH, no margin */
   .mobile-top-header {
     display: flex !important;
@@ -461,8 +494,8 @@
     top: 0;
     z-index: 998;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    margin: 0;           /* ← removed margin */
-    border-radius: 0;    /* ← removed radius for full edge-to-edge */
+    margin: 0;
+    border-radius: 0;
     width: 100%;
     box-sizing: border-box;
   }
@@ -476,7 +509,7 @@
 
   /* The actual ALPHA logo image — bigger */
   .mobile-top-header-logo-img {
-    height: 48px;        /* ← increased size */
+    height: 48px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -484,7 +517,7 @@
 
   .mobile-hamburger {
     background: transparent;
-    border: none;        /* ← cleaner look */
+    border: none;
     color: #fff;
     cursor: pointer;
     padding: 8px;
