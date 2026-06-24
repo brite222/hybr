@@ -193,51 +193,19 @@ export default function CoachGrading() {
   return (
     <CoachLayout>
       {/* ── TOP PROGRESS BAR ── */}
-      <div style={{
-        background: "#fff",
-        borderRadius: 12,
-        padding: "20px 28px",
-        display: "flex",
-        alignItems: "center",
-        marginBottom: 24,
-        boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-        gap: 32,
-        minHeight: 60,
-      }}>
-        <div style={{
-          display: "flex", alignItems: "center", gap: 10,
-          fontFamily: "Montserrat, sans-serif",
-          flexShrink: 0, whiteSpace: "nowrap",
-        }}>
-          <span style={{ fontWeight: 700, fontSize: 14, letterSpacing: 1.5, color: "#000" }}>
-            WEEK {currentWeek}
-          </span>
-          <span style={{ color: "#ccc", fontSize: 16 }}>•</span>
-          <span style={{
-            fontWeight: 600, fontSize: 14, letterSpacing: 1.5,
-            textTransform: "uppercase", color: "#000",
-          }}>
-            {CURRICULUM[currentWeek]?.title || "Week"} PHASE
-          </span>
-        </div>
-
-        <div style={{
-          flex: 1, height: 10, background: "#e5e5e5",
-          borderRadius: 5, overflow: "hidden", minWidth: 100,
-        }}>
-          <div style={{
-            height: "100%", background: "#8DC540", borderRadius: 5,
-            width: `${avgProgress}%`, transition: "width 0.5s ease",
-          }} />
-        </div>
-
-        <span style={{
-          fontFamily: "Montserrat, sans-serif", fontWeight: 700, fontSize: 16,
-          minWidth: 50, textAlign: "right", color: "#000", flexShrink: 0,
-        }}>
-          {avgProgress}%
-        </span>
-      </div>
+<div className="coach-topbar">
+  <div className="coach-topbar-label">
+    <span>WEEK {currentWeek}</span>
+    <span className="coach-topbar-dot">•</span>
+    <span>{CURRICULUM[currentWeek]?.title?.toUpperCase() || "WEEK"} PHASE</span>
+  </div>
+  <div className="coach-topbar-progress">
+    <div className="coach-topbar-bar">
+      <div className="coach-topbar-fill" style={{ width: `${avgProgress}%` }} />
+    </div>
+    <span className="coach-topbar-percent">{avgProgress}%</span>
+  </div>
+</div>
 
       {loading ? (
         <div className="coach-loading">Loading...</div>
