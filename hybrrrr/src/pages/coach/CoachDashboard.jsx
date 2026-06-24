@@ -260,61 +260,20 @@ export default function CoachDashboard() {
 
   return (
     <CoachLayout>
-      {/* ── TOP PROGRESS BAR ── */}
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        background: "#EDEDED",
-        borderRadius: 16,
-        padding: "20px 32px",
-        marginBottom: 16,
-        gap: 24,
-      }}>
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          fontFamily: "Montserrat, sans-serif",
-          fontWeight: 600,
-          fontSize: 14,
-          letterSpacing: 1.5,
-          textTransform: "uppercase",
-          color: "#000",
-          flexShrink: 0,
-        }}>
-          <span>WEEK {currentWeek}</span>
-          <span>•</span>
-          <span>{currentWeekData?.title?.toUpperCase() || ""} PHASE</span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16, flex: 1 }}>
-          <div style={{
-            flex: 1,
-            height: 8,
-            background: "#C8C8C8",
-            borderRadius: 999,
-            overflow: "hidden",
-          }}>
-            <div style={{
-              height: "100%",
-              background: "#8DC540",
-              borderRadius: 999,
-              width: `${studentAvg}%`,
-              transition: "width 0.5s ease",
-            }} />
-          </div>
-          <span style={{
-            fontFamily: "Montserrat, sans-serif",
-            fontWeight: 700,
-            fontSize: 14,
-            minWidth: 40,
-            textAlign: "right",
-            color: "#000",
-          }}>
-            {studentAvg}%
-          </span>
-        </div>
-      </div>
+    {/* ── TOP PROGRESS BAR ── */}
+<div className="coach-topbar">
+  <div className="coach-topbar-label">
+    <span>WEEK {currentWeek}</span>
+    <span className="coach-topbar-dot">•</span>
+    <span>{currentWeekData?.title?.toUpperCase() || ""} PHASE</span>
+  </div>
+  <div className="coach-topbar-progress">
+    <div className="coach-topbar-bar">
+      <div className="coach-topbar-fill" style={{ width: `${studentAvg}%` }} />
+    </div>
+    <span className="coach-topbar-percent">{studentAvg}%</span>
+  </div>
+</div>
 
       {loading ? (
         <div style={{ padding: 80, textAlign: "center", color: "#666" }}>
