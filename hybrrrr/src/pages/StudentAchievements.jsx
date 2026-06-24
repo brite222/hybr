@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api from "../api/axios";
 import StudentSidebar from "../components/StudentSidebar";
+import "../styles/module.css";
 import "../styles/dashboard.css";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 // ── Icons ────────
 const HamburgerIcon = () => (
@@ -36,17 +38,22 @@ export default function StudentAchievements() {
   const myRank = leaderboard.findIndex(s => s.id === user?.id) + 1;
 
   return (
-    <div className="dashboard-page">
-      {/* ✅ Mobile menu button */}
-      <button
-        className="mobile-menu-btn"
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        aria-label="Toggle menu"
-      >
-        <HamburgerIcon />
-      </button>
+    <div className="module-page">
+      {/* ── MOBILE HEADER (consistent with other pages) ── */}
+      <div className="mobile-top-header">
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
+        <button
+          className="mobile-hamburger"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <HamburgerIcon />
+        </button>
+      </div>
 
-      {/* ✅ Mobile overlay */}
+      {/* Mobile overlay */}
       <div
         className={`mobile-overlay ${mobileMenuOpen ? "open" : ""}`}
         onClick={() => setMobileMenuOpen(false)}
@@ -59,7 +66,7 @@ export default function StudentAchievements() {
       />
 
       {/* ── MAIN ── */}
-      <main className="dashboard-main">
+      <main className="module-main">
         <header className="dashboard-header">
           <div>
             <h1 className="dashboard-greeting">Achievements 🏆</h1>
@@ -228,6 +235,7 @@ export default function StudentAchievements() {
                   return (
                     <div
                       key={student.id}
+                      className="leaderboard-row"
                       style={{
                         display: "grid",
                         gridTemplateColumns: "60px 1fr 100px 80px 80px",

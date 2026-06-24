@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
+import alphaLogo from "../assets/images/alpha-loggo.png";
 
 const HamburgerIcon = () => (
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -16,7 +17,9 @@ export default function ResourcesPage() {
   return (
     <div className="module-page">
       <div className="mobile-top-header">
-        <div className="mobile-top-header-logo">ALPHA</div>
+        <div className="mobile-top-header-logo">
+          <img src={alphaLogo} alt="ALPHA by HYBR" className="mobile-top-header-logo-img" />
+        </div>
         <button className="mobile-hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
           <HamburgerIcon />
         </button>
