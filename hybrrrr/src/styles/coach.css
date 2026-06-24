@@ -22,14 +22,16 @@
   border-radius: 0 16px 16px 0;
   overflow-y: auto;
 }
+
 .sidebar-logo-img {
   width: 80px;
   height: auto;
   display: block;
   margin: 0 auto;
   object-fit: contain;
-  mix-blend-mode: screen;  
+  mix-blend-mode: screen;
 }
+
 .coach-sidebar-logo {
   padding: 0 24px 32px;
   text-align: center;
@@ -57,7 +59,7 @@
   height: 14px;
 }
 
-/* ── Nav — packed tight at top (no flex:1) ── */
+/* ── Nav ── */
 .coach-nav {
   padding: 16px;
   display: flex;
@@ -94,14 +96,14 @@
   font-weight: 600;
 }
 
-/* ── User block — pinned to bottom + clickable ── */
+/* ── User block ── */
 .coach-user {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 16px;
   border-top: 1px solid #222;
-  margin-top: auto;            /* ← pushes to bottom */
+  margin-top: auto;
   color: #fff;
   transition: background 0.2s;
 }
@@ -119,7 +121,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  overflow: hidden;            /* ← keeps uploaded img circular */
+  overflow: hidden;
 }
 
 .coach-user-info {
@@ -146,7 +148,6 @@
   margin-top: 2px;
 }
 
-/* ── Logout button — pill style with icon ── */
 .coach-logout {
   display: inline-flex;
   align-items: center;
@@ -162,8 +163,8 @@
   cursor: pointer;
   transition: background 0.2s;
   flex-shrink: 0;
-  width: auto;                 /* ← overrides old 100% width */
-  margin-top: 0;               /* ← overrides old margin */
+  width: auto;
+  margin-top: 0;
 }
 
 .coach-logout:hover {
@@ -180,6 +181,69 @@
   flex: 1;
   margin-left: 240px;
   padding: 32px 40px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   COACH TOP PROGRESS BAR (shared across all coach pages)
+   ════════════════════════════════════════════════════════════ */
+.coach-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EDEDED;
+  border-radius: 16px;
+  padding: 20px 32px;
+  margin-bottom: 16px;
+  gap: 24px;
+}
+
+.coach-topbar-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.coach-topbar-dot {
+  opacity: 0.5;
+}
+
+.coach-topbar-progress {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  max-width: 600px;
+}
+
+.coach-topbar-bar {
+  flex: 1;
+  height: 8px;
+  background: #C8C8C8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.coach-topbar-fill {
+  height: 100%;
+  background: #8DC540;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+.coach-topbar-percent {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: right;
+  color: #000;
 }
 
 /* ── HEADER ── */
@@ -201,7 +265,7 @@
   margin-top: 6px;
 }
 
-/* ── STATS GRID — polished with icons ── */
+/* ── STATS GRID ── */
 .coach-stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -309,15 +373,8 @@
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
-.coach-hero-btn.primary {
-  background: #8DC540;
-  color: #000;
-}
-
-.coach-hero-btn.secondary {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-}
+.coach-hero-btn.primary { background: #8DC540; color: #000; }
+.coach-hero-btn.secondary { background: rgba(255, 255, 255, 0.15); color: #fff; }
 
 .coach-hero-btn:hover {
   transform: translateY(-1px);
@@ -471,7 +528,7 @@
   transition: width 0.4s ease;
 }
 
-/* ── EMPTY STATE INSIDE PANEL ── */
+/* ── EMPTY STATE ── */
 .coach-empty-mini {
   text-align: center;
   padding: 32px 16px;
@@ -555,9 +612,74 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   MY STUDENTS PAGE
+   COACH STUDENTS PAGE — Two-column layout
    ════════════════════════════════════════════════════════════ */
+.coach-content {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
 
+.coach-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.coach-right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+
+.coach-info-card {
+  background: #fff;
+  border: 1px solid #EDEDED;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.coach-info-card-title {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 0 12px 0;
+  color: #000;
+}
+
+.coach-info-card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.coach-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coach-content-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #000;
+}
+
+.coach-content-item svg {
+  color: #4FC2F0;
+  flex-shrink: 0;
+}
+
+/* ── TIER SECTIONS ── */
 .tier-section { margin-bottom: 32px; }
 
 .tier-label {
@@ -643,7 +765,7 @@
 }
 
 /* ════════════════════════════════════════════════════════════
-   MOBILE
+   MOBILE — Hidden by default on desktop
    ════════════════════════════════════════════════════════════ */
 
 .coach-mobile-header { display: none; }
@@ -665,10 +787,18 @@
   pointer-events: auto;
 }
 
+/* ════════════════════════════════════════════════════════════
+   TABLET (1024px and below)
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .coach-dashboard-grid { grid-template-columns: 1fr; }
+  .coach-content { grid-template-columns: 1fr; }
+  .coach-right { position: static; }
 }
 
+/* ════════════════════════════════════════════════════════════
+   MOBILE (768px and below) — Match prototype
+   ════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   /* ── Mobile top header — full width black bar with ALPHA logo ── */
   .coach-mobile-header {
@@ -686,14 +816,12 @@
     box-sizing: border-box;
   }
 
-  /* Logo wrapper */
   .coach-mobile-header-logo {
     display: flex;
     align-items: center;
     padding: 0;
   }
 
-  /* The actual ALPHA logo image */
   .coach-mobile-header-logo-img {
     height: 48px;
     width: auto;
@@ -744,102 +872,59 @@
     box-sizing: border-box;
   }
 
-  /* Typography */
-  .coach-greeting { font-size: 22px !important; }
-  .coach-subgreeting { font-size: 13px; }
+  /* ── Top progress bar — stack vertically, full width ── */
+  .coach-topbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 20px;
+    gap: 12px;
+    border-radius: 12px;
+  }
 
-  /* Stats grid */
+  .coach-topbar-label {
+    justify-content: center;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+
+  .coach-topbar-progress {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* ── Header ── */
+  .coach-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .coach-greeting {
+    font-size: 24px !important;
+    text-align: center;
+  }
+
+  .coach-subgreeting {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  /* ── Stats grid ── */
   .coach-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .coach-stat-card { padding: 14px; }
   .coach-stat-value { font-size: 22px; }
   .coach-stat-icon { width: 40px; height: 40px; }
 
-  /* Hero */
+  /* ── Hero ── */
   .coach-hero { padding: 20px; flex-direction: column; align-items: stretch; }
   .coach-hero-actions { flex-direction: column; }
   .coach-hero-btn { justify-content: center; }
 
   .coach-chart { height: 160px; gap: 6px; }
-}
 
-@media (max-width: 480px) {
-  .coach-stats { grid-template-columns: 1fr; }
-  .coach-greeting { font-size: 20px !important; }
-}
-
-
-/* ════════════════════════════════════════════════════════════
-   COACH STUDENTS PAGE — Desktop two-column layout
-   ════════════════════════════════════════════════════════════ */
-.coach-content {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 24px;
-  align-items: start;
-}
-
-.coach-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.coach-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: sticky;
-  top: 24px;
-}
-
-.coach-info-card {
-  background: #fff;
-  border: 1px solid #EDEDED;
-  border-radius: 16px;
-  padding: 24px;
-}
-
-.coach-info-card-title {
-  font-family: "Raleway", sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  margin: 0 0 12px 0;
-  color: #000;
-}
-
-.coach-info-card-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  color: #555;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.coach-content-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.coach-content-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  color: #000;
-}
-
-.coach-content-item svg {
-  color: #4FC2F0;
-  flex-shrink: 0;
-}
-
-/* ════════════════════════════════════════════════════════════
-   MOBILE (768px and below) — Coach Students page
-   ════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
+  /* ════════════════════════════════════════════════════════════
+     COACH STUDENTS PAGE — Mobile
+     ════════════════════════════════════════════════════════════ */
+  
   /* Single column layout */
   .coach-content {
     grid-template-columns: 1fr;
@@ -937,20 +1022,27 @@
     font-size: 18px !important;
     text-align: center !important;
   }
+}
 
-  /* Header */
-  .coach-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+/* ════════════════════════════════════════════════════════════
+   SMALL MOBILE (480px and below)
+   ════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .coach-stats { grid-template-columns: 1fr; }
+  .coach-greeting { font-size: 20px !important; }
+}
 
-  .coach-greeting {
-    font-size: 24px !important;
-    text-align: center;
-  }
+/* ════════════════════════════════════════════════════════════
+   UTILITY — Number input arrows
+   ════════════════════════════════════════════════════════════ */
+.always-show-arrows::-webkit-inner-spin-button,
+.always-show-arrows::-webkit-outer-spin-button {
+  opacity: 1;
+  -webkit-appearance: inner-spin-button;
+  margin: 0;
+  cursor: pointer;
+}
 
-  .coach-subgreeting {
-    text-align: center;
-    font-size: 13px;
-  }
+.always-show-arrows {
+  -moz-appearance: number-input;
 }
