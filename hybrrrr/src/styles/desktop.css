@@ -1421,6 +1421,8 @@ nav.nav-scrolled {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-width: 620px;
+  padding-right: 60px;
 }
 
 .testimonial-quote {

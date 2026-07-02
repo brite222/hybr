@@ -45,7 +45,9 @@ import MyCoursesPage from "./pages/MyCoursesPage";
 import CourseOverviewPage from "./pages/CourseOverviewPage";
 import AdminCohorts from "./pages/admin/AdminCohorts";
 import AdminClasses from "./pages/admin/AdminClasses";
-
+import testimonialIris from "./assets/images/Iris.jpg";
+import testimonialKesamo from "./assets/images/Kesamo.jpg";
+import testimonialNelson from "./assets/images/Nelson.jpg";
 
 // ── Images ───────────────────────────────────────────────────────────────────
 import alphaLogo from "./assets/images/alpha-loggo.png";
@@ -142,25 +144,24 @@ const HybrLogo = ({ variant = "white", size = "nav" }) => {
   );
 };
 
-// ── Data ─────────────────────────────────────────────────────────────────────
 const testimonials = [
-  {
-    quote: "Testimonial #1 to be provided by Oluwatobi Agbana.",
-    name: "FirstName LastName",
+   {
+    quote: "Research is the skill I definitely built during this experience, I was able to utilise this skill on a personal project I and a friend were working on. Time management, Adaptability and learning to take constructive feedback were also key skills I developed.",
+    name: "Wondwosen Kesamo",
     meta: "Role  |  2024/2025 ALPHA Program",
     image: testimonial1,
   },
   {
-    quote: "Testimonial #2 to be provided by Oluwatobi Agbana.",
-    name: "FirstName LastName",
+    quote: "This is definitely an experience I won’t ever forget, working with HYBR team pushed me to discover new sides of myself and i will forever remember this experience. Thank you HYBR team for exceeding my expectations!",
+    name: "Jeremy Peng",
     meta: "Role  |  2024/2025 ALPHA Program",
-    image: null,
+    image: testimonialIris,
   },
   {
-    quote: "Testimonial #3 to be provided by Oluwatobi Agbana.",
-    name: "FirstName LastName",
+    quote: "It was really cool working with a company from a totally different part of the world. I learned how things run behind the scenes and got way better at working with people. Honestly, the skills I picked up still help me now and will definitely help in the future..",
+    name: "Nelson Gou",
     meta: "Role  |  2024/2025 ALPHA Program",
-    image: null,
+    image: testimonialNelson,
   },
 ];
 
