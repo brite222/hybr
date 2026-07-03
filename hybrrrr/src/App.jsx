@@ -760,7 +760,7 @@ function HomePage() {
             {/* Column 3: CONTACT US */}
             <div className="footer-col">
               <h4>Contact Us</h4>
-              <a href="mailto:sales@hybrgroup.net">Email: sale@hybrgroup.net</a>
+              <a href="mailto:sales@hybrgroup.net">Email: sales@hybrgroup.net</a>
             </div>
 
             {/* Column 4: FOLLOW US + LOG IN */}
