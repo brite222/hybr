@@ -147,19 +147,19 @@ const HybrLogo = ({ variant = "white", size = "nav" }) => {
 const testimonials = [
    {
     quote: "Research is the skill I definitely built during this experience, I was able to utilise this skill on a personal project I and a friend were working on. Time management, Adaptability and learning to take constructive feedback were also key skills I developed.",
-    name: "Wondwosen Kesamo",
+    name: "Wondwosen K",
     meta: "Role  |  2024/2025 ALPHA Program",
     image: testimonial1,
   },
   {
     quote: "This is definitely an experience I won’t ever forget, working with HYBR team pushed me to discover new sides of myself and i will forever remember this experience. Thank you HYBR team for exceeding my expectations!",
-    name: "Jeremy Peng",
+    name: "Jeremy P",
     meta: "Role  |  2024/2025 ALPHA Program",
     image: testimonialIris,
   },
   {
     quote: "It was really cool working with a company from a totally different part of the world. I learned how things run behind the scenes and got way better at working with people. Honestly, the skills I picked up still help me now and will definitely help in the future..",
-    name: "Nelson Gou",
+    name: "Nelson G",
     meta: "Role  |  2024/2025 ALPHA Program",
     image: testimonialNelson,
   },
@@ -760,7 +760,7 @@ function HomePage() {
             {/* Column 3: CONTACT US */}
             <div className="footer-col">
               <h4>Contact Us</h4>
-              <a href="mailto:sale@hybrgroup.net">Email: sale@hybrgroup.net</a>
+              <a href="mailto:sales@hybrgroup.net">Email: sale@hybrgroup.net</a>
             </div>
 
             {/* Column 4: FOLLOW US + LOG IN */}
