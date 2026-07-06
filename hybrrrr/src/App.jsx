@@ -32,6 +32,7 @@ import AdminContent from "./pages/admin/AdminContent";
 import AdminContentEditor from "./pages/admin/AdminContentEditor";
 import StudentAchievements from "./pages/StudentAchievements";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import phasesImgMobile from "./assets/images/phases-image.jpg";  
 import StudentGradeDetail from "./pages/StudentGradeDetail";
 import ProfilePage from "./pages/ProfilePage";
 import "./styles/base.css";
@@ -513,8 +514,11 @@ function HomePage() {
               ))}
             </ul>
           </div>
-          <div className="phases-image">
-            <img src={phasesImg} alt="" className="phases-img" />
+                    <div className="phases-image">
+            <picture>
+              <source media="(max-width: 480px)" srcSet={phasesImgMobile} />
+              <img src={phasesImg} alt="" className="phases-img" />
+            </picture>
           </div>
         </div>
       </section>
