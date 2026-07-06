@@ -1549,18 +1549,20 @@
      FOOTER
      ════════════════════════════════════════════ */
 
-  .footer-wrapper {
+   .footer-wrapper {
     background: #FFFFFF !important;
     padding: 0 !important;
+    padding-bottom: env(safe-area-inset-bottom) !important;
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box;
+    min-height: 100px;  /* ensures wrapper always has white background */
   }
 
-  footer {
+   footer {
     background: #FFFFFF !important;
-    padding: 60px 24px 40px 24px !important; /* ← 60px top (footer differs from sections) */
+    padding: 60px 24px 80px 24px !important;  /* ← was 40px, now 80px */
     margin: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
@@ -1835,5 +1837,5 @@
     position: relative !important;
     z-index: 2 !important;
   }
-
+  
 } /* END @media (max-width: 480px) */
