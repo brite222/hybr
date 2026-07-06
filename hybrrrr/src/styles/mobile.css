@@ -205,25 +205,30 @@
     gap: 24px !important;           
   }
 
+#about, section#about {
+  padding: 24px 24px 80px 24px !important;  /* small top gap, normal bottom rhythm */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background: #000 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  gap: 24px !important;
+}
+
 #about .about-image {
   width: 100% !important;
   max-width: 342px !important;
   height: 118px !important;
-  margin: -96px auto 0 auto !important; 
+  margin: 0 auto !important;   /* ← no more negative margin hack */
   padding: 0 !important;
   overflow: hidden !important;
   border-radius: 1000px 0 2000px 1000px !important;
   background: #1a0508 !important;
   order: -1 !important;
 }
-
-  #about .about-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-    margin: 0 !important;
-  }
 
   #about .about-content {
     display: flex !important;
