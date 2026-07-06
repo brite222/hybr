@@ -205,17 +205,17 @@
     gap: 24px !important;             /* ← uniform element gap */
   }
 
-  #about .about-image {
-    width: 100% !important;
-    max-width: 342px !important;
-    height: 118px !important;
-    margin: 0 auto !important;        /* ← no extra bottom margin; gap handles spacing */
-    padding: 0 !important;
-    overflow: hidden !important;
-    border-radius: 1000px 0 2000px 1000px !important;
-    background: #1a0508 !important;
-    order: -1 !important;
-  }
+ #about .about-image {
+  width: 100% !important;
+  max-width: 342px !important;
+  height: 118px !important;
+  margin: -56px auto 0 auto !important;  /* 80px - 24px = -56px, closes the gap down to 24px */
+  padding: 0 !important;
+  overflow: hidden !important;
+  border-radius: 1000px 0 2000px 1000px !important;
+  background: #1a0508 !important;
+  order: -1 !important;
+}
 
   #about .about-img {
     width: 100% !important;
