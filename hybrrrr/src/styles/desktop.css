@@ -485,19 +485,19 @@ nav.nav-scrolled {
   margin-bottom: 32px;
 }
 
-/* ── Hero Background Blob ── */
+
 .hero-bg-blob {
-  position: absolute;
-  right: -90px;
-  top: -129px;
-  width: 743px;
-  height: 743px;
-  border-radius: 1000px;
-  overflow: hidden;
-  animation: floatTop 9s ease-in-out infinite;
-  z-index: 1;
-  background: #2a0810;
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.4);
+position: absolute;
+right: -60px !important;
+top: -50px !important;
+width: 300px !important;
+height: 300px !important;
+border-radius: 1000px !important;
+overflow: hidden;
+animation: none !important;
+z-index: 1;
+background: #2a0810;
+box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.4);
 }
 
 .blob-img {
