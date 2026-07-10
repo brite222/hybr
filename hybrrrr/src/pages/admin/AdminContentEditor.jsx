@@ -895,26 +895,34 @@ export default function AdminContentEditor() {
             </SectionCard>
           )}
 
-          {/* ── UPLOAD/FEEDBACK INSTRUCTIONS ── */}
-          {(lessonType === "upload" || lessonType === "feedback") && (
-            <SectionCard title="Instructions">
-              <FormField 
-                label="Instructions for Student" 
-                hint={lessonType === "upload" 
-                  ? "Tell the student what to upload" 
-                  : "Link or instructions to your Google Form"}
-              >
-                <TextArea
-                  value={content.body_text}
-                  onChange={(v) => updateField("body_text", v)}
-                  placeholder={lessonType === "upload" 
-                    ? "Upload your filled work assignment as PDF..." 
-                    : "Please complete the feedback form at..."}
-                  rows={4}
-                />
-              </FormField>
-            </SectionCard>
-          )}
+        {/* ── UPLOAD/FEEDBACK INSTRUCTIONS ── */}
+{(lessonType === "upload" || lessonType === "feedback") && (
+  <SectionCard title="Instructions">
+    <FormField label="Section Header">
+      <TextInput
+        value={content.header}
+        onChange={(v) => updateField("header", v)}
+        placeholder="Header, Lorem Ipsum Dolor Sit Amet"
+      />
+    </FormField>
+
+    <FormField 
+      label="Instructions for Student" 
+      hint={lessonType === "upload" 
+        ? "Tell the student what to upload" 
+        : "Link or instructions to your Google Form"}
+    >
+      <TextArea
+        value={content.body_text}
+        onChange={(v) => updateField("body_text", v)}
+        placeholder={lessonType === "upload" 
+          ? "Upload your filled work assignment as PDF..." 
+          : "Please complete the feedback form at..."}
+        rows={4}
+      />
+    </FormField>
+  </SectionCard>
+)}
             {/* ── SURVEY URL (feedback lessons only) ── */}
 {lessonType === "feedback" && (
   <SectionCard title="📋 External Survey">
