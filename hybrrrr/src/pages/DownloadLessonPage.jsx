@@ -35,20 +35,24 @@ export default function DownloadLessonPage({
   const duration = content?.duration || lesson?.duration || "12 MIN";
   const headerText = content?.header || "Header, Lorem Ipsum Dolor Sit Amet";
   const bodyText = content?.body_text || "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
-  const pdfUrl = getMediaUrl(content?.pdf_url) || "/files/booklet.pdf";
+ const pdfUrl = getMediaUrl(content?.pdf_url) || "/files/booklet.pdf";
 
-  const handleDownload = async () => {
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.download = `ALPHA-Week${week}-${lesson?.id || "Booklet"}.pdf`;
-    link.target = "_blank";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    try {
-      await awardPoints({ lessonId: lesson?.id || "download", weekNumber: week, lessonType: "download" });
-    } catch (err) { console.error(err); }
-  };
+const downloadableUrl = pdfUrl.includes('/upload/')
+  ? pdfUrl.replace('/upload/', '/upload/fl_attachment/')
+  : pdfUrl;
+
+const handleDownload = async () => {
+  const link = document.createElement("a");
+  link.href = downloadableUrl; 
+  link.download = `ALPHA-Week${week}-${lesson?.id || "Booklet"}.pdf`;
+  link.target = "_blank";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  try {
+    await awardPoints({ lessonId: lesson?.id || "download", weekNumber: week, lessonType: "download" });
+  } catch (err) { console.error(err); }
+};
 
   return (
     <div className="module-page">

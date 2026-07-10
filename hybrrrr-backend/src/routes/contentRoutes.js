@@ -24,9 +24,10 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "alpha-content",
-    resource_type: "auto", // handles video, image, raw (pdf), etc.
+    resource_type: "auto",
     public_id: (req, file) => {
-      const safe = file.originalname.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "");
+      const nameWithoutExt = file.originalname.replace(/\.[^/.]+$/, ""); // strip extension
+      const safe = nameWithoutExt.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "");
       return `${Date.now()}-${safe}`;
     },
   },
