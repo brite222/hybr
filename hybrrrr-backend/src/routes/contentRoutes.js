@@ -1,8 +1,7 @@
 import express from "express";
 import multer from "multer";
-import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
+import { v2 as cloudinary } from "cloudinary";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 import { protect, requireRole } from "../middleware/authMiddleware.js";
 import { 
   getContent, 
@@ -11,21 +10,25 @@ import {
   deleteContent 
 } from "../controllers/contentController.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const router = express.Router();
 
-// ─── MEDIA UPLOAD CONFIG ───
-const MEDIA_DIR = path.join(__dirname, "..", "..", "uploads", "content");
-fs.mkdirSync(MEDIA_DIR, { recursive: true });
+// ─── CLOUDINARY CONFIG ───
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, MEDIA_DIR),
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    const safe = file.originalname.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "");
-    cb(null, `${Date.now()}-${safe}`);
+// ─── MEDIA UPLOAD CONFIG ───
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: "alpha-content",
+    resource_type: "auto", // handles video, image, raw (pdf), etc.
+    public_id: (req, file) => {
+      const safe = file.originalname.replace(/\s+/g, "_").replace(/[^a-zA-Z0-9._-]/g, "");
+      return `${Date.now()}-${safe}`;
+    },
   },
 });
 
@@ -39,39 +42,6 @@ const upload = multer({
     }
     cb(null, true);
   },
-});
-
-// ═══════════════════════════════════════════════════════════
-// ✅ PUBLIC ROUTE — Serve media files (NO AUTH REQUIRED)
-// MUST BE FIRST so it's not blocked by other middleware
-// ═══════════════════════════════════════════════════════════
-router.get("/content/media/:filename", (req, res) => {
-  const { filename } = req.params;
-  const filePath = path.join(MEDIA_DIR, filename);
-  
-  if (!fs.existsSync(filePath)) {
-    return res.status(404).json({ message: "File not found" });
-  }
-  
-  // ✅ Set proper headers for video/audio streaming
-  const ext = path.extname(filename).toLowerCase();
-  const mimeTypes = {
-    ".mp4": "video/mp4",
-    ".webm": "video/webm",
-    ".mp3": "audio/mpeg",
-    ".wav": "audio/wav",
-    ".png": "image/png",
-    ".jpg": "image/jpeg",
-    ".jpeg": "image/jpeg",
-    ".gif": "image/gif",
-    ".pdf": "application/pdf",
-  };
-  
-  if (mimeTypes[ext]) {
-    res.setHeader("Content-Type", mimeTypes[ext]);
-  }
-  
-  res.sendFile(filePath);
 });
 
 // ─── PROTECTED — students/coaches/admins ───
@@ -95,7 +65,7 @@ router.post(
     res.json({
       success: true,
       filename: req.file.filename,
-      url: `/api/content/media/${req.file.filename}`,
+      url: req.file.path, // ✅ Cloudinary's hosted URL
       mimetype: req.file.mimetype,
       size: req.file.size,
     });
