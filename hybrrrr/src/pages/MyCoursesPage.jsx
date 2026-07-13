@@ -170,14 +170,14 @@ export default function MyCoursesPage() {
             {/* KICK-OFF */}
             {currentWeek === 1 && program?.cohort?.startDate && (
               <div className="kickoff-banner">
-                <span className="kickoff-emoji">🚀</span>
+                <span className="kickoff-emoji"></span>
                 <div className="kickoff-content">
-                  <div className="kickoff-title">LOREM REMINDER!</div>
+                  <div className="kickoff-title">START DATE</div>
                   <div className="kickoff-date">
                     DATE: {new Date(program.cohort.startDate).toLocaleDateString("en-US", { month: "long", day: "numeric" }).toUpperCase()}
                   </div>
                 </div>
-                <span className="kickoff-emoji">🚀</span>
+                <span className="kickoff-emoji"></span>
               </div>
             )}
 
