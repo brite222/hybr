@@ -20,13 +20,14 @@ const FALLBACK_QUIZ = [{ q: "1. Lorem ipsum dolor sit amet?", options: ["A", "B"
 export default function QuizLessonPage({
   weekNumber, lesson, onNext, onPrev, hasNext, hasPrev,
   nextLessonTitle, prevLessonTitle,
+  progress = 0,
 }) {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [saving, setSaving] = useState(false);
-  const progress = 25;
+  
 
   const week = weekNumber || 2;
   const lessonId = lesson?.id || "quiz";

@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { getLesson, getNextLesson, getPrevLesson } from "../data/curriculum";
 import { awardPoints } from "../utils/awardPoints";
+import { useWeekProgress } from "../hooks/useWeekProgress";   // ✅ NEW
 
 import ModulePage from "./ModulePage";
 import ImageLessonPage from "./ImageLessonPage";
@@ -10,7 +11,7 @@ import DownloadLessonPage from "./DownloadLessonPage";
 import UploadLessonPage from "./UploadLessonPage";
 import QuizLessonPage from "./QuizLessonPage";
 import InfoLessonPage from "./InfoLessonPage";
-import FeedbackLessonPage from "./FeedbackLessonPage";  // ✅ NEW
+import FeedbackLessonPage from "./FeedbackLessonPage";
 
 const LESSON_COMPONENTS = {
   module: ModulePage,
@@ -21,7 +22,7 @@ const LESSON_COMPONENTS = {
   upload: UploadLessonPage,
   quiz: QuizLessonPage,
   info: InfoLessonPage,
-  feedback: FeedbackLessonPage,  // ✅ now uses its own component
+  feedback: FeedbackLessonPage,
 };
 
 export default function LessonRouter() {
@@ -30,6 +31,9 @@ export default function LessonRouter() {
 
   const week = parseInt(weekNumber);
   const lesson = getLesson(week, lessonId);
+
+  // ✅ Get real progress for this week (same source as Course Overview)
+  const { progress } = useWeekProgress(week);
 
   if (!lesson) {
     return (
@@ -49,8 +53,6 @@ export default function LessonRouter() {
   const nextLesson = getNextLesson(week, lessonId);
   const prevLesson = getPrevLesson(week, lessonId);
 
-  // ✅ Award points when student clicks NEXT (completion)
-  // Now accepts optional `extras` from the lesson page (e.g. surveyCompleted, correctAnswers)
   const handleNext = async (extras = {}) => {
     const result = await awardPoints({
       lessonId: lesson.id,
@@ -88,6 +90,7 @@ export default function LessonRouter() {
       hasPrev={!!prevLesson}
       nextLessonTitle={nextLesson?.title}
       prevLessonTitle={prevLesson?.title}
+      progress={progress}   // ✅ NEW — pass real progress to every lesson page
     />
   );
 }

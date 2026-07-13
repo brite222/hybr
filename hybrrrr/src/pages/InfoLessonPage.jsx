@@ -24,10 +24,11 @@ const HamburgerIcon = () => (<svg width="22" height="22" viewBox="0 0 24 24" fil
 export default function InfoLessonPage({
   weekNumber, lesson, onNext, onPrev, hasNext, hasPrev,
   nextLessonTitle, prevLessonTitle,
+  progress = 0,
 }) {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const progress = 25;
+ 
 
   const week = weekNumber || 1;
   const { content, loading } = useContent(week, lesson?.id);

@@ -30,13 +30,14 @@ function showVideoCompleteToast(points) {
 export default function VideoLessonPage({
   weekNumber, lesson, onNext, onPrev, hasNext, hasPrev,
   nextLessonTitle, prevLessonTitle,
+  progress = 0,
 }) {
   const navigate = useNavigate();
   const videoRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [videoCompleted, setVideoCompleted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const progress = 25;
+  
 
   const week = weekNumber || 1;
   const { content, loading } = useContent(week, lesson?.id);

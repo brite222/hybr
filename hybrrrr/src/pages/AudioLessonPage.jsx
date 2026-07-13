@@ -36,6 +36,7 @@ function showAudioCompleteToast(points) {
 export default function AudioLessonPage({
   weekNumber, lesson, onNext, onPrev, hasNext, hasPrev,
   nextLessonTitle, prevLessonTitle,
+  progress = 0,
 }) {
   const navigate = useNavigate();
   const audioRef = useRef(null);
@@ -44,7 +45,7 @@ export default function AudioLessonPage({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [audioCompleted, setAudioCompleted] = useState(false);
-  const progress = 25;
+ 
 
   const week = weekNumber || 1;
   const { content, loading } = useContent(week, lesson?.id);
