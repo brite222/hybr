@@ -28,6 +28,7 @@ export default function ModulePage({
   const title = content?.title || lesson?.title || "Overview of Module, Lorem Ipsum Dolor";
   const imageUrl = getMediaUrl(content?.image_url) || handImg;
   const bodyText = content?.body_text || "Lorem ipsum dolor sit amet.";
+  const bodyText2 = content?.body_text_2 || "Integer eget scelerisque turpis.";
   const programTrack = content?.program_track || "PROGRAM TRACK/THEME";
   const objectives = content?.objectives_json || ["Lorem ipsum dolor sit amet.", "Donec eu urna vel lorem ornare pretium.", "Integer interdum imperdiet risus."];
 
