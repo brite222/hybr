@@ -25,12 +25,13 @@ export default function ModulePage({
   const week = weekNumber || 1;
   const { content, loading } = useContent(week, lesson?.id);
 
-  const title = content?.title || lesson?.title || "Overview of Module, Lorem Ipsum Dolor";
+  // ✅ Clean fallbacks — all content managed via Admin Editor
+  const title = content?.title || lesson?.title || "";
   const imageUrl = getMediaUrl(content?.image_url) || handImg;
-  const bodyText = content?.body_text || "Lorem ipsum dolor sit amet.";
-  const bodyText2 = content?.body_text_2 || "Integer eget scelerisque turpis.";
-  const programTrack = content?.program_track || "PROGRAM TRACK/THEME";
-  const objectives = content?.objectives_json || ["Lorem ipsum dolor sit amet.", "Donec eu urna vel lorem ornare pretium.", "Integer interdum imperdiet risus."];
+  const bodyText = content?.body_text || "";
+  const bodyText2 = content?.body_text_2 || "";
+  const programTrack = content?.program_track || "";
+  const objectives = content?.objectives_json || [];
 
   const handleNext = async () => {
     try {
@@ -69,19 +70,35 @@ export default function ModulePage({
         {loading ? (<div style={{ padding: 40, textAlign: "center" }}>Loading...</div>) : (
           <div className="module-content">
             <div className="module-left">
-              <div className="module-image-wrap"><img src={imageUrl} alt="" className="module-image" /></div>
+              <div className="module-image-wrap">
+                <img src={imageUrl} alt="" className="module-image" />
+              </div>
               <div className="module-overview-card">
-                <h2 className="module-heading">{title}</h2>
-                <p className="module-body" style={{ whiteSpace: "pre-line" }}>{bodyText}</p>
-                <div className="module-program-label">{programTrack}</div>
-                {bodyText2 && <p className="module-body" style={{ whiteSpace: "pre-line" }}>{bodyText2}</p>}
+                {title && <h2 className="module-heading">{title}</h2>}
+                {bodyText && (
+                  <p className="module-body" style={{ whiteSpace: "pre-line" }}>
+                    {bodyText}
+                  </p>
+                )}
+                {programTrack && (
+                  <div className="module-program-label">{programTrack}</div>
+                )}
+                {bodyText2 && (
+                  <p className="module-body" style={{ whiteSpace: "pre-line" }}>
+                    {bodyText2}
+                  </p>
+                )}
               </div>
             </div>
             <aside className="module-right">
-              <div className="module-card">
-                <h3 className="module-card-title">Objectives</h3>
-                <ul className="module-card-list">{objectives.map((o, i) => <li key={i}>{o}</li>)}</ul>
-              </div>
+              {objectives.length > 0 && (
+                <div className="module-card">
+                  <h3 className="module-card-title">Objectives</h3>
+                  <ul className="module-card-list">
+                    {objectives.map((o, i) => <li key={i}>{o}</li>)}
+                  </ul>
+                </div>
+              )}
               <div className="module-card">
                 <h3 className="module-card-title">Module Content</h3>
                 <div className="module-content-list">
