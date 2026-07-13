@@ -6,6 +6,7 @@ import "../styles/module.css";
 import "../styles/image-lesson.css";
 import lessonBannerBg from "../assets/images/lesson-banner-bg.jpg";
 import lessonImg from "../assets/images/lesson-girl.jpg";
+import { awardPoints } from "../utils/awardPoints";
 
 const ClockIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>);
 const LinkIcon = () => (
@@ -39,6 +40,16 @@ export default function ImageLessonPage({
   const objectives = content?.objectives_json || ["Lorem ipsum dolor sit amet.", "Donec eu urna vel lorem ornare pretium.", "Integer interdum imperdiet risus."];
   const references = content?.references_json || [{ title: "https://hybrgroup.net/", url: "https://hybrgroup.net/" }];
   const resources = content?.resources_json || ['"Lorem ipsum", by Consectetur Adipiscing.'];
+
+  const handleNext = async () => {
+    try {
+      await awardPoints({ lessonId: lesson?.id, weekNumber: week, lessonType: "image" });
+    } catch (err) {
+      console.error(err);
+    }
+    if (onNext) onNext();
+    else navigate("/courses/overview");
+  };
 
   return (
     <div className="module-page">
@@ -122,7 +133,7 @@ export default function ImageLessonPage({
       )}
     </span>
   </button>
-  <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
+  <button className="module-nav-btn module-nav-next" onClick={handleNext}>
     <span className="nav-btn-text">
       {hasNext ? "Next" : "Back to Course"}
       {hasNext && nextLessonTitle && (
