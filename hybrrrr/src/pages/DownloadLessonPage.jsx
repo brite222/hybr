@@ -30,29 +30,30 @@ export default function DownloadLessonPage({
   const week = weekNumber || 1;
   const { content, loading } = useContent(week, lesson?.id);
 
-  const title = content?.title || lesson?.title || "Title, Lorem Ipsum Dolor Sit Amet.";
-  const subtitle = content?.subtitle || "A brief summarising statement.";
-  const duration = content?.duration || lesson?.duration || "12 MIN";
-  const headerText = content?.header || "Header, Lorem Ipsum Dolor Sit Amet";
-  const bodyText = content?.body_text || "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
- const pdfUrl = getMediaUrl(content?.pdf_url) || "/files/booklet.pdf";
+  // ✅ Clean fallbacks — content managed via Admin Editor
+  const title = content?.title || lesson?.title || "";
+  const subtitle = content?.subtitle || "";
+  const duration = content?.duration || lesson?.duration || "";
+  const headerText = content?.header || "";
+  const bodyText = content?.body_text || "";
+  const pdfUrl = getMediaUrl(content?.pdf_url) || "/files/booklet.pdf";
 
-const downloadableUrl = pdfUrl.includes('/upload/')
-  ? pdfUrl.replace('/upload/', '/upload/fl_attachment/')
-  : pdfUrl;
+  const downloadableUrl = pdfUrl.includes('/upload/')
+    ? pdfUrl.replace('/upload/', '/upload/fl_attachment/')
+    : pdfUrl;
 
-const handleDownload = async () => {
-  const link = document.createElement("a");
-  link.href = downloadableUrl; 
-  link.download = `ALPHA-Week${week}-${lesson?.id || "Booklet"}.pdf`;
-  link.target = "_blank";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  try {
-    await awardPoints({ lessonId: lesson?.id || "download", weekNumber: week, lessonType: "download" });
-  } catch (err) { console.error(err); }
-};
+  const handleDownload = async () => {
+    const link = document.createElement("a");
+    link.href = downloadableUrl;
+    link.download = `ALPHA-Week${week}-${lesson?.id || "Booklet"}.pdf`;
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    try {
+      await awardPoints({ lessonId: lesson?.id || "download", weekNumber: week, lessonType: "download" });
+    } catch (err) { console.error(err); }
+  };
 
   return (
     <div className="module-page">
@@ -68,7 +69,7 @@ const handleDownload = async () => {
           <div className="module-topbar-label">
             <span className="topbar-title">WEEK {week}</span>
             <span className="topbar-dot">•</span>
-            <span className="topbar-subtitle">DOWNLOAD</span>
+            <span className="topbar-subtitle">DOWNLOAD GUIDE</span>
           </div>
           <div className="module-progress">
             <div className="module-progress-bar"><div className="module-progress-fill" style={{ width: `${progress}%` }} /></div>
@@ -79,42 +80,46 @@ const handleDownload = async () => {
         <div className="lesson-banner">
           <img src={lessonBannerBg} alt="" className="lesson-banner-bg" />
           <div className="lesson-banner-content">
-            <h1 className="lesson-banner-title">{title}</h1>
-            <p className="lesson-banner-subtitle">{subtitle}</p>
-            <div className="lesson-banner-duration"><ClockIcon /><span>{duration}</span></div>
+            {title && <h1 className="lesson-banner-title">{title}</h1>}
+            {subtitle && <p className="lesson-banner-subtitle">{subtitle}</p>}
+            {duration && (
+              <div className="lesson-banner-duration"><ClockIcon /><span>{duration}</span></div>
+            )}
           </div>
         </div>
 
         {loading ? (<div style={{ padding: 40, textAlign: "center" }}>Loading...</div>) : (
           <div className="download-card">
-            <h2 className="download-heading">{headerText}</h2>
-            <p className="download-body" style={{ whiteSpace: "pre-line" }}>{bodyText}</p>
+            {headerText && <h2 className="download-heading">{headerText}</h2>}
+            {bodyText && (
+              <p className="download-body" style={{ whiteSpace: "pre-line" }}>{bodyText}</p>
+            )}
             <button className="download-btn" onClick={handleDownload}>
               <DownloadIcon /><span>Download Booklet</span>
             </button>
           </div>
         )}
 
-       <div className="module-nav-buttons">
-  <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
-    <ArrowLeft />
-    <span className="nav-btn-text">
-      {hasPrev ? "Previous" : "Back to Course"}
-      {hasPrev && prevLessonTitle && (
-        <span className="nav-btn-detail">: {prevLessonTitle}</span>
-      )}
-    </span>
-  </button>
-  <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
-   <span className="nav-btn-text">
-  {hasNext ? "Next" : "Back to Course"}
-  {hasNext && nextLessonTitle && (
-    <span className="nav-btn-detail">: {nextLessonTitle}</span>
-  )}
-</span>
-    <ArrowRight />
-  </button>
-</div>
+        <div className="module-nav-buttons">
+          <button className="module-nav-btn module-nav-prev" onClick={onPrev || (() => navigate("/courses/overview"))}>
+            <ArrowLeft />
+            <span className="nav-btn-text">
+              {hasPrev ? "Previous" : "Back to Course"}
+              {hasPrev && prevLessonTitle && (
+                <span className="nav-btn-detail">: {prevLessonTitle}</span>
+              )}
+            </span>
+          </button>
+          <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
+            <span className="nav-btn-text">
+              {hasNext ? "Next" : "Back to Course"}
+              {hasNext && nextLessonTitle && (
+                <span className="nav-btn-detail">: {nextLessonTitle}</span>
+              )}
+            </span>
+            <ArrowRight />
+          </button>
+        </div>
       </main>
     </div>
   );
