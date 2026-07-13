@@ -35,7 +35,7 @@ export default function QuizLessonPage({
   const title = content?.title || lesson?.title || "Title of Quiz";
   const subtitle = content?.subtitle || "A brief summarising statement.";
   const duration = content?.duration || lesson?.duration || "7 MIN";
-  const quizTitle = content?.header || "Quiz: Lorem Ipsum Dolor Sit Amet";
+  const quizTitle = content?.header || " Quiz: Answer the Questions below";
   const questions = (content?.quiz_data && content.quiz_data.length > 0) ? content.quiz_data : FALLBACK_QUIZ;
   const objectives = content?.objectives_json || ["Lorem ipsum dolor sit amet.", "Donec eu urna vel lorem ornare pretium."];
   const resources = content?.resources_json || ['"Lorem ipsum", by Consectetur Adipiscing.', "https://hybrgroup.net/"];
