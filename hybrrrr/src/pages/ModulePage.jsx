@@ -5,6 +5,7 @@ import StudentSidebar from "../components/StudentSidebar";
 import "../styles/module.css";
 import handImg from "../assets/images/hand.png";
 import alphaLogo from "../assets/images/alpha-loggo.png";
+import { awardPoints } from "../utils/awardPoints";
 
 const PencilIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" /></svg>);
 const VideoIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="6" width="14" height="12" rx="2" /><path d="M22 8l-6 4 6 4V8z" /></svg>);
@@ -30,6 +31,16 @@ export default function ModulePage({
   const bodyText2 = content?.body_text_2 || "Integer eget scelerisque turpis.";
   const programTrack = content?.program_track || "PROGRAM TRACK/THEME";
   const objectives = content?.objectives_json || ["Lorem ipsum dolor sit amet.", "Donec eu urna vel lorem ornare pretium.", "Integer interdum imperdiet risus."];
+
+  const handleNext = async () => {
+    try {
+      await awardPoints({ lessonId: lesson?.id, weekNumber: week, lessonType: "module" });
+    } catch (err) {
+      console.error(err);
+    }
+    if (onNext) onNext();
+    else navigate("/courses/overview");
+  };
 
   return (
     <div className="module-page">
@@ -93,7 +104,7 @@ export default function ModulePage({
               )}
             </span>
           </button>
-          <button className="module-nav-btn module-nav-next" onClick={onNext || (() => navigate("/courses/overview"))}>
+          <button className="module-nav-btn module-nav-next" onClick={handleNext}>
             <span className="nav-btn-text">
               {hasNext ? "Next" : "Back to Course"}
               {hasNext && nextLessonTitle && (
