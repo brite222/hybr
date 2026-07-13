@@ -172,7 +172,7 @@ export default function MyCoursesPage() {
               <div className="kickoff-banner">
                 <span className="kickoff-emoji"></span>
                 <div className="kickoff-content">
-                  <div className="kickoff-title">START DATE</div>
+                  <div className="kickoff-title">Program Begins</div>
                   <div className="kickoff-date">
                     DATE: {new Date(program.cohort.startDate).toLocaleDateString("en-US", { month: "long", day: "numeric" }).toUpperCase()}
                   </div>
